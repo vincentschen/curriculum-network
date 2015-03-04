@@ -1,9 +1,40 @@
 source,target,value
-Brute Force Algorithms,Greedy Algorithms,1.0
-Brute Force Algorithms,Divide and Conquer,1.0 
-Divide and Conquer,Recursion,1.0
-Recursion,Backtracking,1.0 
-Recursion,Dynamic Programming,1.0
-Brute Force Algorithms,Heuristics,1.0
-Heuristics,Branch and Bound,1.0
-Divide and Conquer,Reduction,1.0
+Brute Force Algorithms,Greedy Algorithms,1.1
+Brute Force Algorithms,Divide and Conquer,1.1 
+Divide and Conquer,Recursion,1.1
+Recursion,Backtracking,1.1 
+Recursion,Dynamic Programming,1.1
+Brute Force Algorithms,Heuristics,1.1
+Heuristics,Greedy Algorithms,1.1
+Heuristics,Branch and Bound,1.1
+Divide and Conquer,Reduction,1.1
+Numerical Algorithms,Sequential Search,1.1
+Sequential Search,Binary Search,1.1
+Recursion,Binary Search,1.1
+Brute Force Algorithms,Selection Sort,1.1
+Brute Force Algorithms,Insertion Sort,1.1
+Selection Sort,Quicksort,1.1
+Selection Sort,Mergesort,1.1
+Selection Sort,Heapsort,1.1
+Insertion Sort,Quicksort,1.1
+Insertion Sort,Mergesort,1.1
+Insertion Sort,Heapsort,1.1
+Sequential Search,Hash Tables,1.2
+Binary Search,Binary Search Trees,1.2
+Binary Search Trees,Graphs,2.2
+Graphs,Adjacency Lists,2.2
+Graphs,Adjacency Matrix,2.2
+Graphs,Depth First Search,2.1
+Graphs,Breadth First Search,2.1
+Recursion,Depth First Search,1.1
+Recursion,Depth First Search,1.1
+Binary Search Trees,Heaps,2.2
+Graphs,Dijkstra's,2.1
+Graphs,Floyd's,2.1
+Graphs,Minimum Spanning Trees,2.2
+Minimum Spanning Trees,Prim's,2.1
+Minimum Spanning Trees,Kruskal's,2.1
+Pattern Matching Algorithms,Substring Matching,1.1
+Pattern Matching Algorithms,Regular Expression Matching,1.1
+Pattern Matching Algorithms,Longest Common Subsequence,1.1
+Brute Force Algorithms,Pattern Matching Algorithms,1.1

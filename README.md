@@ -1,1 +1,1 @@
-# curriculum visualization using d3 
+# curriculum visualization

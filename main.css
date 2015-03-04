@@ -1,10 +1,21 @@
-.node {
+path.link {
+  fill: none;
+  stroke: #999;
+  stroke-width: 1.5px;
+}
+
+circle {
+  fill: #ccc;
   stroke: #fff;
   stroke-width: 1.5px;
 }
 
-.link {
-  stroke: #999;
-  stroke-opacity: .6;
+circle:hover{
+	fill:red;
 }
 
+text {
+  fill: #000;
+  font: 10px sans-serif;
+  pointer-events: none;
+}
