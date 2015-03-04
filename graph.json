@@ -1,0 +1,210 @@
+{
+  "Brute Force Algorithms": {
+    "children": [
+      {
+        "name": "Greedy Algorithms",
+        "value": 1.1
+      },
+      {
+        "name": "Divide and Conquer",
+        "value": 1.1
+      },
+      {
+        "name": "Heuristics",
+        "value": 1.1
+      },
+      {
+        "name": "Selection Sort",
+        "value": 1.1
+      },
+      {
+        "name": "Insertion Sort",
+        "value": 1.1
+      },
+      {
+        "name": "Pattern Matching Algorithms",
+        "value": 1.1
+      }
+    ]
+  },
+  "Divide and Conquer": {
+    "children": [
+      {
+        "name": "Recursion",
+        "value": 1.1
+      },
+      {
+        "name": "Reduction",
+        "value": 1.1
+      }
+    ]
+  },
+  "Recursion": {
+    "children": [
+      {
+        "name": "Backtracking",
+        "value": 1.1
+      },
+      {
+        "name": "Dynamic Programming",
+        "value": 1.1
+      },
+      {
+        "name": "Binary Search",
+        "value": 1.1
+      },
+      {
+        "name": "Depth First Search",
+        "value": 1.1
+      },
+      {
+        "name": "Depth First Search",
+        "value": 1.1
+      }
+    ]
+  },
+  "Heuristics": {
+    "children": [
+      {
+        "name": "Greedy Algorithms",
+        "value": 1.1
+      },
+      {
+        "name": "Branch and Bound",
+        "value": 1.1
+      }
+    ]
+  },
+  "Numerical Algorithms": {
+    "children": [
+      {
+        "name": "Sequential Search",
+        "value": 1.1
+      }
+    ]
+  },
+  "Sequential Search": {
+    "children": [
+      {
+        "name": "Binary Search",
+        "value": 1.1
+      },
+      {
+        "name": "Hash Tables",
+        "value": 1.2
+      }
+    ]
+  },
+  "Selection Sort": {
+    "children": [
+      {
+        "name": "Quicksort",
+        "value": 1.1
+      },
+      {
+        "name": "Mergesort",
+        "value": 1.1
+      },
+      {
+        "name": "Heapsort",
+        "value": 1.1
+      }
+    ]
+  },
+  "Insertion Sort": {
+    "children": [
+      {
+        "name": "Quicksort",
+        "value": 1.1
+      },
+      {
+        "name": "Mergesort",
+        "value": 1.1
+      },
+      {
+        "name": "Heapsort",
+        "value": 1.1
+      }
+    ]
+  },
+  "Binary Search": {
+    "children": [
+      {
+        "name": "Binary Search Trees",
+        "value": 1.2
+      }
+    ]
+  },
+  "Binary Search Trees": {
+    "children": [
+      {
+        "name": "Graphs",
+        "value": 2.2
+      },
+      {
+        "name": "Heaps",
+        "value": 2.2
+      }
+    ]
+  },
+  "Graphs": {
+    "children": [
+      {
+        "name": "Adjacency Lists",
+        "value": 2.2
+      },
+      {
+        "name": "Adjacency Matrix",
+        "value": 2.2
+      },
+      {
+        "name": "Depth First Search",
+        "value": 2.1
+      },
+      {
+        "name": "Breadth First Search",
+        "value": 2.1
+      },
+      {
+        "name": "Dijkstra's",
+        "value": 2.1
+      },
+      {
+        "name": "Floyd's",
+        "value": 2.1
+      },
+      {
+        "name": "Minimum Spanning Trees",
+        "value": 2.2
+      }
+    ]
+  },
+  "Minimum Spanning Trees": {
+    "children": [
+      {
+        "name": "Prim's",
+        "value": 2.1
+      },
+      {
+        "name": "Kruskal's",
+        "value": 2.1
+      }
+    ]
+  },
+  "Pattern Matching Algorithms": {
+    "children": [
+      {
+        "name": "Substring Matching",
+        "value": 1.1
+      },
+      {
+        "name": "Regular Expression Matching",
+        "value": 1.1
+      },
+      {
+        "name": "Longest Common Subsequence",
+        "value": 1.1
+      }
+    ]
+  }
+}
