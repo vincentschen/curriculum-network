@@ -1,0 +1,9 @@
+source,target,value
+Brute Force Algorithms,Greedy Algorithms,1.0
+Brute Force Algorithms,Divide and Conquer,1.0 
+Divide and Conquer,Recursion,1.0
+Recursion,Backtracking,1.0 
+Recursion,Dynamic Programming,1.0
+Brute Force Algorithms,Heuristics,1.0
+Heuristics,Branch and Bound,1.0
+Divide and Conquer,Reduction,1.0
