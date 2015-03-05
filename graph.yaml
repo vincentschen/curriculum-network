@@ -22,8 +22,11 @@ Recursion:
   children:
     - Backtracking
     - Dynamic Programming
+    - Tree Traversal
     - Binary Search
-    - Depth First Search
+Tree Traversal:
+  children:
+    - Breadth First Search
     - Depth First Search
 Heuristics:
   children:
@@ -45,13 +48,17 @@ Binary Search Trees:
     - Heaps
 Graphs:
   children:
-    - Adjacency Lists
-    - Adjacency Matrix
     - Depth First Search
     - Breadth First Search
     - "Dijkstra's"
     - "Floyd's"
     - Minimum Spanning Trees
+  suggests:
+    - Graph Representations
+Graph Representations:
+  children:
+    - Adjacency Lists
+    - Adjacency Matrix
 Minimum Spanning Trees:
   children:
     - "Prim's"

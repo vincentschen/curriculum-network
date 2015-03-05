@@ -48,27 +48,14 @@ $(document).ready ->
     if focus_topic? and focus_topic.length > 0
       parent_names = list_parent_names(focus_topic)
       root.rawdata = data = filter_nodes_by_topic(focus_topic)
-      toptext = $('<span>').css {
-        position: 'fixed'
-        left: '0px'
-        top: '0px'
-        'z-index'
-        'font-size': '20px'
-      }
-      toptext.append $('<span>').text 'Focus topic: ' + focus_topic
-      toptext.append '<br>'
+      $('#focustopic').text(focus_topic)
+      $('#parentslist').html('')
       if parent_names.length > 0
-        toptext.append 'Parents: '
         for parent_name in parent_names
-          toptext.append $('<a>').attr({
+          $('#parentslist').append $('<a>').attr({
             href: '/?' + $.param({topic: parent_name})
           }).text(parent_name)
-          toptext.append ' '
-        toptext.append '<br>'
-      toptext.append $('<a>').attr({
-        href: '/'
-      }).text('View the full network')
-      $('body').append toptext
+          $('#parentslist').append ' '
     nodes = {}
     for topic_name,topic_info of data
       if not nodes[topic_name]?
