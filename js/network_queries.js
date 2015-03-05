@@ -2,24 +2,49 @@
 (function(){
   var unique, list_relation_recursive, list_parent_names, list_all_related_node_names_recursive, list_children_recursive, list_children_names_recursive, list_depends_recursive, list_depends_names_recursive, list_suggests_recursive, list_suggests_names_recursive, out$ = typeof exports != 'undefined' && exports || this;
   unique = require('prelude-ls').unique;
-  out$.list_relation_recursive = list_relation_recursive = function(property, name){
-    var output, i$, ref$, len$, child, j$, ref1$, len1$, descendant;
-    output = [];
+  /*
+  export list_relation_recursive = (property, name) ->
+    output = []
+    if not rawdata[name]? or not rawdata[name][property]?
+      return output
+    for child in rawdata[name][property]
+      output.push {
+        child: child
+        source: name
+      }
+      for descendant in list_relation_recursive(property, child)
+        output.push descendant
+    return output
+  */
+  out$.list_relation_recursive = list_relation_recursive = function(property, name, output_set){
+    var i$, ref$, len$, child, k, v;
+    if (output_set == null) {
+      output_set = {};
+    }
     if (rawdata[name] == null || rawdata[name][property] == null) {
-      return output;
+      return [];
+    }
+    if (output_set[name] != null) {
+      return [];
     }
     for (i$ = 0, len$ = (ref$ = rawdata[name][property]).length; i$ < len$; ++i$) {
       child = ref$[i$];
-      output.push({
-        child: child,
-        source: name
-      });
-      for (j$ = 0, len1$ = (ref1$ = list_relation_recursive(property, child)).length; j$ < len1$; ++j$) {
-        descendant = ref1$[j$];
-        output.push(descendant);
+      if (output_set[child] == null) {
+        list_relation_recursive(property, child, output_set);
+        output_set[child] = {
+          child: child,
+          source: name
+        };
       }
     }
-    return output;
+    return (function(){
+      var ref$, results$ = [];
+      for (k in ref$ = output_set) {
+        v = ref$[k];
+        results$.push(v);
+      }
+      return results$;
+    }());
   };
   out$.list_parent_names = list_parent_names = function(name){
     var output, topic_name, ref$, topic_info, children;
@@ -35,9 +60,31 @@
     }
     return output;
   };
-  out$.list_all_related_node_names_recursive = list_all_related_node_names_recursive = function(name){
-    return unique(
-    list_children_names_recursive(name).concat(list_depends_names_recursive(name), list_suggests_names_recursive(name)));
+  out$.list_all_related_node_names_recursive = list_all_related_node_names_recursive = function(name, output_set){
+    var i$, ref$, len$, property, related_nodes, j$, len1$, child;
+    if (output_set == null) {
+      output_set = {};
+    }
+    if (rawdata[name] == null) {
+      return [];
+    }
+    if (output_set[name] != null) {
+      return [];
+    }
+    output_set[name] = true;
+    for (i$ = 0, len$ = (ref$ = ['children', 'depends', 'suggests']).length; i$ < len$; ++i$) {
+      property = ref$[i$];
+      related_nodes = rawdata[name][property];
+      if (related_nodes != null) {
+        for (j$ = 0, len1$ = related_nodes.length; j$ < len1$; ++j$) {
+          child = related_nodes[j$];
+          if (output_set[child] == null) {
+            list_all_related_node_names_recursive(child, output_set);
+          }
+        }
+      }
+    }
+    return Object.keys(output_set);
   };
   out$.list_children_recursive = list_children_recursive = function(name){
     return list_relation_recursive('children', name);

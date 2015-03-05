@@ -52,10 +52,11 @@ Binary Search:
 Trees:
   children:
     - Binary Search Trees
+    - B Trees
 Binary Search Trees:
-  children:
+  suggests:
     - Graphs
-    - Heaps
+    - Binary Heaps
 Graphs:
   children:
     - Depth First Search
@@ -81,16 +82,18 @@ Pattern Matching Algorithms:
     - Substring Matching
     - Regular Expression Matching
     - Longest Common Subsequence
+  suggests:
+    - Dynamic Programming
 "Dijkstra's":
   suggests:
     - Priority Queues
-Heaps:
+Binary Heaps:
   suggests:
     - Arrays
     - Priority Queues
 Priority Queues:
   children:
-    - Heaps
+    - Binary Heaps
     - Fibonacci Heaps
 Arrays:
   suggests:

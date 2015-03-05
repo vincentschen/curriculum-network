@@ -28,10 +28,10 @@ var force = d3.layout.force()
     .nodes(d3.values(nodes))
     .links(links)
     .size([width, height])
-    .linkDistance(60)
-    .charge(-300)
+    .linkDistance(120)
+    .charge(-400)
     .on("tick", tick)
-    .start();
+    //.start();
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
@@ -81,7 +81,7 @@ color = d3.scale.category20()
 var node = svg.selectAll(".node")
     .data(force.nodes())
   .enter().append("g")
-    .attr("class", "node")
+    //.attr("class", "node")
     .call(force.drag)
 
 // add the nodes
@@ -114,6 +114,12 @@ node.append("text")
     .attr("dy", ".35em")
     .text(function(d) { return d.name; });
 
+update()
+
+function update() {
+
+  force.start()
+}
 
 // add the curvy lines
 function tick() {
