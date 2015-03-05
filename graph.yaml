@@ -16,6 +16,7 @@ Abstract Data Structures:
 Sorting Algorithms:
   depends:
     - Arrays
+    - Sorting
   children:
     - Selection Sort
     - Insertion Sort
@@ -24,8 +25,9 @@ Sorting Algorithms:
     - Heapsort
 Complexity Theory:
   children:
-    - Reduction
     - NP Completeness
+  suggests:
+    - Reduction
 NP Completeness:
   children:
     - NP Hard
@@ -33,6 +35,7 @@ NP Completeness:
     - P
   suggests:
     - NP Complete Problems
+    - Reduction
 NP Complete Problems:
   children:
     - 3SAT
@@ -40,6 +43,7 @@ NP Complete Problems:
     - Vertex Cover
     - Set Cover
     - Integer Programming
+    - Traveling Salesman Problem
   suggests:
     - Approximation Algorithms for NP Complete Problems
 Knapsack:
@@ -57,7 +61,7 @@ Approximation Algorithms for Knapsack:
   depends:
     - Knapsack
 Recursion:
-  children:
+  suggests:
     - Backtracking
     - Dynamic Programming
     - Tree Traversal
@@ -79,24 +83,33 @@ Sequential Search:
     - Binary Search
     - Hash Tables
 Binary Search:
-  children:
+  suggests:
     - Binary Search Trees
 Trees:
   children:
-    - Binary Search Trees
+    - Binary Trees
     - B Trees
 Binary Search Trees:
   suggests:
     - Graphs
+    - Binary Trees
+Binary Trees:
+  children:
+    - Binary Search Trees
     - Binary Heaps
 Graphs:
+  children:
+    - Nodes
+    - Edges
+  suggests:
+    - Graph Representations
+    - Graph Algorithms
+Graph Algorithms:
   children:
     - Depth First Search
     - Breadth First Search
     - Shortest Path Algorithms
     - Minimum Spanning Trees
-  suggests:
-    - Graph Representations
 Shortest Path Algorithms:
   children:
     - "Dijkstra's"
@@ -128,6 +141,9 @@ Priority Queues:
     - Binary Heaps
     - Fibonacci Heaps
 Arrays:
+  suggests:
+    - Sorting
+Sorting:
   suggests:
     - Sorting Algorithms
 Hash Tables:
