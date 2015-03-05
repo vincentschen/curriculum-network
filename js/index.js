@@ -62,7 +62,7 @@
     var params, focus_topic, prev_topic;
     params = getUrlParameters();
     if (params.relation_types != null) {
-      relation_types = jsyaml.safeLoad(params.relation_types);
+      root.relation_types = relation_types = jsyaml.safeLoad(params.relation_types);
     }
     root.focus_topic = focus_topic = params.topic;
     prev_topic = params.prevtopic;
