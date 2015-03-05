@@ -5,6 +5,7 @@ Algorithms:
     - Heuristics
     - Pattern Matching Algorithms
     - Sorting Algorithms
+    - Approximation Algorithms
 Abstract Data Structures:
   children:
     - Arrays
@@ -21,16 +22,47 @@ Sorting Algorithms:
     - Quicksort
     - Mergesort
     - Heapsort
-Divide and Conquer:
+Complexity Theory:
   children:
-    - Recursion
     - Reduction
+    - NP Completeness
+NP Completeness:
+  children:
+    - NP Hard
+    - NP
+    - P
+  suggests:
+    - NP Complete Problems
+NP Complete Problems:
+  children:
+    - 3SAT
+    - Knapsack
+    - Vertex Cover
+    - Set Cover
+    - Integer Programming
+  suggests:
+    - Approximation Algorithms for NP Complete Problems
+Knapsack:
+  suggests:
+    - Approximation Algorithms for Knapsack
+Approximation Algorithms:
+  children:
+    - Approximation Algorithms for NP Complete Problems
+Approximation Algorithms for NP Complete Problems:
+  children:
+    - Approximation Algorithms for Knapsack
+  suggests:
+    - NP Completeness
+Approximation Algorithms for Knapsack:
+  depends:
+    - Knapsack
 Recursion:
   children:
     - Backtracking
     - Dynamic Programming
     - Tree Traversal
     - Binary Search
+    - Divide and Conquer
 Tree Traversal:
   children:
     - Breadth First Search

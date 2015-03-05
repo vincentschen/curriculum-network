@@ -24,17 +24,14 @@
     if (rawdata[name] == null || rawdata[name][property] == null) {
       return [];
     }
-    if (output_set[name] != null) {
-      return [];
-    }
     for (i$ = 0, len$ = (ref$ = rawdata[name][property]).length; i$ < len$; ++i$) {
       child = ref$[i$];
       if (output_set[child] == null) {
-        list_relation_recursive(property, child, output_set);
         output_set[child] = {
           child: child,
           source: name
         };
+        list_relation_recursive(property, child, output_set);
       }
     }
     return (function(){

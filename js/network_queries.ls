@@ -20,15 +20,15 @@ export list_relation_recursive = (property, name, output_set) ->
     output_set = {}
   if not rawdata[name]? or not rawdata[name][property]?
     return []
-  if output_set[name]?
-    return []
+  #if output_set[name]?
+  #  return []
   for child in rawdata[name][property]
     if not output_set[child]?
-      list_relation_recursive(property, child, output_set)
       output_set[child] = {
         child: child
         source: name
       }
+      list_relation_recursive(property, child, output_set)
   return [v for k,v of output_set]
 
 export list_parent_names = (name) ->
