@@ -23,3 +23,13 @@ Each node (representing a topic) can be associated with a list of children, depe
 git clone this repo, then run
 
     http-server
+
+## Source Layout
+
+css files are in the css directory
+
+js files are in the js directory
+
+Some js files are generated from [LiveScript](livescript.net) files (.ls extension). To compile automatically, please install it (npm install -g LiveScript) then run:
+
+    lsc -cw .
