@@ -40,6 +40,8 @@ create_terminal_nodes = (data) ->
 
 $(document).ready ->
   params = getUrlParameters()
+  if params.relation_types?
+    relation_types := jsyaml.safeLoad params.relation_types
   root.focus_topic = focus_topic = params.topic
   prev_topic = params.prevtopic
   $.get 'graph.yaml', (yamltxt) ->

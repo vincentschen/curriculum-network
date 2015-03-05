@@ -49,7 +49,7 @@ export list_all_related_node_names_recursive = (name, output_set) ->
   if output_set[name]?
     return []
   output_set[name] = true
-  for property in ['children', 'depends', 'suggests']
+  for property in relation_types
     related_nodes = rawdata[name][property]
     if related_nodes?
       for child in related_nodes
@@ -70,7 +70,8 @@ export list_depends_names_recursive = (name) ->
   list_depends_recursive(name).map (.child)
 
 export list_suggests_recursive = (name) ->
-  list_relation_recursive 'suggests', name
+  #list_relation_recursive 'suggests', name
+  []
 
 export list_suggests_names_recursive = (name) ->
   list_suggests_recursive(name).map (.child)

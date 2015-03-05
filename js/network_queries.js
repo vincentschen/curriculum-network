@@ -69,7 +69,7 @@
       return [];
     }
     output_set[name] = true;
-    for (i$ = 0, len$ = (ref$ = ['children', 'depends', 'suggests']).length; i$ < len$; ++i$) {
+    for (i$ = 0, len$ = (ref$ = relation_types).length; i$ < len$; ++i$) {
       property = ref$[i$];
       related_nodes = rawdata[name][property];
       if (related_nodes != null) {
@@ -100,7 +100,7 @@
     });
   };
   out$.list_suggests_recursive = list_suggests_recursive = function(name){
-    return list_relation_recursive('suggests', name);
+    return [];
   };
   out$.list_suggests_names_recursive = list_suggests_names_recursive = function(name){
     return list_suggests_recursive(name).map(function(it){
