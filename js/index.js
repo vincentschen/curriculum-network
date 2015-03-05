@@ -77,7 +77,8 @@
           'z-index': 'z-index',
           'font-size': '20px'
         });
-        toptext.append($('<span>').text('Focus topic: ' + focus_topic + ' '));
+        toptext.append($('<span>').text('Focus topic: ' + focus_topic));
+        toptext.append('<br>');
         if (parent_names.length > 0) {
           toptext.append('Parents: ');
           for (i$ = 0, len$ = parent_names.length; i$ < len$; ++i$) {
@@ -89,6 +90,7 @@
             }).text(parent_name));
             toptext.append(' ');
           }
+          toptext.append('<br>');
         }
         toptext.append($('<a>').attr({
           href: '/'

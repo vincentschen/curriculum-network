@@ -55,7 +55,8 @@ $(document).ready ->
         'z-index'
         'font-size': '20px'
       }
-      toptext.append $('<span>').text 'Focus topic: ' + focus_topic + ' '
+      toptext.append $('<span>').text 'Focus topic: ' + focus_topic
+      toptext.append '<br>'
       if parent_names.length > 0
         toptext.append 'Parents: '
         for parent_name in parent_names
@@ -63,6 +64,7 @@ $(document).ready ->
             href: '/?' + $.param({topic: parent_name})
           }).text(parent_name)
           toptext.append ' '
+        toptext.append '<br>'
       toptext.append $('<a>').attr({
         href: '/'
       }).text('View the full network')
