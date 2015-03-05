@@ -98,6 +98,10 @@ svg.selectAll('circle')
   }).on('mouseout', function(nodeinfo, nodeidx, a3) {
     reset_coloring()
     tip.hide(nodeinfo, nodeidx, a3)
+  }).on('click', function(nodeinfo, nodeidx, a3) {
+    var newparams = {topic: nodeinfo.name}
+    if (nodeinfo.name == focus_topic) return
+    window.location.href = '/?' + $.param(newparams)
   })
 
 //svg.selectAll('circle')

@@ -1,0 +1,13 @@
+{
+  "name": "prelude-browser-min",
+  "_cacheHeaders": {
+    "Last-Modified": "Wed, 19 Nov 2014 02:40:11 GMT",
+    "Content-Length": "15925",
+    "Content-Type": "application/javascript; charset=utf-8"
+  },
+  "main": "index.js",
+  "_source": "http://gkz.github.io/prelude-ls/prelude-browser-min.js",
+  "_target": "*",
+  "_originalSource": "http://gkz.github.io/prelude-ls/prelude-browser-min.js",
+  "_direct": true
+}
