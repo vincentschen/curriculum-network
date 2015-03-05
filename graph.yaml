@@ -5,6 +5,13 @@ Algorithms:
     - Heuristics
     - Pattern Matching Algorithms
     - Sorting Algorithms
+Abstract Data Structures:
+  children:
+    - Arrays
+    - Trees
+    - Hash Tables
+    - Priority Queues
+    - Graphs
 Sorting Algorithms:
   depends:
     - Arrays
@@ -42,6 +49,9 @@ Sequential Search:
 Binary Search:
   children:
     - Binary Search Trees
+Trees:
+  children:
+    - Binary Search Trees
 Binary Search Trees:
   children:
     - Graphs
@@ -74,7 +84,14 @@ Pattern Matching Algorithms:
 Heaps:
   suggests:
     - Arrays
+    - Priority Queues
 Priority Queues:
   children:
-    - Binary Heaps
+    - Heaps
     - Fibonacci Heaps
+Arrays:
+  suggests:
+    - Sorting Algorithms
+Hash Tables:
+  suggests:
+    - Hashing Algorithms

@@ -24,9 +24,9 @@ export getedgecolor = (source, target) ->
       return edge_color_map[source][target]
   if Object.keys(edge_color_map).length == 0
     switch getedgerelation(source, target)
-    | 'children' => '#000055'
-    | 'depends' => '#005500'
-    | 'suggests' => '#550055'
+    | 'children' => '#0000aa'
+    | 'depends' => '#00aa00'
+    | 'suggests' => '#aa00aa'
     | _ => '#999999'
   else
     '#999999'

@@ -34,11 +34,11 @@
     if (Object.keys(edge_color_map).length === 0) {
       switch (getedgerelation(source, target)) {
       case 'children':
-        return '#000055';
+        return '#0000aa';
       case 'depends':
-        return '#005500';
+        return '#00aa00';
       case 'suggests':
-        return '#550055';
+        return '#aa00aa';
       default:
         return '#999999';
       }
