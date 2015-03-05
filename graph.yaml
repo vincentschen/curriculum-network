@@ -60,11 +60,14 @@ Graphs:
   children:
     - Depth First Search
     - Breadth First Search
-    - "Dijkstra's"
-    - "Floyd's"
+    - Shortest Path Algorithms
     - Minimum Spanning Trees
   suggests:
     - Graph Representations
+Shortest Path Algorithms:
+  children:
+    - "Dijkstra's"
+    - "Floyd's"
 Graph Representations:
   children:
     - Adjacency Lists
@@ -95,3 +98,14 @@ Arrays:
 Hash Tables:
   suggests:
     - Hashing Algorithms
+Hashing Algorithms:
+  children:
+    - String Hashing
+    - Number Hashing
+    - Rolling Hashes
+String Hashing:
+  depends:
+    - Strings
+Strings:
+  suggests:
+    - Arrays
