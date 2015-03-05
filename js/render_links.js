@@ -99,7 +99,8 @@ svg.selectAll('circle')
     reset_coloring()
     tip.hide(nodeinfo, nodeidx, a3)
   }).on('click', function(nodeinfo, nodeidx, a3) {
-    var newparams = {topic: nodeinfo.name}
+    var newparams = getUrlParameters()
+    newparams.topic = nodeinfo.name
     if (nodeinfo.name == focus_topic) return
     window.location.href = '/?' + $.param(newparams)
   })

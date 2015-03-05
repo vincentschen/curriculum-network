@@ -12,7 +12,7 @@
     }
     map = {};
     parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value){
-      return map[key] = decodeURI(value).split('+').join(' ');
+      return map[key] = decodeURI(value).split('+').join(' ').split('%2C').join(',');
     });
     return map;
   };

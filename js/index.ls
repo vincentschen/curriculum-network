@@ -9,7 +9,7 @@ export getUrlParameters = ->
     url = url.slice(0, hash)
   map = {}
   parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) ->
-    map[key] = decodeURI(value).split('+').join(' ') # for whatever reason this seems necessary?
+    map[key] = decodeURI(value).split('+').join(' ').split('%2C').join(',') # for whatever reason this seems necessary?
   )
   return map
 
