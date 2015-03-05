@@ -1,104 +1,73 @@
-Brute Force Algorithms:
+Algorithms:
   children:
-    - name: Greedy Algorithms
-      value: 1.1
-    - name: Divide and Conquer
-      value: 1.1
-    - name: Heuristics
-      value: 1.1
-    - name: Selection Sort
-      value: 1.1
-    - name: Insertion Sort
-      value: 1.1
-    - name: Pattern Matching Algorithms
-      value: 1.1
+    - Greedy Algorithms
+    - Divide and Conquer
+    - Heuristics
+    - Pattern Matching Algorithms
+    - Sorting Algorithms
+Sorting Algorithms:
+  depends:
+    - Arrays
+  children:
+    - Selection Sort
+    - Insertion Sort
+    - Quicksort
+    - Mergesort
+    - Heapsort
 Divide and Conquer:
   children:
-    - name: Recursion
-      value: 1.1
-    - name: Reduction
-      value: 1.1
+    - Recursion
+    - Reduction
 Recursion:
   children:
-    - name: Backtracking
-      value: 1.1
-    - name: Dynamic Programming
-      value: 1.1
-    - name: Binary Search
-      value: 1.1
-    - name: Depth First Search
-      value: 1.1
-    - name: Depth First Search
-      value: 1.1
+    - Backtracking
+    - Dynamic Programming
+    - Binary Search
+    - Depth First Search
+    - Depth First Search
 Heuristics:
   children:
-    - name: Greedy Algorithms
-      value: 1.1
-    - name: Branch and Bound
-      value: 1.1
+    - Greedy Algorithms
+    - Branch and Bound
 Numerical Algorithms:
   children:
-    - name: Sequential Search
-      value: 1.1
+    - Sequential Search
 Sequential Search:
   children:
-    - name: Binary Search
-      value: 1.1
-    - name: Hash Tables
-      value: 1.2
-Selection Sort:
-  children:
-    - name: Quicksort
-      value: 1.1
-    - name: Mergesort
-      value: 1.1
-    - name: Heapsort
-      value: 1.1
-Insertion Sort:
-  children:
-    - name: Quicksort
-      value: 1.1
-    - name: Mergesort
-      value: 1.1
-    - name: Heapsort
-      value: 1.1
+    - Binary Search
+    - Hash Tables
 Binary Search:
   children:
-    - name: Binary Search Trees
-      value: 1.2
+    - Binary Search Trees
 Binary Search Trees:
   children:
-    - name: Graphs
-      value: 2.2
-    - name: Heaps
-      value: 2.2
+    - Graphs
+    - Heaps
 Graphs:
   children:
-    - name: Adjacency Lists
-      value: 2.2
-    - name: Adjacency Matrix
-      value: 2.2
-    - name: Depth First Search
-      value: 2.1
-    - name: Breadth First Search
-      value: 2.1
-    - name: "Dijkstra's"
-      value: 2.1
-    - name: "Floyd's"
-      value: 2.1
-    - name: Minimum Spanning Trees
-      value: 2.2
+    - Adjacency Lists
+    - Adjacency Matrix
+    - Depth First Search
+    - Breadth First Search
+    - "Dijkstra's"
+    - "Floyd's"
+    - Minimum Spanning Trees
 Minimum Spanning Trees:
   children:
-    - name: "Prim's"
-      value: 2.1
-    - name: "Kruskal's"
-      value: 2.1
+    - "Prim's"
+    - "Kruskal's"
 Pattern Matching Algorithms:
   children:
-    - name: Substring Matching
-      value: 1.1
-    - name: Regular Expression Matching
-      value: 1.1
-    - name: Longest Common Subsequence
-      value: 1.1
+    - Substring Matching
+    - Regular Expression Matching
+    - Longest Common Subsequence
+"Dijkstra's":
+  suggests:
+    - Priority Queues
+Heaps:
+  suggests:
+    - Arrays
+Priority Queues:
+  children:
+    - Binary Heaps
+    - Fibonacci Heaps

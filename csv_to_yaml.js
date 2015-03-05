@@ -14,16 +14,10 @@
     ref$ = line.split(','), source = ref$[0], target = ref$[1], value = ref$[2];
     value = parseFloat(value);
     if (output[source] != null) {
-      return output[source].children.push({
-        name: target,
-        value: value
-      });
+      return output[source].children.push(target);
     } else {
       return output[source] = {
-        children: [{
-          name: target,
-          value: value
-        }]
+        children: [target]
       };
     }
   });

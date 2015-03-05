@@ -13,16 +13,10 @@ readEachLine 'graph.csv', (line) ->
   [source,target,value] = line.split(',')
   value = parseFloat value
   if output[source]?
-    output[source].children.push {
-      name: target
-      value: value
-    }
+    output[source].children.push target
   else
     output[source] = {
-      children: [{
-        name: target
-        value: value
-      }]
+      children: [target]
     }
 
 fs.writeFileSync 'graph.yaml', jsYaml.safeDump(output)
