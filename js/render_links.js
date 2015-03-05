@@ -21,8 +21,8 @@ links.forEach(function(link) {
 });
 */
 
-var width = 960,
-    height = 500;
+var width = $(window).width(),
+    height = $(window).height();
 
 var force = d3.layout.force()
     .nodes(d3.values(nodes))
