@@ -1,0 +1,162 @@
+Algorithms:
+  children:
+    - Greedy Algorithms
+    - Divide and Conquer
+    - Heuristics
+    - Pattern Matching Algorithms
+    - Sorting Algorithms
+    - Approximation Algorithms
+Abstract Data Structures:
+  children:
+    - Arrays
+    - Trees
+    - Hash Tables
+    - Priority Queues
+    - Graphs
+Sorting Algorithms:
+  depends:
+    - Arrays
+    - Sorting
+  children:
+    - Selection Sort
+    - Insertion Sort
+    - Quicksort
+    - Mergesort
+    - Heapsort
+Complexity Theory:
+  children:
+    - NP Completeness
+  suggests:
+    - Reduction
+NP Completeness:
+  children:
+    - NP Hard
+    - NP
+    - P
+  suggests:
+    - NP Complete Problems
+    - Reduction
+NP Complete Problems:
+  children:
+    - 3SAT
+    - Knapsack
+    - Vertex Cover
+    - Set Cover
+    - Integer Programming
+    - Traveling Salesman Problem
+  suggests:
+    - Approximation Algorithms for NP Complete Problems
+Knapsack:
+  suggests:
+    - Approximation Algorithms for Knapsack
+Approximation Algorithms:
+  children:
+    - Approximation Algorithms for NP Complete Problems
+Approximation Algorithms for NP Complete Problems:
+  children:
+    - Approximation Algorithms for Knapsack
+  suggests:
+    - NP Completeness
+Approximation Algorithms for Knapsack:
+  depends:
+    - Knapsack
+Recursion:
+  suggests:
+    - Backtracking
+    - Dynamic Programming
+    - Tree Traversal
+    - Binary Search
+    - Divide and Conquer
+Tree Traversal:
+  children:
+    - Breadth First Search
+    - Depth First Search
+Heuristics:
+  children:
+    - Greedy Algorithms
+    - Branch and Bound
+Numerical Algorithms:
+  children:
+    - Sequential Search
+Sequential Search:
+  children:
+    - Binary Search
+    - Hash Tables
+Binary Search:
+  suggests:
+    - Binary Search Trees
+Trees:
+  children:
+    - Binary Trees
+    - B Trees
+Binary Search Trees:
+  suggests:
+    - Graphs
+    - Binary Trees
+Binary Trees:
+  children:
+    - Binary Search Trees
+    - Binary Heaps
+Graphs:
+  children:
+    - Nodes
+    - Edges
+  suggests:
+    - Graph Representations
+    - Graph Algorithms
+Graph Algorithms:
+  children:
+    - Depth First Search
+    - Breadth First Search
+    - Shortest Path Algorithms
+    - Minimum Spanning Trees
+Shortest Path Algorithms:
+  children:
+    - "Dijkstra's"
+    - "Floyd's"
+Graph Representations:
+  children:
+    - Adjacency Lists
+    - Adjacency Matrix
+Minimum Spanning Trees:
+  children:
+    - "Prim's"
+    - "Kruskal's"
+Pattern Matching Algorithms:
+  children:
+    - Substring Matching
+    - Regular Expression Matching
+    - Longest Common Subsequence
+  suggests:
+    - Dynamic Programming
+"Dijkstra's":
+  suggests:
+    - Priority Queues
+Binary Heaps:
+  suggests:
+    - Arrays
+    - Priority Queues
+Priority Queues:
+  children:
+    - Binary Heaps
+    - Fibonacci Heaps
+Arrays:
+  suggests:
+    - Sorting
+Sorting:
+  suggests:
+    - Sorting Algorithms
+Hash Tables:
+  suggests:
+    - Hashing Algorithms
+Hashing Algorithms:
+  children:
+    - String Hashing
+    - Number Hashing
+    - Rolling Hashes
+String Hashing:
+  depends:
+    - Strings
+Strings:
+  suggests:
+    - Arrays
