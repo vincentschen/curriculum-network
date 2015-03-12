@@ -1,0 +1,29 @@
+Sorting Algorithms:
+  children:
+    - Quicksort
+Quicksort: 
+  depends: 
+    - Sorting 
+    - Divide and Conquer
+    #depends more on Divide and Conquer than something like backtracking 
+    - Big O
+  # suggests: 
+  #   - Selection Sort 
+  #   - Insertion Sort 
+  #   - Merge Sort 
+Sorting: 
+  children: 
+    - Sorting Algorithms 
+    - Arrays 
+Divide and Conquer: 
+  children: 
+    - Recursion
+Sorting Algorithms: 
+  children: 
+    - Selection Sort 
+    - Insertion Sort 
+    - Merge Sort 
+    - Quicksort
+Big O: 
+  children: 
+    - Algorithms

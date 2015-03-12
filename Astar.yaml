@@ -1,0 +1,33 @@
+#A* has the same dependencies as Dijkstra's, but cannot be preceded by Dijkstra's
+#Should the nodes reflect that? 
+
+Graphs:
+  children:
+    - Nodes
+    - Edges
+  # suggests:
+  #   - Graph Algorithms
+  #   - Binary Search Trees
+Graph Algorithms:
+  children:
+    - Breadth First Search
+Shortest Path Algorithms:
+  children:
+    - "Dijkstra's"
+"Dijkstra's":
+  children:
+    - Priority Queues
+    - Graphs
+A*:
+  children: 
+    - "Dijkstra's"
+    - Heuristics
+Binary Search Trees: 
+  children: 
+    - Arrays
+Greedy Algorithms: 
+  children: 
+    - Heuristics
+  # suggests: 
+  #   - "Dijkstra's"
+  #   - A*
