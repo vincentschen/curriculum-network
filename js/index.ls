@@ -13,7 +13,7 @@ filter_nodes_by_topic = (focus_topic) ->
   return output
 
 create_legend = ->
-  for relation,idx in relation_types
+  for relation,idx in root.relation_types
     edgelegend = $('<div>')
     edgelegend.css {
       'background-color': colors(idx)
@@ -28,16 +28,31 @@ create_legend = ->
 $(document).ready ->
   root.params = params = getUrlParameters()
   if params.relation_types?
-    root.relation_types = relation_types := jsyaml.safeLoad params.relation_types
+    root.relation_types = jsyaml.safeLoad params.relation_types
   graph_file = params.graph_file ? 'graph.yaml'
   root.focus_topic = focus_topic = params.topic
   prev_topic = params.prevtopic
   $.get graph_file, (yamltxt) ->
-    data = create_terminal_nodes jsyaml.safeLoad(yamltxt)
-    if data.relation_types?
-      root.relation_types = relation_types := data.relation_types
-      delete data.relation_types
+    data = jsyaml.safeLoad(yamltxt)
+    {graph_metadata} = data
+    if graph_metadata?
+      {relation_types, preprocessing_steps} = graph_metadata
+      if relation_types?
+        root.relation_types = relation_types
+        delete data.graph_metadata.relation_types
+      if preprocessing_steps?
+        for preprocessing_step in preprocessing_steps
+          console.log 'before'
+          console.log data
+          data = root.preprocessing_options[preprocessing_step](data)
+          console.log 'after'
+          console.log data
+        delete data.graph_metadata.preprocessing_steps
+      delete data.graph_metadata
+    #console.log data
+    data = create_terminal_nodes data
     root.rawdata = data
+    #console.log data
     create_legend()
     if focus_topic? and focus_topic.length > 0
       parent_names = list_parent_names(focus_topic)
@@ -56,7 +71,7 @@ $(document).ready ->
         nodes[topic_name] = {
           name: topic_name
         }
-      for relation in relation_types
+      for relation in root.relation_types
         connected_nodes = topic_info[relation]
         if connected_nodes?
           for name in connected_nodes
@@ -66,8 +81,7 @@ $(document).ready ->
               }
     links = []
     for topic_name,topic_info of data
-      {children, depends} = topic_info
-      for relation in relation_types
+      for relation in root.relation_types
         connected_nodes = topic_info[relation]
         if connected_nodes?
           for name in connected_nodes

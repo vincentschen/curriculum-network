@@ -1,0 +1,40 @@
+graph_metadata:
+  relation_types:
+    - depends # depends on an external thing - essentially going "sideways"
+    - parents # depends on a parent - going upwards in the skill tree
+    #- children
+    #- suggests
+    #- module # this is a module that consists of many parts - dependencies going downwards in the skill tree
+    #- select_any # this is a module that can be fulfilled by fulfiling any single one of its parts
+  preprocessing_steps:
+    - convert_children_to_parents
+Search Algorithms:
+    suggests:
+      - Sequential Search
+      - Binary Search
+Binary Search:
+  children:
+    - Recursion
+  suggests:
+    - Sequential Search
+    #in this case, suggst means it would help you appreciate BST
+Binary Search Trees:
+  children:
+    - Binary Trees
+    - Binary Search
+  suggests:
+    - Graphs
+Binary Trees:
+  children:
+    - Binary Search Trees
+    - Binary Heaps
+    - Trees
+Tree Balancing:
+  children:
+    - Trees
+    - Binary Search Trees
+  suggests:
+    - Red-black Tree
+AVL Trees:
+  children:
+    - Tree Balancing

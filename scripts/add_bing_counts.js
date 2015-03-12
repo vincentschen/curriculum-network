@@ -4,7 +4,7 @@
   yamlfile = require('yamlfile');
   asyncblock = require('asyncblock');
   bing_count = require('bing_count');
-  blacklist = ['relation_types'];
+  blacklist = ['graph_metadata'];
   main = function(){
     var infile, outfile, network;
     infile = process.argv[2];
@@ -26,14 +26,23 @@
       return yamlfile.write(outfile, network);
       function fn$(topic_name, topic_info){
         var addbingcount;
-        if (topic_info['num bing results'] != null) {
-          return;
-        }
         if (blacklist.indexOf(topic_name) !== -1) {
           return;
         }
         addbingcount = function(topic_name, topic_info, callback){
-          return bing_count(topic_name, function(count){
+          var query, x;
+          query = '"' + topic_name + '"';
+          if (topic_info.tags != null) {
+            query = (function(){
+              var i$, ref$, len$, results$ = [];
+              for (i$ = 0, len$ = (ref$ = topic_info.tags).length; i$ < len$; ++i$) {
+                x = ref$[i$];
+                results$.push('"' + x + '"');
+              }
+              return results$;
+            }()).join(' ');
+          }
+          return bing_count(query, function(count){
             topic_info['num bing results'] = count;
             return callback();
           });

@@ -4,7 +4,7 @@ require! {
   bing_count
 }
 
-blacklist = ['relation_types']
+blacklist = ['graph_metadata']
 
 main = ->
   infile = process.argv[2]
