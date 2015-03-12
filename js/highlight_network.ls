@@ -68,12 +68,15 @@ getnoderadius_stackoverflow = (name) ->
 getnoderadius_not_normalized = (name) ->
   switch params.radius_function
   | 'bing' => getnoderadius_bing(name)
-  | _ => getnoderadius_stackoverflow(name)
+  | 'stackoverflow' => getnoderadius_stackoverflow(name)
+  | _ => getnoderadius_bing(name)
 
 export getnoderadius_percent = (name) ->
   if root.max_node_radius == null
     for nodename,nodeinfo of rawdata
-      root.max_node_radius = root.max_node_radius >? getnoderadius_not_normalized(nodename)
+      cur_radius = getnoderadius_not_normalized(nodename)
+      if cur_radius? and isFinite(cur_radius)
+        root.max_node_radius = root.max_node_radius >? cur_radius
   return getnoderadius_not_normalized(name) / root.max_node_radius
 
 export getnoderadius = (name) ->

@@ -1,6 +1,6 @@
 Algorithms:
   summary: An algorithm is a self-contained step-by-step set of operations to be performed.
-  link: http://en.wikipedia.org/wiki/Algorithm
+  link: "http://en.wikipedia.org/wiki/Algorithm"
   children:
     - Greedy Algorithms
     - Divide and Conquer
@@ -8,6 +8,7 @@ Algorithms:
     - Pattern Matching Algorithms
     - Sorting Algorithms
     - Approximation Algorithms
+  num bing results: 1990000
 Abstract Data Structures:
   children:
     - Arrays
@@ -15,6 +16,7 @@ Abstract Data Structures:
     - Hash Tables
     - Priority Queues
     - Graphs
+  num bing results: 78600
 Sorting Algorithms:
   depends:
     - Arrays
@@ -25,11 +27,13 @@ Sorting Algorithms:
     - Quicksort
     - Mergesort
     - Heapsort
+  num bing results: 241000
 Complexity Theory:
   children:
     - NP Completeness
   suggests:
     - Reduction
+  num bing results: 442000
 NP Completeness:
   children:
     - NP Hard
@@ -38,6 +42,7 @@ NP Completeness:
   suggests:
     - NP Complete Problems
     - Reduction
+  num bing results: 177000
 NP Complete Problems:
   children:
     - 3SAT
@@ -48,20 +53,25 @@ NP Complete Problems:
     - Traveling Salesman Problem
   suggests:
     - Approximation Algorithms for NP Complete Problems
+  num bing results: 82000
 Knapsack:
   suggests:
     - Approximation Algorithms for Knapsack
+  num bing results: 955000
 Approximation Algorithms:
   children:
     - Approximation Algorithms for NP Complete Problems
+  num bing results: 205000
 Approximation Algorithms for NP Complete Problems:
   children:
     - Approximation Algorithms for Knapsack
   suggests:
     - NP Completeness
+  num bing results: 4680
 Approximation Algorithms for Knapsack:
   depends:
     - Knapsack
+  num bing results: 2420
 Recursion:
   suggests:
     - Backtracking
@@ -69,36 +79,45 @@ Recursion:
     - Tree Traversal
     - Binary Search
     - Divide and Conquer
+  num bing results: 1920000
 Tree Traversal:
   children:
     - Breadth First Search
     - Depth First Search
+  num bing results: 206000
 Heuristics:
   children:
     - Greedy Algorithms
     - Branch and Bound
+  num bing results: 1530000
 Numerical Algorithms:
   children:
     - Sequential Search
+  num bing results: 229000
 Sequential Search:
   children:
     - Binary Search
     - Hash Tables
+  num bing results: 104000
 Binary Search:
   suggests:
     - Binary Search Trees
+  num bing results: 835000
 Trees:
   children:
     - Binary Trees
     - B Trees
+  num bing results: 20500000
 Binary Search Trees:
   suggests:
     - Graphs
     - Binary Trees
+  num bing results: 139000
 Binary Trees:
   children:
     - Binary Search Trees
     - Binary Heaps
+  num bing results: 222000
 Graphs:
   children:
     - Nodes
@@ -106,24 +125,29 @@ Graphs:
   suggests:
     - Graph Representations
     - Graph Algorithms
+  num bing results: 9580000
 Graph Algorithms:
   children:
     - Depth First Search
     - Breadth First Search
     - Shortest Path Algorithms
     - Minimum Spanning Trees
+  num bing results: 228000
 Shortest Path Algorithms:
   children:
     - "Dijkstra's"
     - "Floyd's"
+  num bing results: 38200
 Graph Representations:
   children:
     - Adjacency Lists
     - Adjacency Matrix
+  num bing results: 47300
 Minimum Spanning Trees:
   children:
     - "Prim's"
     - "Kruskal's"
+  num bing results: 71300
 Pattern Matching Algorithms:
   children:
     - Substring Matching
@@ -131,34 +155,44 @@ Pattern Matching Algorithms:
     - Longest Common Subsequence
   suggests:
     - Dynamic Programming
+  num bing results: 35700
 "Dijkstra's":
   suggests:
     - Priority Queues
+  num bing results: 199000
 Binary Heaps:
   suggests:
     - Arrays
     - Priority Queues
+  num bing results: 24000
 Priority Queues:
   children:
     - Binary Heaps
     - Fibonacci Heaps
+  num bing results: 140000
 Arrays:
   suggests:
     - Sorting
+  num bing results: 2310000
 Sorting:
   suggests:
     - Sorting Algorithms
+  num bing results: 5720000
 Hash Tables:
   suggests:
     - Hashing Algorithms
+  num bing results: 371000
 Hashing Algorithms:
   children:
     - String Hashing
     - Number Hashing
     - Rolling Hashes
+  num bing results: 468000
 String Hashing:
   depends:
     - Strings
+  num bing results: 38800
 Strings:
   suggests:
     - Arrays
+  num bing results: 11200000

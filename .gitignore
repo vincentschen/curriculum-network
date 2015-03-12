@@ -1,1 +1,3 @@
 node_modules
+.bing_keys.yaml
+mongodata

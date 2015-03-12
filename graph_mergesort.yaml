@@ -1,0 +1,94 @@
+relation_types:
+  - dependencies
+  - details
+Sorting Algorithms:
+  num bing results: 240000
+  num stackoverflow results: 23848
+  summary: Sorting algorithms take as input an unsorted array and output a sorted array
+  details:
+    - Stable Sorting Algorithms
+    - In-Place Sorting Algorithms
+    - Merge Sort
+  dependencies:
+    - Arrays
+Stable Sorting Algorithms:
+  num bing results: 10300
+  num stackoverflow results: 546
+  summary: Stable sorting algorithms are those that preserve the original order of the array elements, if there exist elements which are equal under the comparison function
+  details:
+    - Comparison Function
+In-Place Sorting Algorithms:
+  num bing results: 22500
+  num stackoverflow results: 2069
+  summary: In-Place sorting algorithms do not require external storage
+Merge Sort:
+  num bing results: 414000
+  num stackoverflow results: 10604
+  summary: Merge sort sorts arrays by splitting them in half, sorting them recursively, and merging the results.
+  details:
+    - Merge Sort Implementation
+    - Merge Sort Complexity
+  dependencies:
+    - Recursion
+Merge Sort Complexity:
+  num bing results: 7830
+  num stackoverflow results: 646
+  summary: Merge sort has running time of O(n)
+Recursion:
+  num bing results: 1850000
+  num stackoverflow results: 78905
+  summary: Recursion is a way to implement algorithms by having functions call themselves
+  dependencies:
+    - Functions
+Functions:
+  num bing results: 31700000
+  num stackoverflow results: 2298922
+  summary: Functions are things that take an input and produce an output.
+  details:
+    - Return value
+    - Function parameters
+    - Pure Functions
+    - Impure Functions
+    - Function Currying
+    - Partial Function Application
+Return value:
+  num bing results: 3030000
+  num stackoverflow results: 710494
+  summary: The return value of a function is its output
+Function parameters:
+  num bing results: 443000
+  num stackoverflow results: 184073
+  summary: The parameters of a function are its inputs
+Pure Functions:
+  num bing results: 33300
+  num stackoverflow results: 14498
+  summary: Pure Functions are functions with no side effects. Thus, f(a) == b regardless of when you call it.
+  dependencies:
+    - Side Effects
+Impure Functions:
+  num bing results: 9450
+  num stackoverflow results: 307
+  summary: Impure Functions are functions with side effects. Hence, f(a) might give different values if you call it multiple times.
+  dependencies:
+    - Side Effects
+Side Effects:
+  num bing results: 10800000
+  num stackoverflow results: 20171
+  summary: Side effects are modifications of global state.
+  link: http://en.wikipedia.org/wiki/Side_effect_(computer_science)
+Arrays:
+  num bing results: 2300000
+  num stackoverflow results: 1480015
+Comparison Function:
+  num bing results: 181000
+  num stackoverflow results: 19847
+Merge Sort Implementation:
+  link: /exercises/mergesort.html
+  num bing results: 14900
+  num stackoverflow results: 1735
+Function Currying:
+  num bing results: 5790
+  num stackoverflow results: 2158
+Partial Function Application:
+  num bing results: 26500
+  num stackoverflow results: 2308

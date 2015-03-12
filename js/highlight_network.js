@@ -71,16 +71,21 @@
     switch (params.radius_function) {
     case 'bing':
       return getnoderadius_bing(name);
-    default:
+    case 'stackoverflow':
       return getnoderadius_stackoverflow(name);
+    default:
+      return getnoderadius_bing(name);
     }
   };
   out$.getnoderadius_percent = getnoderadius_percent = function(name){
-    var nodename, ref$, nodeinfo, ref1$, ref2$;
+    var nodename, ref$, nodeinfo, cur_radius, ref1$;
     if (root.max_node_radius === null) {
       for (nodename in ref$ = rawdata) {
         nodeinfo = ref$[nodename];
-        root.max_node_radius = (ref1$ = root.max_node_radius) > (ref2$ = getnoderadius_not_normalized(nodename)) ? ref1$ : ref2$;
+        cur_radius = getnoderadius_not_normalized(nodename);
+        if (cur_radius != null && isFinite(cur_radius)) {
+          root.max_node_radius = (ref1$ = root.max_node_radius) > cur_radius ? ref1$ : cur_radius;
+        }
       }
     }
     return getnoderadius_not_normalized(name) / root.max_node_radius;
