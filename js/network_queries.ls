@@ -31,6 +31,7 @@ export list_relation_recursive = (property, name, output_set) ->
       list_relation_recursive(property, child, output_set)
   return [v for k,v of output_set]
 
+/*
 export list_parent_names = (name) ->
   output = []
   for topic_name,topic_info of rawdata
@@ -39,6 +40,14 @@ export list_parent_names = (name) ->
       if children.indexOf(name) != -1
         output.push topic_name
   return output
+*/
+export list_parent_names = (name) ->
+  #return list_all_related_node_names_recursive name
+  if rawdata[name]?
+    {parents} = rawdata[name]
+    if parents?
+      return parents
+  return []
 
 export list_all_related_node_names_recursive = (name, output_set) ->
   #return (list_children_names_recursive(name) ++ list_depends_names_recursive(name) ++ list_suggests_names_recursive(name)) |> unique

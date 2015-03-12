@@ -59,11 +59,27 @@ export getnodecolor = (name) ->
 
 root.max_node_radius = null
 
-getnoderadius_bing = (name) ->
-  Math.log rawdata[name]['num bing results']
+export getnoderadius_bing = (name) ->
+  #Math.log rawdata[name]['num bing results']
+  radius = getnoderadius_bing_raw(name)
+  if radius?
+    return Math.log radius
+  return null
 
-getnoderadius_stackoverflow = (name) ->
-  Math.log rawdata[name]['num stackoverflow results']
+export getnoderadius_bing_raw = (name) ->
+  output = rawdata[name]['num bing results']
+  if output?
+    return output
+  return root.topic_to_bing_count[name]
+
+export getnoderadius_stackoverflow = (name) ->
+  radius = getnoderadius_stackoverflow_raw(name)
+  if radius?
+    return Math.log radius
+  return null
+
+export getnoderadius_stackoverflow_raw = (name) ->
+  return rawdata[name]['num stackoverflow results']
 
 getnoderadius_not_normalized = (name) ->
   switch params.radius_function

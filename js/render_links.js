@@ -43,21 +43,28 @@ tip = d3.tip()
   .html(function(d) {
     var name = d.name
     var info = rawdata[name]
-    console.log(info)
     var output = $('<div>')
     output.append($('<div>').text(name))
     if (info != null) {
       if (info.summary != null) {
         output.append($('<div>').text(info.summary))
       }
-      if (info['num bing results'] != null) {
-        var importance_stats = $('<div>')
-        importance_stats.append('importance: ' + getnoderadius_percent(name).toPrecision(2) + ' ')
-        importance_stats.append(' (bing: ' + info['num bing results'] + ', ')
-        importance_stats.append(' SO: ' + info['num stackoverflow results'] + ')')
-        output.append(importance_stats)
-        //output.append($('<div>').text('num bing results: ' + info['num bing results']))
+    }
+    var bingradius = getnoderadius_bing_raw(name)
+    var soradius = getnoderadius_stackoverflow_raw(name)
+    if (bingradius != null) {
+      var importance_stats = $('<div>')
+      importance_stats.append('importance: ' + getnoderadius_percent(name).toPrecision(2) + ' ')
+      var stats_sources = []
+      if (bingradius != null) {
+        stats_sources.push('bing: ' + bingradius)
       }
+      if (soradius != null) {
+        stats_sources.push('SO: ' + soradius)
+      }
+      importance_stats.append('(' + stats_sources.join(', ') + ')')
+      output.append(importance_stats)
+      //output.append($('<div>').text('num bing results: ' + info['num bing results']))
     }
     if (tip.showtype == 'click') {
       if (info.link != null) {

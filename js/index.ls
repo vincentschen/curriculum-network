@@ -1,18 +1,5 @@
 root = exports ? this
 
-export relation_types = ['children', 'depends', 'suggests']
-
-export getUrlParameters = ->
-  url = window.location.href
-  hash = url.lastIndexOf('#')
-  if hash != -1
-    url = url.slice(0, hash)
-  map = {}
-  parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) ->
-    map[key] = decodeURI(value).split('+').join(' ').split('%2C').join(',') # for whatever reason this seems necessary?
-  )
-  return map
-
 filter_nodes_by_topic = (focus_topic) ->
   data = root.rawdata
   output = {}
@@ -23,19 +10,6 @@ filter_nodes_by_topic = (focus_topic) ->
   for topic_name,topic_info of data
     if whitelist[topic_name]?
       output[topic_name] = topic_info
-  return output
-
-create_terminal_nodes = (data) ->
-  output = {}
-  for topic_name,topic_info of data
-    output[topic_name] = topic_info
-  for topic_name,topic_info of data
-    for relation in relation_types
-      connected_nodes = topic_info[relation]
-      if connected_nodes?
-        for name in connected_nodes
-          if not output[name]?
-            output[name] = {}
   return output
 
 create_legend = ->
@@ -105,4 +79,7 @@ $(document).ready ->
     root.rawdata = data
     root.nodes = nodes
     root.links = links
-    renderLinks(nodes, links)
+    get_bing_counts data, (counts) ->
+      for topic_name,count of counts
+        root.topic_to_bing_count[topic_name] = count
+      renderLinks(nodes, links)

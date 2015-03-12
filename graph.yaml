@@ -1,17 +1,19 @@
 relation_types:
   - depends # depends on an external thing - essentially going "sideways"
   - parents # depends on a parent - going upwards in the skill tree
-  - module # this is a module that consists of many parts - dependencies going downwards in the skill tree
-  - select_any # this is a module that can be fulfilled by fulfiling any single one of its parts
+  #- module # this is a module that consists of many parts - dependencies going downwards in the skill tree
+  #- select_any # this is a module that can be fulfilled by fulfiling any single one of its parts
 Sorting:
   link: https://en.wikipedia.org/wiki/Sorting_algorithm
   depends:
     - Array
-Sorting implementation:
-  tags: [sorting, implementation]
-  select_any:
-    - Mergesort implementation
-    - Heapsort implementation
+#Sorting implementation:
+#  tags: [sorting, implementation]
+#  parents:
+#    - Sorting
+#  select_any:
+#    - Mergesort implementation
+#    - Heapsort implementation
 Mergesort:
   link: https://en.wikipedia.org/wiki/Merge_sort
   depends:
@@ -35,13 +37,20 @@ Heapsort implementation:
     - Heapsort
   depends:
     #- Heap implementation
-    - Heapify implementation (binary heap)
-    - Extract-min implementation (binary heap)
-Heap implementation:
-  tags: [heap, implementation]
-  select_any:
-    - Binary heap implementation
-    - Fibonacci heap implementation
+    #- Heapify implementation (binary heap)
+    #- Extract-min implementation (binary heap)
+    - Heap interface
+Heap interface:
+  tags: [heap, interface]
+  parents:
+    - Heaps
+  depends:
+    - Classes
+#Heap implementation:
+#  tags: [heap, implementation]
+#  select_any:
+#    - Binary heap implementation
+#    - Fibonacci heap implementation
 Binary heap complexity analysis:
   tags: [binary heap, complexity analysis]
   parents:
@@ -50,18 +59,39 @@ Fibonacci heap complexity analysis:
   tags: [fibonacci heap, complexity analysis]
   parents:
     - Fibonacci heap
+  depends:
+    - Complexity analysis
 Fibonacci heap implementation:
   tags: [fibonacci heap, complexity analysis]
   parents:
     - Fibonacci heap
-Binary heap implementation:
-  tags: [binary heap, implementation]
-  link: https://en.wikipedia.org/wiki/Binary_heap#Heap_implementation
-  module:
-    - Find-min implementation (binary heap)
-    - Insert implementation (binary heap)
-    - Heapify implementation (binary heap)
-    - Extract-min implementation (binary heap)
+Hash table complexity analysis:
+  tags: [hash table, complexity analysis]
+  parents:
+    - Hash table
+  depends:
+    - Complexity analysis
+Hash table interface:
+  tags: [hash table, interface]
+  parents:
+    - Hash table
+  depends:
+    - Classes
+Classes:
+  summary: An interface allows you to use existing code in the form of a class without having implemented it yourself
+  depends:
+    - Methods
+    - Fields
+Complexity analysis:
+  summary: Complexity analysis is the process of proving the running time complexity of an algorithm
+#Binary heap implementation:
+#  tags: [binary heap, implementation]
+#  link: https://en.wikipedia.org/wiki/Binary_heap#Heap_implementation
+#  module:
+#    - Find-min implementation (binary heap)
+#    - Insert implementation (binary heap)
+#    - Heapify implementation (binary heap)
+#    - Extract-min implementation (binary heap)
 Insert implementation (binary heap):
   tags: [insert, implementation, binary heap]
   link: https://en.wikipedia.org/wiki/Binary_heap#Insert
@@ -87,21 +117,29 @@ Max heap:
 Binary heap:
   parents:
     - Heaps
-Dikstra's algorithm complexity analysis:
+Dijkstra's algorithm complexity analysis:
   tags: [dijkstra's algorithm, complexity analysis]
   depends:
     - Fibonacci heap complexity analysis
     - Hash table complexity analysis
+  parents:
+    - Dijkstra's algorithm
 Dijkstra's algorithm:
   tags: [dijkstra's algorithm]
   depends:
     - Heaps
-    - Sets
+    - Hash tables
     - Graphs
+Graph interface:
+  depends:
+    - Classes
 Dijkstra's algorithm implementation:
   tags: [dijkstra's algorithm, implementation]
   parents:
     - Dijkstra's algorithm
   depends:
-    - Heap implementation
-    - Hash table implementation
+    #- Heap implementation
+    #- Hash table implementation
+    - Graph interface
+    - Heap interface
+    - Hash table interface

@@ -43,19 +43,25 @@
       return results$;
     }());
   };
+  /*
+  export list_parent_names = (name) ->
+    output = []
+    for topic_name,topic_info of rawdata
+      {children} = topic_info
+      if children?
+        if children.indexOf(name) != -1
+          output.push topic_name
+    return output
+  */
   out$.list_parent_names = list_parent_names = function(name){
-    var output, topic_name, ref$, topic_info, children;
-    output = [];
-    for (topic_name in ref$ = rawdata) {
-      topic_info = ref$[topic_name];
-      children = topic_info.children;
-      if (children != null) {
-        if (children.indexOf(name) !== -1) {
-          output.push(topic_name);
-        }
+    var parents;
+    if (rawdata[name] != null) {
+      parents = rawdata[name].parents;
+      if (parents != null) {
+        return parents;
       }
     }
-    return output;
+    return [];
   };
   out$.list_all_related_node_names_recursive = list_all_related_node_names_recursive = function(name, output_set){
     var i$, ref$, len$, property, related_nodes, j$, len1$, child;
