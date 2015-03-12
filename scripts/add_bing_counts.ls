@@ -23,7 +23,10 @@ main = ->
       if blacklist.indexOf(topic_name) != -1
         return
       addbingcount = (topic_name, topic_info, callback) ->
-        bing_count '"' + topic_name + '"', (count) ->
+        query = '"' + topic_name + '"'
+        if topic_info.tags?
+          query = [('"' + x + '"') for x in topic_info.tags].join(' ')
+        bing_count query, (count) ->
           topic_info['num bing results'] = count
           callback()
       addbingcount topic_name, topic_info, flow.add()

@@ -1,198 +1,107 @@
-Algorithms:
-  summary: An algorithm is a self-contained step-by-step set of operations to be performed.
-  link: "http://en.wikipedia.org/wiki/Algorithm"
-  children:
-    - Greedy Algorithms
-    - Divide and Conquer
-    - Heuristics
-    - Pattern Matching Algorithms
-    - Sorting Algorithms
-    - Approximation Algorithms
-  num bing results: 1990000
-Abstract Data Structures:
-  children:
-    - Arrays
-    - Trees
-    - Hash Tables
-    - Priority Queues
-    - Graphs
-  num bing results: 78600
-Sorting Algorithms:
-  depends:
-    - Arrays
-    - Sorting
-  children:
-    - Selection Sort
-    - Insertion Sort
-    - Quicksort
-    - Mergesort
-    - Heapsort
-  num bing results: 241000
-Complexity Theory:
-  children:
-    - NP Completeness
-  suggests:
-    - Reduction
-  num bing results: 442000
-NP Completeness:
-  children:
-    - NP Hard
-    - NP
-    - P
-  suggests:
-    - NP Complete Problems
-    - Reduction
-  num bing results: 177000
-NP Complete Problems:
-  children:
-    - 3SAT
-    - Knapsack
-    - Vertex Cover
-    - Set Cover
-    - Integer Programming
-    - Traveling Salesman Problem
-  suggests:
-    - Approximation Algorithms for NP Complete Problems
-  num bing results: 82000
-Knapsack:
-  suggests:
-    - Approximation Algorithms for Knapsack
-  num bing results: 955000
-Approximation Algorithms:
-  children:
-    - Approximation Algorithms for NP Complete Problems
-  num bing results: 205000
-Approximation Algorithms for NP Complete Problems:
-  children:
-    - Approximation Algorithms for Knapsack
-  suggests:
-    - NP Completeness
-  num bing results: 4680
-Approximation Algorithms for Knapsack:
-  depends:
-    - Knapsack
-  num bing results: 2420
-Recursion:
-  suggests:
-    - Backtracking
-    - Dynamic Programming
-    - Tree Traversal
-    - Binary Search
-    - Divide and Conquer
-  num bing results: 1920000
-Tree Traversal:
-  children:
-    - Breadth First Search
-    - Depth First Search
-  num bing results: 206000
-Heuristics:
-  children:
-    - Greedy Algorithms
-    - Branch and Bound
-  num bing results: 1530000
-Numerical Algorithms:
-  children:
-    - Sequential Search
-  num bing results: 229000
-Sequential Search:
-  children:
-    - Binary Search
-    - Hash Tables
-  num bing results: 104000
-Binary Search:
-  suggests:
-    - Binary Search Trees
-  num bing results: 835000
-Trees:
-  children:
-    - Binary Trees
-    - B Trees
-  num bing results: 20500000
-Binary Search Trees:
-  suggests:
-    - Graphs
-    - Binary Trees
-  num bing results: 139000
-Binary Trees:
-  children:
-    - Binary Search Trees
-    - Binary Heaps
-  num bing results: 222000
-Graphs:
-  children:
-    - Nodes
-    - Edges
-  suggests:
-    - Graph Representations
-    - Graph Algorithms
-  num bing results: 9580000
-Graph Algorithms:
-  children:
-    - Depth First Search
-    - Breadth First Search
-    - Shortest Path Algorithms
-    - Minimum Spanning Trees
-  num bing results: 228000
-Shortest Path Algorithms:
-  children:
-    - "Dijkstra's"
-    - "Floyd's"
-  num bing results: 38200
-Graph Representations:
-  children:
-    - Adjacency Lists
-    - Adjacency Matrix
-  num bing results: 47300
-Minimum Spanning Trees:
-  children:
-    - "Prim's"
-    - "Kruskal's"
-  num bing results: 71300
-Pattern Matching Algorithms:
-  children:
-    - Substring Matching
-    - Regular Expression Matching
-    - Longest Common Subsequence
-  suggests:
-    - Dynamic Programming
-  num bing results: 35700
-"Dijkstra's":
-  suggests:
-    - Priority Queues
-  num bing results: 199000
-Binary Heaps:
-  suggests:
-    - Arrays
-    - Priority Queues
-  num bing results: 24000
-Priority Queues:
-  children:
-    - Binary Heaps
-    - Fibonacci Heaps
-  num bing results: 140000
-Arrays:
-  suggests:
-    - Sorting
-  num bing results: 2310000
+relation_types:
+  - depends # depends on an external thing - essentially going "sideways"
+  - parents # depends on a parent - going upwards in the skill tree
+  - module # this is a module that consists of many parts - dependencies going downwards in the skill tree
+  - select_any # this is a module that can be fulfilled by fulfiling any single one of its parts
 Sorting:
-  suggests:
-    - Sorting Algorithms
-  num bing results: 5720000
-Hash Tables:
-  suggests:
-    - Hashing Algorithms
-  num bing results: 371000
-Hashing Algorithms:
-  children:
-    - String Hashing
-    - Number Hashing
-    - Rolling Hashes
-  num bing results: 468000
-String Hashing:
+  link: https://en.wikipedia.org/wiki/Sorting_algorithm
   depends:
-    - Strings
-  num bing results: 38800
-Strings:
-  suggests:
-    - Arrays
-  num bing results: 11200000
+    - Array
+Sorting implementation:
+  tags: [sorting, implementation]
+  select_any:
+    - Mergesort implementation
+    - Heapsort implementation
+Mergesort:
+  link: https://en.wikipedia.org/wiki/Merge_sort
+  depends:
+    - Sorting
+    - Recursion
+Mergesort implementation:
+  tags: [mergesort, implementation]
+  parents:
+    - Mergesort
+Heapsort:
+  summary: Heapsort is a sorting algorithm that works by creating a min heap and repeatedly extracting the minimum value from it
+  link: https://en.wikipedia.org/wiki/Heapsort
+  depends:
+    - Sorting
+    - Min heap
+Heapsort implementation:
+  tags: [heapsort, implementation]
+  summary: To implement heapsort, you need to implement a min heap with the heapify and extract-min operations, then use it to
+  link: https://en.wikipedia.org/wiki/Heapsort#Pseudocode
+  parents:
+    - Heapsort
+  depends:
+    #- Heap implementation
+    - Heapify implementation (binary heap)
+    - Extract-min implementation (binary heap)
+Heap implementation:
+  tags: [heap, implementation]
+  select_any:
+    - Binary heap implementation
+    - Fibonacci heap implementation
+Binary heap complexity analysis:
+  tags: [binary heap, complexity analysis]
+  parents:
+    - Binary heap
+Fibonacci heap complexity analysis:
+  tags: [fibonacci heap, complexity analysis]
+  parents:
+    - Fibonacci heap
+Fibonacci heap implementation:
+  tags: [fibonacci heap, complexity analysis]
+  parents:
+    - Fibonacci heap
+Binary heap implementation:
+  tags: [binary heap, implementation]
+  link: https://en.wikipedia.org/wiki/Binary_heap#Heap_implementation
+  module:
+    - Find-min implementation (binary heap)
+    - Insert implementation (binary heap)
+    - Heapify implementation (binary heap)
+    - Extract-min implementation (binary heap)
+Insert implementation (binary heap):
+  tags: [insert, implementation, binary heap]
+  link: https://en.wikipedia.org/wiki/Binary_heap#Insert
+  parents:
+    - Binary heap
+Heapify implementation (binary heap):
+  tags: [heapify, implementation, binary heap]
+  link: https://en.wikipedia.org/wiki/Binary_heap#Building_a_heap
+  parents:
+    - Binary heap
+Extract-min implementation (binary heap):
+  tags: [extract-min, implementation, binary heap]
+  link: https://en.wikipedia.org/wiki/Binary_heap#Delete
+  parents:
+    - Min heap
+    - Binary heap
+Min heap:
+  parents:
+    - Heaps
+Max heap:
+  parents:
+    - Heaps
+Binary heap:
+  parents:
+    - Heaps
+Dikstra's algorithm complexity analysis:
+  tags: [dijkstra's algorithm, complexity analysis]
+  depends:
+    - Fibonacci heap complexity analysis
+    - Hash table complexity analysis
+Dijkstra's algorithm:
+  tags: [dijkstra's algorithm]
+  depends:
+    - Heaps
+    - Sets
+    - Graphs
+Dijkstra's algorithm implementation:
+  tags: [dijkstra's algorithm, implementation]
+  parents:
+    - Dijkstra's algorithm
+  depends:
+    - Heap implementation
+    - Hash table implementation
