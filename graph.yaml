@@ -1,4 +1,6 @@
 Algorithms:
+  summary: An algorithm is a self-contained step-by-step set of operations to be performed.
+  link: http://en.wikipedia.org/wiki/Algorithm
   children:
     - Greedy Algorithms
     - Divide and Conquer

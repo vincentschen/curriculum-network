@@ -57,6 +57,7 @@ export list_all_related_node_names_recursive = (name, output_set) ->
           list_all_related_node_names_recursive(child, output_set)
   return Object.keys(output_set)
 
+/*
 export list_children_recursive = (name) ->
   list_relation_recursive 'children', name
 
@@ -70,8 +71,8 @@ export list_depends_names_recursive = (name) ->
   list_depends_recursive(name).map (.child)
 
 export list_suggests_recursive = (name) ->
-  #list_relation_recursive 'suggests', name
-  []
+  list_relation_recursive 'suggests', name
 
 export list_suggests_names_recursive = (name) ->
   list_suggests_recursive(name).map (.child)
+*/

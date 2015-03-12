@@ -37,12 +37,38 @@ var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-var tip = d3.tip()
+tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
     var name = d.name
-    return $('<span>').text(name).html()
+    var info = rawdata[name]
+    console.log(info)
+    var output = $('<div>')
+    output.append($('<div>').text(name))
+    if (info != null) {
+      if (info.summary != null) {
+        output.append($('<div>').text(info.summary))
+      }
+      if (info['num bing results'] != null) {
+        var importance_stats = $('<div>')
+        importance_stats.append('importance: ' + getnoderadius_percent(name).toPrecision(2) + ' ')
+        importance_stats.append(' (bing: ' + info['num bing results'] + ', ')
+        importance_stats.append(' SO: ' + info['num stackoverflow results'] + ')')
+        output.append(importance_stats)
+        //output.append($('<div>').text('num bing results: ' + info['num bing results']))
+      }
+    }
+    if (tip.showtype == 'click') {
+      if (info.link != null) {
+        output.append($('<a>').css('color', 'yellow').text(info.link).attr('href', '#').attr('onclick', 'openlink("' + info.link + '")'))
+        output.append('<br>')
+      }
+      if (name != focus_topic) {
+        output.append($('<a>').css('color', 'yellow').text('View graph for topic').attr('href', '#').attr('onclick', 'changetopic("' + name + '")'))
+      }
+    }
+    return output.html()
   })
 
 svg.call(tip)
@@ -81,29 +107,50 @@ color = d3.scale.category20()
 var node = svg.selectAll(".node")
     .data(force.nodes())
   .enter().append("g")
-    //.attr("class", "node")
+    .attr("class", "node")
     .call(force.drag)
 
 // add the nodes
 node.append("circle")
-    .attr("r", 5)
+    .attr("r", function(d) {
+      return getnoderadius(d.name)
+    })
     .style('fill', function(d) {
       return getnodecolor(d.name)
     })
 
+
+circle_clicked_time = 0
+
 svg.selectAll('circle')
   .on('mouseover', function(nodeinfo, nodeidx, a3) {
     node_highlighted(nodeinfo.name)
+    tip.showtype = 'mouseover'
     tip.show(nodeinfo, nodeidx, a3)
   }).on('mouseout', function(nodeinfo, nodeidx, a3) {
-    reset_coloring()
-    tip.hide(nodeinfo, nodeidx, a3)
+    if (tip.showtype == 'mouseover') {
+      reset_coloring()
+      tip.hide(nodeinfo, nodeidx, a3)
+    }
   }).on('click', function(nodeinfo, nodeidx, a3) {
+    node_highlighted(nodeinfo.name)
+    tip.showtype = 'click'
+    tip.show(nodeinfo, nodeidx, a3)
+    circle_clicked_time = Date.now()
+    /*
     var newparams = getUrlParameters()
     newparams.topic = nodeinfo.name
     if (nodeinfo.name == focus_topic) return
     window.location.href = '/?' + $.param(newparams)
+    */
   })
+
+$(document).click(function(evt) {
+  if (Date.now() > circle_clicked_time + 500) {
+    tip.hide()
+    reset_coloring()
+  }
+})
 
 //svg.selectAll('circle')
 //    .data(data)
@@ -141,4 +188,25 @@ function tick() {
   	    return "translate(" + d.x + "," + d.y + ")"; });
 }
 
+}
+
+function openlink(target) {
+  circle_clicked_time = Date.now()
+  window.open(target)
+}
+
+function gotolink(target) {
+  window.location.href = target
+}
+
+function changetopic(target) {
+  var newparams = getUrlParameters()
+  if (target == '' || target == null) {
+    if (newparams.topic != null) {
+      delete newparams.topic
+    }
+  } else {
+    newparams.topic = target
+  }
+  gotolink('/?' + $.param(newparams))
 }

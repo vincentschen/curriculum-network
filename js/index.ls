@@ -38,15 +38,33 @@ create_terminal_nodes = (data) ->
             output[name] = {}
   return output
 
+create_legend = ->
+  for relation,idx in relation_types
+    edgelegend = $('<div>')
+    edgelegend.css {
+      'background-color': colors(idx)
+      width: '10px'
+      height: '10px'
+      'border-radius': '10px'
+      float: 'left'
+      'margin-right': '5px'
+    }
+    $('#edgetypes').append $('<div>').text(relation).append(edgelegend)
+
 $(document).ready ->
-  params = getUrlParameters()
+  root.params = params = getUrlParameters()
   if params.relation_types?
     root.relation_types = relation_types := jsyaml.safeLoad params.relation_types
+  graph_file = params.graph_file ? 'graph.yaml'
   root.focus_topic = focus_topic = params.topic
   prev_topic = params.prevtopic
-  $.get 'graph.yaml', (yamltxt) ->
+  $.get graph_file, (yamltxt) ->
     data = create_terminal_nodes jsyaml.safeLoad(yamltxt)
+    if data.relation_types?
+      root.relation_types = relation_types := data.relation_types
+      delete data.relation_types
     root.rawdata = data
+    create_legend()
     if focus_topic? and focus_topic.length > 0
       parent_names = list_parent_names(focus_topic)
       root.rawdata = data = filter_nodes_by_topic(focus_topic)
