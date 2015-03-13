@@ -37,9 +37,11 @@ cd to the directory and install the npm modules it depends on:
    cd curriculum-network
    npm install
 
-You can start the server by running:
+You can start the server by running (this will start a mongodb server locally, automatically compile changed ls files, and start the node server on port 5000):
 
     ./runserver
+
+You can then visit http://localhost:5000 to see the page in action
 
 ## Source Layout
 
