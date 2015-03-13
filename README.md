@@ -18,11 +18,28 @@ The curriculum network is located in [graph.yaml](https://github.com/gkovacs/cur
 
 Each node (representing a topic) can be associated with a list of children, depends, and suggests
 
-## Running Locally
+## Prerequisites, setup, and running
 
-git clone this repo, then run
+Make sure you have mongodb installed. On OSX, you can install it via (you'll need [homebrew](http://brew.sh/) installed):
 
-    http-server
+    brew install mongodb
+
+Now let's install some tools with npm (you'll need [nodejs](https://nodejs.org/) installed):
+
+    npm install -g mongosrv LiveScript node-dev
+
+git clone this repo:
+
+    git clone https://github.com/gkovacs/curriculum-network
+
+cd to the directory and install the npm modules it depends on:
+
+   cd curriculum-network
+   npm install
+
+You can start the server by running:
+
+    ./runserver
 
 ## Source Layout
 
@@ -30,6 +47,4 @@ css files are in the css directory
 
 js files are in the js directory
 
-Some js files are generated from [LiveScript](http://livescript.net) files (.ls extension). To compile automatically, please install it (npm install -g LiveScript) then run:
-
-    lsc -cw .
+Some js files are generated from [LiveScript](http://livescript.net) files (.ls extension). The ./runserver command will automatically watch them and compile them to js files as they are changed.

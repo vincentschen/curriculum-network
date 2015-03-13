@@ -7,7 +7,8 @@
     "LiveScript": "^1.3.1",
     "async": "^0.9.0",
     "express": "^4.12.2",
-    "serve-static": "^1.9.1"
+    "serve-static": "^1.9.1",
+    "shelljs": "^0.3.0"
   },
   "devDependencies": {},
   "scripts": {

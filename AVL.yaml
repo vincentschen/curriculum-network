@@ -4,8 +4,6 @@ graph_metadata:
     - parents # depends on a parent - going upwards in the skill tree
     #- children
     #- suggests
-    #- module # this is a module that consists of many parts - dependencies going downwards in the skill tree
-    #- select_any # this is a module that can be fulfilled by fulfiling any single one of its parts
   preprocessing_steps:
     - convert_children_to_parents
 Search Algorithms:
