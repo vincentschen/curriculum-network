@@ -41,7 +41,7 @@ You'll now be logged in inside a virtual Ubuntu environment. Now you can start t
 
     ./runserver
 
-You can then visit http://localhost:5000 to see the page in action
+You can then visit http://localhost:8080 to see the page in action
 
 ### Running Directly on Mac OS X (without Vagrant)
 
@@ -57,15 +57,15 @@ Install the npm modules it depends on:
 
     npm install
 
-You can start the server by running (this will start a mongodb server locally, automatically compile changed ls files, and start the node server on port 5000):
+You can start the server by running (this will start a mongodb server locally, automatically compile changed ls files, and start the node server on port 8080):
 
     ./runserver
 
-You can then visit http://localhost:5000 to see the page in action
+You can then visit http://localhost:8080 to see the page in action
 
 ## URL Parameters
 
-graph_file: you can use it to provide the name of the yaml file you wish to load. example: http://localhost:5000/?graph_file=graph_mergesort.yaml
+graph_file: you can use it to provide the name of the yaml file you wish to load. example: http://localhost:8080/?graph_file=graph_mergesort.yaml
 
 ## Graph file format
 

@@ -8,7 +8,7 @@ require! {
 app = express()
 
 app.use serveStatic '.'
-app.set 'port', process.env.PORT ? 5000
+app.set 'port', process.env.PORT ? 8080
 app.listen app.get('port'), '0.0.0.0'
 
 app.get '/bingcounts', (req, res) ->

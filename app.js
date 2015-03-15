@@ -7,7 +7,7 @@
   async = require('async');
   app = express();
   app.use(serveStatic('.'));
-  app.set('port', (ref$ = process.env.PORT) != null ? ref$ : 5000);
+  app.set('port', (ref$ = process.env.PORT) != null ? ref$ : 8080);
   app.listen(app.get('port'), '0.0.0.0');
   app.get('/bingcounts', function(req, res){
     var words, output, tasks, i$, len$;
