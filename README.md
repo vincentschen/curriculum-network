@@ -69,7 +69,7 @@ graph_file: you can use it to provide the name of the yaml file you wish to load
 
 ## Graph file format
 
-See https://github.com/gkovacs/curriculum-network/blob/master/graph.yaml and https://github.com/gkovacs/curriculum-network/blob/master/AVL.yaml for examples.
+See [https://github.com/gkovacs/curriculum-network/blob/master/graph.yaml](graph.yaml) and [https://github.com/gkovacs/curriculum-network/blob/master/Astar.yaml](Astar.yaml) for examples.
 
 ## Source Layout
 
