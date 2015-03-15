@@ -31,7 +31,22 @@ Now register for the [Bing Search API](https://datamarket.azure.com/dataset/bing
 
 The following setup instructions are platform-specific:
 
-### Running on Mac OS X
+### Running on Vagrant (works on both Windows and OSX)
+
+Install [vagrant](https://www.vagrantup.com/).
+
+Now cd to the curriculum-network directory and run vagrant up (it'll take a while the first time), followed by vagrant ssh:
+
+    vagrant up
+    vagrant ssh
+
+You'll now be logged in inside a virtual Ubuntu environment. Now you can start the server by doing:
+
+    ./runserver
+
+You can then visit http://localhost:5000 to see the page in action
+
+### Running Directly on Mac OS X (without Vagrant)
 
 Make sure you have mongodb installed. On OSX, you can install it via (you'll need [homebrew](http://brew.sh/) installed):
 
@@ -46,21 +61,6 @@ Install the npm modules it depends on:
    npm install
 
 You can start the server by running (this will start a mongodb server locally, automatically compile changed ls files, and start the node server on port 5000):
-
-    ./runserver
-
-You can then visit http://localhost:5000 to see the page in action
-
-### Running on Vagrant (works on both Windows and OSX)
-
-Install [vagrant](https://www.vagrantup.com/).
-
-Now cd to the curriculum-network directory and run vagrant up (it'll take a while the first time), followed by vagrant ssh:
-
-    vagrant up
-    vagrant ssh
-
-You'll now be logged in inside a virtual Ubuntu environment. Now you can start the server by doing:
 
     ./runserver
 
