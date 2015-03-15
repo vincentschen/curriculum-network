@@ -6,9 +6,8 @@ A live demo of this code is at http://csnet.herokuapp.com
 
 Hovering over a node will highlight the associated nodes.
 
-blue = depends
-
-orange = parents
+* blue = depends
+* orange = parents
 
 ## Curriculum Network
 
