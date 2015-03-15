@@ -6,17 +6,15 @@ A live demo of this code is at http://csnet.herokuapp.com
 
 Hovering over a node will highlight the associated nodes.
 
-blue = children
+blue = depends
 
-green = depends
-
-purple = suggests
+orange = parents
 
 ## Curriculum Network
 
 The curriculum network is located in [graph.yaml](https://github.com/gkovacs/curriculum-network/blob/master/graph.yaml)
 
-Each node (representing a topic) can be associated with a list of children, depends, and suggests
+Each node (representing a topic) can be associated with a list of depends and parents.
 
 ## Prerequisites, setup, and running
 
