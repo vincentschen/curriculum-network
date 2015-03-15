@@ -31,7 +31,7 @@ Now register for the [Bing Search API](https://datamarket.azure.com/dataset/bing
 
 The following setup instructions are platform-specific:
 
-### Mac OS X
+### Running on Mac OS X
 
 Make sure you have mongodb installed. On OSX, you can install it via (you'll need [homebrew](http://brew.sh/) installed):
 
@@ -51,7 +51,7 @@ You can start the server by running (this will start a mongodb server locally, a
 
 You can then visit http://localhost:5000 to see the page in action
 
-### Using Vagrant (works on both Windows and OSX)
+### Running on Vagrant (works on both Windows and OSX)
 
 Install [vagrant](https://www.vagrantup.com/).
 
