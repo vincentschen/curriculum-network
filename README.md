@@ -62,7 +62,6 @@ Now cd to the curriculum-network directory and run vagrant up (it'll take a whil
 
 You'll now be logged in inside a virtual Ubuntu environment. Now you can start the server by doing:
 
-    cd curriculum-network
     ./runserver
 
 You can then visit http://localhost:5000 to see the page in action
