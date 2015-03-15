@@ -25,7 +25,7 @@ First git clone this repo (never used git before? [see here](https://help.github
     git clone https://github.com/gkovacs/curriculum-network
     cd curriculum-network
 
-Now register for the [Bing Search API](https://datamarket.azure.com/dataset/bing/search), go to [Account Information](https://datamarket.azure.com/account), and create a file .getsecret.yaml and paste in the Primary Account Key on that page.
+Now register for the [Bing Search API](https://datamarket.azure.com/dataset/bing/search), go to [Account Information](https://datamarket.azure.com/account), see your Primary Account Key on that page, and paste it into a file .getsecret.yaml inside the curriculum-network directory:
 
     bing_account_key: your_primary_account_key_goes_here
 
@@ -58,7 +58,7 @@ Now let's install some tools with npm (you'll need [nodejs](https://nodejs.org/)
 
 Install the npm modules it depends on:
 
-   npm install
+    npm install
 
 You can start the server by running (this will start a mongodb server locally, automatically compile changed ls files, and start the node server on port 5000):
 
