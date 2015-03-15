@@ -20,7 +20,7 @@ Each node (representing a topic) can be associated with a list of children, depe
 
 ## Prerequisites, setup, and running
 
-First git clone this repo and cd to it:
+First git clone this repo (never used git before? [see here](https://help.github.com/articles/set-up-git/)) and cd to it:
 
     git clone https://github.com/gkovacs/curriculum-network
     cd curriculum-network
