@@ -6,7 +6,8 @@ npm install -g mongosrv LiveScript coffee-script node-dev
 
 cd /home/vagrant
 if [ ! -d "curriculum-network" ]; then
-  su vagrant -c 'ln -s /vagrant curriculum-network'
+  #su vagrant -c 'ln -s /vagrant curriculum-network'
+  su vagrant -c 'rsync -avz /vagrant/curriculum-network /home/vagrant/curriculum-network'
   echo "cd curriculum-network; ./runserver" > runserver
   chmod +x runserver
   chown vagrant:vagrant runserver
