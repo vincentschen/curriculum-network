@@ -1,6 +1,7 @@
-relation_types:
-  - dependencies
-  - details
+graph_metadata:
+  relation_types:
+    - dependencies
+    - details
 Sorting Algorithms:
   num bing results: 240000
   num stackoverflow results: 23848
