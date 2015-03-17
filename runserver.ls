@@ -10,5 +10,5 @@ exec 'mongosrv', {async: true}
 exec 'lsc -cw .', {async: true}
 exec 'node-dev app.ls', {async: true}
 
-if existsSync '/vagrant' and existsSync '/home/vagrant/curriculum-network'
-  exec './repeated_rsync.sh', {async: true}
+#if existsSync '/vagrant' and existsSync '/home/vagrant/curriculum-network'
+#  exec './repeated_rsync.sh', {async: true}

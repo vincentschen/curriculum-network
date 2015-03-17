@@ -19,9 +19,4 @@
   exec('node-dev app.ls', {
     async: true
   });
-  if (existsSync('/vagrant') && existsSync('/home/vagrant/curriculum-network')) {
-    exec('./repeated_rsync.sh', {
-      async: true
-    });
-  }
 }).call(this);

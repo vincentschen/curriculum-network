@@ -2,12 +2,14 @@
 
 apt-get update
 apt-get install -y nodejs nodejs-legacy npm mongodb-server
+service mongodb stop
+echo "manual" >> /etc/init/mongodb.conf.override
 npm install -g mongosrv LiveScript coffee-script node-dev
 
 cd /home/vagrant
 if [ ! -d "curriculum-network" ]; then
-  #su vagrant -c 'ln -s /vagrant curriculum-network'
-  su vagrant -c 'rsync -avz /vagrant/ /home/vagrant/curriculum-network --exclude=.git --exclude=node_modules'
+  su vagrant -c 'ln -s /vagrant curriculum-network'
+  #su vagrant -c 'rsync -avz /vagrant/ /home/vagrant/curriculum-network --exclude=.git --exclude=node_modules'
   echo "cd curriculum-network; ./runserver" > runserver
   chmod +x runserver
   chown vagrant:vagrant runserver
