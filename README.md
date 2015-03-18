@@ -84,6 +84,10 @@ You'll now be logged in inside a virtual Ubuntu environment. Now you can start t
 
 You can then visit http://localhost:8080 to see the page in action
 
+To ensure that files get synced over when you modify them, run (in a seperate commmand prompt window)
+
+    vagrant rsync-auto
+
 ## URL Parameters
 
 graph_file: you can use it to provide the name of the yaml file you wish to load. example: http://localhost:8080/?graph_file=graph_mergesort.yaml
