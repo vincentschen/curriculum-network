@@ -28,22 +28,7 @@ Now register for the [Bing Search API](https://datamarket.azure.com/dataset/bing
 
 The following setup instructions are platform-specific:
 
-### Running on Vagrant (works on both Windows and OSX)
-
-Install [vagrant](https://www.vagrantup.com/).
-
-Now cd to the curriculum-network directory and run vagrant up (it'll take a while the first time), followed by vagrant ssh:
-
-    vagrant up
-    vagrant ssh
-
-You'll now be logged in inside a virtual Ubuntu environment. Now you can start the server by doing:
-
-    ./runserver
-
-You can then visit http://localhost:8080 to see the page in action
-
-### Running Directly on Mac OS X (without Vagrant)
+### Running on Mac OS X (without Vagrant)
 
 Make sure you have mongodb installed. On OSX, you can install it via (you'll need [homebrew](http://brew.sh/) installed):
 
@@ -58,6 +43,42 @@ Install the npm modules it depends on:
     npm install
 
 You can start the server by running (this will start a mongodb server locally, automatically compile changed ls files, and start the node server on port 8080):
+
+    ./runserver
+
+You can then visit http://localhost:8080 to see the page in action
+
+### Running on Windows (without Vagrant)
+
+Install [chocolatey](https://chocolatey.org/) and use it to install mongodb and nodejs:
+
+    choco install mongodb
+    choco install nodejs
+
+Now let's install some tools with npm:
+
+    npm install -g mongosrv LiveScript node-dev
+
+Install the npm modules it depends on:
+
+    npm install
+
+You can start the server by running (this will start a mongodb server locally, automatically compile changed ls files, and start the node server on port 8080):
+
+    node runserver.js
+
+You can then visit http://localhost:8080 to see the page in action
+
+### Running on Vagrant (alternative approach, works on both Windows and OSX)
+
+Install [vagrant](https://www.vagrantup.com/).
+
+Now cd to the curriculum-network directory and run vagrant up (it'll take a while the first time), followed by vagrant ssh:
+
+    vagrant up
+    vagrant ssh
+
+You'll now be logged in inside a virtual Ubuntu environment. Now you can start the server by doing:
 
     ./runserver
 
