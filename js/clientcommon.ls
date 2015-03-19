@@ -1,4 +1,4 @@
-export relation_types = ['children', 'depends', 'suggests']
+export relation_types = ['depends', 'parents']
 
 export topic_to_bing_count = {}
 

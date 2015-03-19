@@ -66,6 +66,35 @@ export list_all_related_node_names_recursive = (name, output_set) ->
           list_all_related_node_names_recursive(child, output_set)
   return Object.keys(output_set)
 
+export list_modules_node_is_part_of = (name) ->
+  output = []
+  for module_name,node_info of rawdata
+    if node_info.parents? and node_info.parents.indexOf(name) != -1
+      output.push module_name
+  return output
+
+export list_parents_and_depends_recursive = (name, depth, visited) ->
+  output = []
+  if not depth?
+    depth = 0
+  if not visited?
+    visited = {}
+    visited[name] = true
+    #output.push {name: name, relation: 'root', parent: null}
+  if not rawdata[name]?
+    return []
+  for relation in <[ parents depends ]>
+    if rawdata[name][relation]?
+      for dependency in rawdata[name][relation]
+        if visited[dependency]?
+          continue
+        visited[dependency] = true
+        output.push {name: dependency, relation, depth: depth + 1, parent: name}
+        for res in list_parents_and_depends_recursive dependency, depth + 1, visited
+          output.push res
+  return output
+
+
 /*
 export list_children_recursive = (name) ->
   list_relation_recursive 'children', name

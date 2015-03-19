@@ -4,7 +4,20 @@ export color_map = {}
 
 export edge_color_map = {}
 
-export colors = d3.scale.category10()
+#export colors = d3.scale.category10()
+export colors = (idx) ->
+  switch idx
+  | 0 => \#1f77b4
+  | 1 => \#ff7f0e
+  | 2 => \#2ca02c
+  | 3 => \#d62728
+  | 4 => \#9467bd
+  | 5 => \#8c564b
+  | 6 => \#e377c2
+  | 7 => \#7f7f7f
+  | 8 => \#bcbd22
+  | 9 => \#17becf
+  | _ => \#999999
 
 /*
 export getedgerelation = (source, target) ->
@@ -33,17 +46,20 @@ export setedgecolor = (source, target, color) ->
     edge_color_map[source] = {}
   edge_color_map[source][target] = color
 
+export getcolorforrelation = (relation) ->
+  relation_idx = relation_types.indexOf(relation)
+  if relation_idx == -1
+    return '#999999'
+  else
+    return colors(relation_idx)
+
 export getedgecolor = (source, target) ->
   if edge_color_map[source]?
     if edge_color_map[source][target]?
       return edge_color_map[source][target]
   if Object.keys(edge_color_map).length == 0
     edge_relation = getedgerelation source, target
-    edge_relation_idx = relation_types.indexOf(edge_relation)
-    if edge_relation_idx == -1
-      return '#999999'
-    else
-      return colors(edge_relation_idx)
+    return getcolorforrelation edge_relation
     /*
     switch getedgerelation(source, target)
     | 'children' => '#0000aa'
