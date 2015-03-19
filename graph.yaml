@@ -69,6 +69,7 @@ Fibonacci heap implementation:
   parents:
     - Fibonacci heap
 Hash table complexity analysis:
+  link: 'http://en.wikipedia.org/wiki/Hash_table#Performance_analysis'
   tags: [hash table, complexity analysis]
   parents:
     - Hash tables
@@ -86,6 +87,7 @@ Classes:
     - Methods
     - Fields
 Complexity analysis:
+  link: 'http://en.wikipedia.org/wiki/Big_O_notation'
   summary: Complexity analysis is the process of proving the running time complexity of an algorithm
 #Binary heap implementation:
 #  tags: [binary heap, implementation]

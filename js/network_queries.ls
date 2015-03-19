@@ -73,7 +73,7 @@ export list_modules_node_is_part_of = (name) ->
       output.push module_name
   return output
 
-export list_parents_and_depends_recursive = (name, depth, visited) ->
+export list_relations_recursive = (relations, name, depth, visited) ->
   output = []
   if not depth?
     depth = 0
@@ -83,7 +83,7 @@ export list_parents_and_depends_recursive = (name, depth, visited) ->
     #output.push {name: name, relation: 'root', parent: null}
   if not rawdata[name]?
     return []
-  for relation in <[ parents depends ]>
+  for relation in relations
     if rawdata[name][relation]?
       for dependency in rawdata[name][relation]
         #if visited[dependency]?
@@ -92,10 +92,18 @@ export list_parents_and_depends_recursive = (name, depth, visited) ->
           continue
         visited[dependency] = name
         output.push {name: dependency, relation, depth: depth + 1, parent: name}
-        for res in list_parents_and_depends_recursive dependency, depth + 1, visited
+        for res in list_relations_recursive relations, dependency, depth + 1, visited
           output.push res
   return output
 
+export list_parents_and_depends_recursive = (name, depth, visited) ->
+  return list_relations_recursive <[ parents depends ]>, name, depth, visited
+
+export list_parents_recursive = (name, depth, visited) ->
+  return list_relations_recursive <[ parents ]>, name, depth, visited
+
+export list_parent_names_recursive = (name, depth, visited) ->
+  return list_parents_recursive(name, depth, visited).map (.name)
 
 /*
 export list_children_recursive = (name) ->

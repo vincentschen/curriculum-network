@@ -14,12 +14,23 @@ isalpha = (c) ->
 toclassname = (name) ->
   return name.split('').filter(isalpha).join('')
 
-export nodehovered = (name) ->
+export showquizzes = ->
+  $('.showlessonbutton').removeClass 'active'
+  $('#showquizzesbutton').addClass 'active'
+  name = root.curnode_shown
+  $('#lessonframe').hide()
+  $('#lessondiv').show()
+  $('#lessondiv').text("Sorry, we don't yet have quizzes for #{name}")
+
+export showwikipedia = ->
+  $('.showlessonbutton').removeClass 'active'
+  $('#showwikipediabutton').addClass 'active'
+  name = root.curnode_shown
   $('#topicname').text name
   $('#makefocustopic').attr 'href', '/mkcurriculum.html?' + $.param({topic: name})
   $('#viewnetwork').attr 'href', '/?' + $.param({topic: name})
   if root.rawdata[name]?
-    {link, lesson} = root.rawdata[name]
+    {link} = root.rawdata[name]
     if link?
       $('#lessondiv').hide()
       $('#lessonframe').show()
@@ -33,6 +44,11 @@ export nodehovered = (name) ->
   $('#lessonframe').hide()
   $('#lessondiv').show()
   $('#lessondiv').text("Sorry, we don't yet have a lesson for #{name}")
+
+export nodehovered = (name) ->
+  if name?
+    root.curnode_shown = name
+  showwikipedia()
 
 
 create_node_display = (name) ->
@@ -54,41 +70,58 @@ create_node_display = (name) ->
   return output
 
 insert_module_topic = (name) ->
+  marginleft = 0
+  if root.visformat == 2
+    marginleft = 20 * (root.max_depth + 1)
   output = create_node_display(name)
-    .data({
-      depth: -1
-    })
     .css({
-      'margin-left': '0px'
+      'margin-left': "#{marginleft}px"
       'background-color': '#800000'
     })
   $('#curriculum').append $('<div>').append(output)
 
 insert_root_topic = (name) ->
+  marginleft = 20
+  if root.visformat == 2
+    marginleft = 20 * root.max_depth
   output = create_node_display(name)
     .data({
       depth: 0
     })
     .css({
-      'margin-left': "20px"
+      'margin-left': "#{marginleft}px"
       'background-color': 'black'
     })
   $('#curriculum').append $('<div>').append(output)
 
 insert_child_topic = (name, relation, depth, parent) ->
+  marginleft = (depth+1) * 20
+  if root.visformat == 2
+    marginleft = 20 * (root.max_depth - depth)
+  relation_color = getcolorforrelation('depends')
+  if root.all_parent_names.indexOf(name) != -1
+    relation_color = getcolorforrelation('parents')
   output = create_node_display(name)
     .data({
       depth: depth
       parentname: parent
     })
     .css({
-      'margin-left': "#{(depth+1)*20}px"
-      'background-color': getcolorforrelation(relation)
+      'margin-left': "#{marginleft}px"
+      'background-color': relation_color
     })
   #$('#curriculum').append $('<div>').append(output)
-  $('<div>').append(output).insertAfter $('.' + toclassname(parent))
+  if root.visformat == 1 or root.visformat == 2
+    $('<div>').append(output).insertBefore $('.' + toclassname(parent))
+  else
+    $('<div>').append(output).insertAfter $('.' + toclassname(parent))
 
 parent_dep_sorting_func = (a, b) ->
+  if root.visformat == 1 or root.visformat == 2
+    return -parent_dep_sorting_func_real(a, b)
+  return parent_dep_sorting_func_real(a, b)
+
+parent_dep_sorting_func_real = (a, b) ->
   relation_order = <[ parents depends ]>
   relation_diff = relation_order.indexOf(a.relation) - relation_order.indexOf(b.relation)
   if relation_diff != 0
@@ -103,6 +136,16 @@ parent_dep_sorting_func = (a, b) ->
 
 $(document).ready ->
   root.params = params = getUrlParameters()
+  root.visformat = 0
+  if root.params.visformat?
+    new_visformat = parseInt root.params.visformat
+    if isFinite new_visformat
+      root.visformat = new_visformat
+      localStorage.setItem 'visformat', new_visformat
+  else
+    stored_visformat = parseInt localStorage.getItem('visformat')
+    if isFinite stored_visformat
+      root.visformat = stored_visformat
   topic = params.topic
   if not topic?
     $('#curriculum').text 'need to provide topic'
@@ -117,11 +160,17 @@ $(document).ready ->
   if not data[topic]?
     $('#curriculum').text 'topic does not exist: ' + topic
     return
-  for module_name in list_modules_node_is_part_of(topic)
-    insert_module_topic module_name
-  insert_root_topic topic
+  root.all_parent_names = list_parent_names_recursive topic
   parents_and_depends = list_parents_and_depends_recursive topic
-  max_depth = parents_and_depends.map (.depth) |> maximum
+  root.max_depth = max_depth = parents_and_depends.map (.depth) |> maximum
+  if root.visformat == 1 or root.visformat == 2
+    insert_root_topic topic
+    for module_name in list_modules_node_is_part_of(topic)
+      insert_module_topic module_name
+  else
+    for module_name in list_modules_node_is_part_of(topic)
+      insert_module_topic module_name
+    insert_root_topic topic
   for cur_depth in [0 to max_depth]
     for {name, relation, depth, parent} in parents_and_depends.filter((x) -> x.depth == cur_depth).sort(parent_dep_sorting_func)
       insert_child_topic name, relation, depth, parent

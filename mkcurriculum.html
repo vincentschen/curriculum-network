@@ -24,8 +24,14 @@
 Lesson for <span id="topicname"></span>. <a id="makefocustopic" href="#">Make this the focus topic</a> <a id="viewnetwork" href="#" target="_blank">View curriculum network</a>
 </div>
 <div id="lessonframewrapper">
+<ul class="nav nav-tabs" style="height: 100%">
+<li role="presentation" id="showwikipediabutton" class="active showlessonbutton" onclick="showwikipedia()"><a href="#">Explanation</a></li>
+<li role="presentation" id="showquizzesbutton" class="showlessonbutton" onclick="showquizzes()"><a href="#">Quizzes</a></li>
+<div id="lessoninnerwrapper">
 <iframe id="lessonframe" src="about:blank" style="display: none"></iframe>
 <div id="lessondiv"></div>
+</div>
+</ul>
 </div>
 </div>
 </body>

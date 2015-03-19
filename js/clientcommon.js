@@ -11,7 +11,7 @@
       url = url.slice(0, hash);
     }
     map = {};
-    parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value){
+    parts = url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value){
       return map[key] = decodeURIComponent(value).split('+').join(' ');
     });
     return map;
