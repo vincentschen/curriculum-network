@@ -14,7 +14,29 @@ isalpha = (c) ->
 toclassname = (name) ->
   return name.split('').filter(isalpha).join('')
 
+export nodehovered = (name) ->
+  $('#topicname').text name
+  $('#makefocustopic').attr('href', '/mkcurriculum.html?' + $.param({topic: name}))
+  if root.rawdata[name]?
+    {link, lesson} = root.rawdata[name]
+    if link?
+      $('#lessondiv').hide()
+      $('#lessonframe').show()
+      $('#lessonframe').attr('src', link)
+      return
+    if lesson?
+      $('#lessonframe').hide()
+      $('#lessondiv').show()
+      $('#lessondiv').text lesson
+      return
+  $('#lessonframe').hide()
+  $('#lessondiv').show()
+  $('#lessondiv').text("Sorry, we don't yet have a lesson for #{name}")
+
+
 create_node_display = (name) ->
+  tooltip_info = {importance: getnoderadius_percent(name).toPrecision(2)} <<< root.rawdata[name]
+  tooltip_html = jsyaml.safeDump(tooltip_info).split('\n').join('<br>')
   output = $('<div>')
     .text(name)
     .addClass(toclassname(name))
@@ -23,8 +45,11 @@ create_node_display = (name) ->
     .attr({
       depth: -1
       'data-toggle': 'tooltip'
-      'title': $('<div>').css('text-align', 'left').html((["importance: #{getnoderadius_percent(name).toPrecision(2)}"] ++ jsyaml.safeDump(root.rawdata[name]).split('\n')).join('<br>')).0.outerHTML
+      'title': $('<div>').css('text-align', 'left').html(tooltip_html).0.outerHTML
+      #'onclick': "nodehovered('#{name}')"
     })
+    .click ->
+      nodehovered(name)
   return output
 
 insert_module_topic = (name) ->
@@ -61,15 +86,18 @@ insert_child_topic = (name, relation, depth, parent) ->
   #$('#curriculum').append $('<div>').append(output)
   $('<div>').append(output).insertAfter $('.' + toclassname(parent))
 
-parent_dep_sorting_func_increasing = (a, b) ->
+parent_dep_sorting_func = (a, b) ->
   relation_order = <[ parents depends ]>
   relation_diff = relation_order.indexOf(a.relation) - relation_order.indexOf(b.relation)
   if relation_diff != 0
-    return relation_diff
-  return getnoderadius_percent(a.name) - getnoderadius_percent(b.name)
-
-parent_dep_sorting_func_decreasing = (a, b) ->
-  return -parent_dep_sorting_func_increasing(a, b)
+    return -relation_diff
+  bradius = getnoderadius_percent(b.name)
+  aradius = getnoderadius_percent(a.name)
+  if aradius > bradius
+    return 1
+  if bradius > aradius
+    return -1
+  return 0
 
 $(document).ready ->
   root.params = params = getUrlParameters()
@@ -93,10 +121,11 @@ $(document).ready ->
   parents_and_depends = list_parents_and_depends_recursive topic
   max_depth = parents_and_depends.map (.depth) |> maximum
   for cur_depth in [0 to max_depth]
-    for {name, relation, depth, parent} in parents_and_depends.filter((x) -> x.depth == cur_depth).sort(parent_dep_sorting_func_decreasing)
+    for {name, relation, depth, parent} in parents_and_depends.filter((x) -> x.depth == cur_depth).sort(parent_dep_sorting_func)
       insert_child_topic name, relation, depth, parent
     #for x in list_all_related_node_names_recursive topic
     #  output.push x
     #for item in output
     #  $('#curriculum').append $('<div>').text(item)
-  $('.needtooltip').tooltip({html: true, placement: 'right'})
+  $('.needtooltip').tooltip({html: true, placement: 'bottom'})
+  nodehovered topic

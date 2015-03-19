@@ -71,13 +71,13 @@ Fibonacci heap implementation:
 Hash table complexity analysis:
   tags: [hash table, complexity analysis]
   parents:
-    - Hash table
+    - Hash tables
   depends:
     - Complexity analysis
 Hash table interface:
   tags: [hash table, interface]
   parents:
-    - Hash table
+    - Hash tables
   depends:
     - Classes
 Classes:
@@ -120,7 +120,11 @@ Max heap:
 Binary heap:
   parents:
     - Heaps
+Heaps:
+  link: 'http://en.wikipedia.org/wiki/Heap_(data_structure)'
 Dijkstra's algorithm complexity analysis:
+  #lesson: "Dijkstra's algorithm runs in time O(E + Vlog(V)), if using a fibonacci heap as a priority queue"
+  link: 'http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Running_time'
   tags: [dijkstra's algorithm, complexity analysis]
   depends:
     - Fibonacci heap complexity analysis
@@ -128,15 +132,23 @@ Dijkstra's algorithm complexity analysis:
   parents:
     - Dijkstra's algorithm
 Dijkstra's algorithm:
-  tags: [dijkstra's algorithm]
+  #link: http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+  link: 'http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Algorithm'
+  tags: ["dijkstra's algorithm"]
   depends:
     - Heaps
     - Hash tables
     - Graphs
+Hash tables:
+  link: 'http://en.wikipedia.org/wiki/Hash_table'
+Graphs:
+  #link: http://en.wikipedia.org/wiki/Graph_(mathematics)
+  link: 'http://en.wikipedia.org/wiki/Graph_(mathematics)#Graph'
 Graph interface:
   depends:
     - Classes
 Dijkstra's algorithm implementation:
+  link: 'http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Pseudocode'
   tags: [dijkstra's algorithm, implementation]
   parents:
     - Dijkstra's algorithm

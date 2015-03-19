@@ -18,7 +18,15 @@
 <script src="js/network_queries.js"></script>
 <script src="js/clientcommon.js"></script>
 <script src="js/mkcurriculum.js"></script>
-<div id="curriculum">
+<div id="curriculum"></div>
+<div id="lessondisplay">
+<div style="position: absolute; height: 40px; width: 100%">
+Lesson for <span id="topicname"></span>. <a id="makefocustopic" href="#">Make this the focus topic</a>
+</div>
+<div id="lessonframewrapper">
+<iframe id="lessonframe" src="about:blank" style="display: none"></iframe>
+<div id="lessondiv"></div>
+</div>
 </div>
 </body>
 </html>

@@ -79,16 +79,18 @@ export list_parents_and_depends_recursive = (name, depth, visited) ->
     depth = 0
   if not visited?
     visited = {}
-    visited[name] = true
+    visited[name] = null
     #output.push {name: name, relation: 'root', parent: null}
   if not rawdata[name]?
     return []
   for relation in <[ parents depends ]>
     if rawdata[name][relation]?
       for dependency in rawdata[name][relation]
-        if visited[dependency]?
+        #if visited[dependency]?
+        #  continue
+        if visited[dependency] == name
           continue
-        visited[dependency] = true
+        visited[dependency] = name
         output.push {name: dependency, relation, depth: depth + 1, parent: name}
         for res in list_parents_and_depends_recursive dependency, depth + 1, visited
           output.push res

@@ -74,6 +74,8 @@ tip = d3.tip()
       if (name != focus_topic) {
         output.append($('<a>').css('color', 'yellow').text('View graph for topic').attr('href', '#').attr('onclick', 'changetopic("' + name + '")'))
       }
+      output.append('<br>')
+      output.append($('<a>').css('color', 'yellow').text('View curriculum for topic').attr('href', '#').attr('onclick', 'opencurriculum("' + name + '")'))
     }
     return output.html()
   })
@@ -216,4 +218,9 @@ function changetopic(target) {
     newparams.topic = target
   }
   gotolink('/?' + $.param(newparams))
+}
+
+function opencurriculum(target) {
+  var targetlink = '/mkcurriculum.html?' + $.param({topic: target})
+  openlink(targetlink)
 }

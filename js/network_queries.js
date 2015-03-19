@@ -108,7 +108,7 @@
     }
     if (visited == null) {
       visited = {};
-      visited[name] = true;
+      visited[name] = null;
     }
     if (rawdata[name] == null) {
       return [];
@@ -118,10 +118,10 @@
       if (rawdata[name][relation] != null) {
         for (j$ = 0, len1$ = (ref1$ = rawdata[name][relation]).length; j$ < len1$; ++j$) {
           dependency = ref1$[j$];
-          if (visited[dependency] != null) {
+          if (visited[dependency] === name) {
             continue;
           }
-          visited[dependency] = true;
+          visited[dependency] = name;
           output.push({
             name: dependency,
             relation: relation,
