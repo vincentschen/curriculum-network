@@ -25,6 +25,9 @@
     $('#makefocustopic').attr('href', '/mkcurriculum.html?' + $.param({
       topic: name
     }));
+    $('#viewnetwork').attr('href', '/?' + $.param({
+      topic: name
+    }));
     if (root.rawdata[name] != null) {
       ref$ = root.rawdata[name], link = ref$.link, lesson = ref$.lesson;
       if (link != null) {
@@ -61,7 +64,7 @@
   };
   insert_module_topic = function(name){
     var output;
-    output = create_node_display(name).attr({
+    output = create_node_display(name).data({
       depth: -1
     }).css({
       'margin-left': '0px',
@@ -71,7 +74,7 @@
   };
   insert_root_topic = function(name){
     var output;
-    output = create_node_display(name).attr({
+    output = create_node_display(name).data({
       depth: 0
     }).css({
       'margin-left': "20px",
@@ -81,8 +84,9 @@
   };
   insert_child_topic = function(name, relation, depth, parent){
     var output;
-    output = create_node_display(name).attr({
-      depth: depth
+    output = create_node_display(name).data({
+      depth: depth,
+      parentname: parent
     }).css({
       'margin-left': (depth + 1) * 20 + "px",
       'background-color': getcolorforrelation(relation)
@@ -120,7 +124,7 @@
       var data;
       root.rawdata = data = create_terminal_nodes(jsyaml.safeLoad(yamltxt));
       return get_bing_counts(data, function(counts){
-        var topic_name, count, i$, ref$, len$, module_name, parents_and_depends, max_depth, cur_depth, j$, ref1$, len1$, ref2$, name, relation, depth, parent;
+        var topic_name, count, i$, ref$, len$, module_name, parents_and_depends, max_depth, cur_depth, j$, ref1$, len1$, ref2$, name, relation, depth, parent, seen_nodes, dup_nodes, x, curname;
         for (topic_name in counts) {
           count = counts[topic_name];
           root.topic_to_bing_count[topic_name] = count;
@@ -145,6 +149,20 @@
             ref2$ = ref1$[j$], name = ref2$.name, relation = ref2$.relation, depth = ref2$.depth, parent = ref2$.parent;
             insert_child_topic(name, relation, depth, parent);
           }
+        }
+        seen_nodes = {};
+        dup_nodes = {};
+        for (i$ = 0, len$ = (ref$ = $('.roundedbox')).length; i$ < len$; ++i$) {
+          x = ref$[i$];
+          curname = $(x).text();
+          if (seen_nodes[curname] != null) {
+            $(x).css('background-color', '#666666');
+            dup_nodes[curname] = true;
+            if (dup_nodes[$(x).data('parentname')] != null) {
+              $(x).hide();
+            }
+          }
+          seen_nodes[curname] = true;
         }
         $('.needtooltip').tooltip({
           html: true,

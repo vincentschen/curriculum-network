@@ -16,7 +16,8 @@ toclassname = (name) ->
 
 export nodehovered = (name) ->
   $('#topicname').text name
-  $('#makefocustopic').attr('href', '/mkcurriculum.html?' + $.param({topic: name}))
+  $('#makefocustopic').attr 'href', '/mkcurriculum.html?' + $.param({topic: name})
+  $('#viewnetwork').attr 'href', '/?' + $.param({topic: name})
   if root.rawdata[name]?
     {link, lesson} = root.rawdata[name]
     if link?
@@ -54,7 +55,7 @@ create_node_display = (name) ->
 
 insert_module_topic = (name) ->
   output = create_node_display(name)
-    .attr({
+    .data({
       depth: -1
     })
     .css({
@@ -65,7 +66,7 @@ insert_module_topic = (name) ->
 
 insert_root_topic = (name) ->
   output = create_node_display(name)
-    .attr({
+    .data({
       depth: 0
     })
     .css({
@@ -76,8 +77,9 @@ insert_root_topic = (name) ->
 
 insert_child_topic = (name, relation, depth, parent) ->
   output = create_node_display(name)
-    .attr({
+    .data({
       depth: depth
+      parentname: parent
     })
     .css({
       'margin-left': "#{(depth+1)*20}px"
@@ -127,5 +129,16 @@ $(document).ready ->
     #  output.push x
     #for item in output
     #  $('#curriculum').append $('<div>').text(item)
+  seen_nodes = {}
+  dup_nodes = {}
+  for x in $('.roundedbox')
+    curname = $(x).text()
+    if seen_nodes[curname]?
+      #$(x).hide() # hide duplicate nodes
+      $(x).css 'background-color', '#666666'
+      dup_nodes[curname] = true
+      if dup_nodes[$(x).data('parentname')]?
+        $(x).hide()
+    seen_nodes[curname] = true
   $('.needtooltip').tooltip({html: true, placement: 'bottom'})
   nodehovered topic
