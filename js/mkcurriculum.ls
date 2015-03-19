@@ -18,6 +18,18 @@ export showquizzes = ->
   $('.showlessonbutton').removeClass 'active'
   $('#showquizzesbutton').addClass 'active'
   name = root.curnode_shown
+  if root.rawdata[name]?
+    {quiz, quizlink} = root.rawdata[name]
+    if quizlink?
+      $('#lessondiv').hide()
+      $('#lessonframe').show()
+      $('#lessonframe').attr('src', quizlink)
+      return
+    if quiz?
+      $('#lessonframe').hide()
+      $('#lessondiv').show()
+      $('#lessondiv').html quiz
+      return
   $('#lessonframe').hide()
   $('#lessondiv').show()
   $('#lessondiv').text("Sorry, we don't yet have quizzes for #{name}")

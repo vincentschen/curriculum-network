@@ -20,10 +20,25 @@
     return name.split('').filter(isalpha).join('');
   };
   out$.showquizzes = showquizzes = function(){
-    var name;
+    var name, ref$, quiz, quizlink;
     $('.showlessonbutton').removeClass('active');
     $('#showquizzesbutton').addClass('active');
     name = root.curnode_shown;
+    if (root.rawdata[name] != null) {
+      ref$ = root.rawdata[name], quiz = ref$.quiz, quizlink = ref$.quizlink;
+      if (quizlink != null) {
+        $('#lessondiv').hide();
+        $('#lessonframe').show();
+        $('#lessonframe').attr('src', quizlink);
+        return;
+      }
+      if (quiz != null) {
+        $('#lessonframe').hide();
+        $('#lessondiv').show();
+        $('#lessondiv').html(quiz);
+        return;
+      }
+    }
     $('#lessonframe').hide();
     $('#lessondiv').show();
     return $('#lessondiv').text("Sorry, we don't yet have quizzes for " + name);
