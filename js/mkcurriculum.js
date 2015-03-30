@@ -235,6 +235,7 @@
           x = ref$[i$];
           curname = $(x).text();
           if (seen_nodes[curname] != null) {
+            $(x).hide();
             $(x).css('background-color', '#666666');
             dup_nodes[curname] = true;
             if (dup_nodes[$(x).data('parentname')] != null) {

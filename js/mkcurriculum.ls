@@ -195,7 +195,7 @@ $(document).ready ->
   for x in $('.roundedbox')
     curname = $(x).text()
     if seen_nodes[curname]?
-      #$(x).hide() # hide duplicate nodes
+      $(x).hide() # hide duplicate nodes
       $(x).css 'background-color', '#666666'
       dup_nodes[curname] = true
       if dup_nodes[$(x).data('parentname')]?
