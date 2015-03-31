@@ -228,6 +228,6 @@ function opencurriculum(target) {
 }
 
 function opencurriculumtree(target) {
-  var targetlink = '/curriculum_tree.html?' + $.param({topic: target})
+  var targetlink = '/curriculum_tree2.html?' + $.param({topic: target})
   openlink(targetlink)
 }
