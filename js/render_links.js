@@ -76,6 +76,8 @@ tip = d3.tip()
       }
       output.append('<br>')
       output.append($('<a>').css('color', 'yellow').text('View curriculum for topic').attr('href', '#').attr('onclick', 'opencurriculum("' + name + '")'))
+      output.append('<br>')
+      output.append($('<a>').css('color', 'yellow').text('View curriculum tree for topic').attr('href', '#').attr('onclick', 'opencurriculumtree("' + name + '")'))
     }
     return output.html()
   })
@@ -222,5 +224,10 @@ function changetopic(target) {
 
 function opencurriculum(target) {
   var targetlink = '/mkcurriculum.html?' + $.param({topic: target})
+  openlink(targetlink)
+}
+
+function opencurriculumtree(target) {
+  var targetlink = '/curriculum_tree.html?' + $.param({topic: target})
   openlink(targetlink)
 }

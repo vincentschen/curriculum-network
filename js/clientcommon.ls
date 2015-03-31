@@ -1,3 +1,5 @@
+root = exports ? this
+
 export relation_types = ['depends', 'parents']
 
 export topic_to_bing_count = {}
@@ -13,6 +15,22 @@ export getUrlParameters = ->
     map[key] = decodeURIComponent(value).split('+').join(' ') # for whatever reason this seems necessary?
   )
   return map
+
+export preprocess_data = (data) ->
+  {graph_metadata} = data
+  if graph_metadata?
+    {preprocessing_steps} = graph_metadata
+    if graph_metadata.relation_types?
+      root.relation_types = relation_types := graph_metadata.relation_types
+      delete data.graph_metadata.relation_types
+    if preprocessing_steps?
+      for preprocessing_step in preprocessing_steps
+        data = root.preprocessing_options[preprocessing_step](data)
+      delete data.graph_metadata.preprocessing_steps
+    delete data.graph_metadata
+  #console.log data
+  data = create_terminal_nodes data
+  return data
 
 export create_terminal_nodes = (data) ->
   output = {}
@@ -49,7 +67,6 @@ export get_bing_counts = (data, callback) ->
           add_query_for_topic child
   query_list = [v for k,v of topic_to_query]
   $.getJSON '/bingcounts?' + $.param({words: JSON.stringify(query_list)}), (results) ->
-    console.log results
     for topic_name,query of topic_to_query
       count = results[query]
       topic_to_counts[topic_name] = count

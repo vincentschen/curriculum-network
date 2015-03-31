@@ -192,7 +192,7 @@
     graph_file = (ref$ = params.graph_file) != null ? ref$ : 'graph.yaml';
     return $.get(graph_file, function(yamltxt){
       var data;
-      root.rawdata = data = create_terminal_nodes(jsyaml.safeLoad(yamltxt));
+      root.rawdata = data = preprocess_data(jsyaml.safeLoad(yamltxt));
       return get_bing_counts(data, function(counts){
         var topic_name, count, parents_and_depends, max_depth, i$, ref$, len$, module_name, cur_depth, j$, ref1$, len1$, ref2$, name, relation, depth, parent, seen_nodes, dup_nodes, x, curname;
         for (topic_name in counts) {

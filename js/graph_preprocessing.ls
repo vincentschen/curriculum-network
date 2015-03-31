@@ -1,3 +1,29 @@
+export add_children_for_parents = (data) ->
+  network = {[x,({} <<< y)] for x,y of data}
+  for topic_name,topic_info of network
+    {parents} = topic_info
+    if parents?
+      for parent in parents
+        if not network[parent]?
+          network[parent] = {}
+        if not network[parent].children?
+          network[parent].children = []
+        network[parent].children.push topic_name
+  return network
+
+export add_parents_for_children = (data) ->
+  network = {[x,({} <<< y)] for x,y of data}
+  for topic_name,topic_info of network
+    {children} = topic_info
+    if children?
+      for child in children
+        if not network[child]?
+          network[parent] = {}
+        if not network[child].parents?
+          network[child].parents = []
+        network[child].parents.push topic_name
+  return network
+
 export convert_parents_to_children = (data) ->
   data = reverse_edge_direction 'parents', data
   data = rename_edge_type 'parents', 'children', data
@@ -11,6 +37,8 @@ export convert_children_to_parents = (data) ->
 export preprocessing_options = {
   convert_parents_to_children
   convert_children_to_parents
+  add_children_for_parents
+  add_parents_for_children
 }
 
 export rename_edge_type = (orig_name, new_name, data) ->

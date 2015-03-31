@@ -34,23 +34,7 @@ $(document).ready ->
   prev_topic = params.prevtopic
   $.get graph_file, (yamltxt) ->
     data = jsyaml.safeLoad(yamltxt)
-    {graph_metadata} = data
-    if graph_metadata?
-      {relation_types, preprocessing_steps} = graph_metadata
-      if relation_types?
-        root.relation_types = relation_types
-        delete data.graph_metadata.relation_types
-      if preprocessing_steps?
-        for preprocessing_step in preprocessing_steps
-          console.log 'before'
-          console.log data
-          data = root.preprocessing_options[preprocessing_step](data)
-          console.log 'after'
-          console.log data
-        delete data.graph_metadata.preprocessing_steps
-      delete data.graph_metadata
-    #console.log data
-    data = create_terminal_nodes data
+    data = preprocess_data data
     root.rawdata = data
     #console.log data
     create_legend()

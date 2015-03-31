@@ -48,29 +48,9 @@
     root.focus_topic = focus_topic = params.topic;
     prev_topic = params.prevtopic;
     return $.get(graph_file, function(yamltxt){
-      var data, graph_metadata, relation_types, preprocessing_steps, i$, len$, preprocessing_step, parent_names, parent_name, nodes, topic_name, topic_info, ref$, relation, connected_nodes, j$, len1$, name, links;
+      var data, parent_names, i$, len$, parent_name, nodes, topic_name, topic_info, ref$, relation, connected_nodes, j$, len1$, name, links;
       data = jsyaml.safeLoad(yamltxt);
-      graph_metadata = data.graph_metadata;
-      if (graph_metadata != null) {
-        relation_types = graph_metadata.relation_types, preprocessing_steps = graph_metadata.preprocessing_steps;
-        if (relation_types != null) {
-          root.relation_types = relation_types;
-          delete data.graph_metadata.relation_types;
-        }
-        if (preprocessing_steps != null) {
-          for (i$ = 0, len$ = preprocessing_steps.length; i$ < len$; ++i$) {
-            preprocessing_step = preprocessing_steps[i$];
-            console.log('before');
-            console.log(data);
-            data = root.preprocessing_options[preprocessing_step](data);
-            console.log('after');
-            console.log(data);
-          }
-          delete data.graph_metadata.preprocessing_steps;
-        }
-        delete data.graph_metadata;
-      }
-      data = create_terminal_nodes(data);
+      data = preprocess_data(data);
       root.rawdata = data;
       create_legend();
       if (focus_topic != null && focus_topic.length > 0) {

@@ -165,7 +165,7 @@ $(document).ready ->
   output = []
   graph_file = params.graph_file ? 'graph.yaml'
   yamltxt <- $.get graph_file
-  root.rawdata = data = create_terminal_nodes jsyaml.safeLoad(yamltxt)
+  root.rawdata = data = preprocess_data jsyaml.safeLoad(yamltxt)
   counts <- get_bing_counts data
   for topic_name,count of counts
     root.topic_to_bing_count[topic_name] = count
