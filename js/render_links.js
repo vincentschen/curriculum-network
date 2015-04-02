@@ -77,7 +77,7 @@ tip = d3.tip()
       //output.append('<br>')
       //output.append($('<a>').css('color', 'yellow').text('View curriculum for topic').attr('href', '#').attr('onclick', 'opencurriculum("' + name + '")'))
       output.append('<br>')
-      output.append($('<a>').css('color', 'yellow').text('View curriculum for topic').attr('href', '#').attr('onclick', 'opencurriculumtree("' + name + '")'))
+      output.append($('<a>').css('color', 'yellow').text('View prereqs for topic').attr('href', '#').attr('onclick', 'opencurriculumtree("' + name + '")'))
       output.append('<br>')
       output.append($('<a>').css('color', 'yellow').text('View module for topic').attr('href', '#').attr('onclick', 'openmoduletree("' + name + '")'))
     }
@@ -230,11 +230,12 @@ function opencurriculum(target) {
 }
 
 function opencurriculumtree(target) {
-  var targetlink = '/curriculum_tree2.html?' + $.param({topic: target})
+  var targetlink = '/curriculum_tree2.html?' + $.param({topic: target, view: 'curriculum'})
   openlink(targetlink)
 }
 
 function openmoduletree(target) {
-  var targetlink = '/module_tree.html?' + $.param({topic: target})
+  //var targetlink = '/module_tree.html?' + $.param({topic: target})
+  var targetlink = '/curriculum_tree2.html?' + $.param({topic: target, view: 'module'})
   openlink(targetlink)
 }

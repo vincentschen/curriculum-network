@@ -42,6 +42,7 @@ Heap interface:
     - interface
   depends:
     - Classes
+  link: "https://docs.python.org/2/library/heapq.html"
 Binary heap complexity analysis:
   tags:
     - binary heap
@@ -69,11 +70,17 @@ Hash table interface:
     - interface
   depends:
     - Classes
+  link: "https://docs.python.org/2/tutorial/datastructures.html#dictionaries"
+Methods:
+  link: "http://en.wikipedia.org/wiki/Method_(computer_programming)"
+Fields:
+  link: "http://en.wikipedia.org/wiki/Field_(computer_science)"
 Classes:
   summary: An interface allows you to use existing code in the form of a class without having implemented it yourself
-  depends:
+  children:
     - Methods
     - Fields
+  link: "http://en.wikipedia.org/wiki/Class_(computer_programming)"
 Complexity analysis:
   link: "http://en.wikipedia.org/wiki/Big_O_notation"
   summary: Complexity analysis is the process of proving the running time complexity of an algorithm
@@ -144,8 +151,10 @@ Graphs:
 Graph interface:
   depends:
     - Classes
+  link: "http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph"
 "Dijkstra's algorithm implementation":
   link: "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Pseudocode"
+  quizlink: "/exercises/dijkstra_implementation.html"
   tags:
     - "dijkstra's algorithm"
     - implementation

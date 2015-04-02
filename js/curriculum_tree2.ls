@@ -2,6 +2,54 @@ root = exports ? this
 
 {maximum} = require('prelude-ls')
 
+export showquizzes = ->
+  $('.showlessonbutton').removeClass 'active'
+  $('#showquizzesbutton').addClass 'active'
+  name = root.viewed_topic
+  if root.rawdata[name]?
+    {quiz, quizlink} = root.rawdata[name]
+    if quizlink?
+      $('#lessondiv').hide()
+      $('#lessonframe').show()
+      $('#lessonframe').attr('src', quizlink)
+      return
+    if quiz?
+      $('#lessonframe').hide()
+      $('#lessondiv').show()
+      $('#lessondiv').html quiz
+      return
+  $('#lessonframe').hide()
+  $('#lessondiv').show()
+  $('#lessondiv').text("Sorry, we don't yet have quizzes for #{name}")
+
+export showwikipedia = ->
+  $('.showlessonbutton').removeClass 'active'
+  $('#showwikipediabutton').addClass 'active'
+  name = root.viewed_topic
+  $('#topicname').text name
+  $('#makefocustopic').attr 'href', '/mkcurriculum.html?' + $.param({topic: name})
+  $('#viewnetwork').attr 'href', '/?' + $.param({topic: name})
+  if root.rawdata[name]?
+    {link} = root.rawdata[name]
+    if link?
+      $('#lessondiv').hide()
+      $('#lessonframe').show()
+      $('#lessonframe').attr('src', link)
+      return
+    if lesson?
+      $('#lessonframe').hide()
+      $('#lessondiv').show()
+      $('#lessondiv').text lesson
+      return
+  $('#lessonframe').hide()
+  $('#lessondiv').show()
+  $('#lessondiv').text("Sorry, we don't yet have a lesson for #{name}")
+
+export nodehovered = (name) ->
+  if name?
+    root.viewed_topic = name
+  showwikipedia()
+
 parent_dep_sorting_func = (a, b) ->
   return -parent_dep_sorting_func_simple(a, b)
   if root.visformat == 1 or root.visformat == 2
@@ -93,6 +141,7 @@ export set_topic = (topic_name) ->
   $('#curriculumviewbutton').show()
   root.viewed_topic = topic_name
   repaint_nodes()
+  showwikipedia()
 
 initialize = (treeData, max_depth, is_module) ->
   if not is_module?
@@ -135,7 +184,7 @@ initialize = (treeData, max_depth, is_module) ->
     source_depends = root.rawdata[source_name].depends
     if source_depends?
       if source_depends.indexOf(target_name) != -1
-        return colors(2)
+        return colors(0)
     #colors(2)
     #null
     'black'
@@ -247,7 +296,7 @@ export show_module_view = (topic) ->
     history.pushState new_url, null, new_url
 
 window.addEventListener 'popstate', (e) ->
-  #console.log location.pathname
+  console.log location.pathname
   load_page()
 
 load_page = ->

@@ -20,11 +20,22 @@
   </head>
   <body>
     <div id="curriculum"></div>
-    <h1 style="position: absolute; top: 80px; left: 10px" id="topicdisplay"></h1>
-    <div style="position: absolute; top: 150px; left: 10px">
-      <button style="display: none" class="btn btn-primary" id="finishedbutton" onclick="topicfinished()">Finished Learning</button>
-      <button style="display: none" class="btn btn-default" id="curriculumviewbutton" onclick="show_curriculum_view()">Learn Prerequisites</button>
-      <button style="display: none" class="btn btn-default" id="moduleviewbutton" onclick="show_module_view()">Learn Module</button>
+    <div style="position: absolute; top: 100px; left: 10px">
+    <div id="topicdisplay" style="font-weight: bold; font-size: 28px; display: inline-block"></div><br>
+    <!--<div style="display: inline-block; padding-left: 10px"></div>-->
+    <button style="display: none" class="btn btn-primary" id="finishedbutton" onclick="topicfinished()">Finished Learning</button>
+    <button style="display: none" class="btn btn-default" id="curriculumviewbutton" onclick="show_curriculum_view()">View Prerequisites</button>
+    <button style="display: none" class="btn btn-default" id="moduleviewbutton" onclick="show_module_view()">View Module</button>
+    </div>
+    <div id="lessonframewrapper">
+      <ul class="nav nav-tabs" style="height: 100%">
+      <li role="presentation" id="showwikipediabutton" class="active showlessonbutton" onclick="showwikipedia()"><a href="javascript:;">Explanation</a></li>
+      <li role="presentation" id="showquizzesbutton" class="showlessonbutton" onclick="showquizzes()"><a>Quizzes</a href="javascript:;"></li>
+      <div id="lessoninnerwrapper">
+      <iframe id="lessonframe" src="about:blank" style="display: none"></iframe>
+      <div id="lessondiv"></div>
+      </div>
+      </ul>
     </div>
   </body>
 </html>
