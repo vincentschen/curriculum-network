@@ -112,6 +112,7 @@ Heaps:
     - Min heap
     - Max heap
     - Binary heap
+    - Fibonacci heap
 "Dijkstra's algorithm complexity analysis":
   link: "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Running_time"
   quiz: "What is the running time of Dijkstra's algorithm, as implemented using a fibonacci heap?<br>Express your result in Big-O notation, where E denotes the number of edges, and V denotes the number of vertices.<br><input></input><br>(Answer: O(E + VlogV))"

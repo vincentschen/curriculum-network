@@ -87,13 +87,20 @@ export set_topic = (topic_name) ->
   $('#topicdisplay').text topic_name
   $('#finishedbutton').text('Finished Learning ' + topic_name)
   $('#finishedbutton').show()
+  $('#moduleviewbutton').text('View Module for ' + topic_name)
+  $('#moduleviewbutton').show()
+  $('#curriculumviewbutton').text('View Prerequisites for ' + topic_name)
+  $('#curriculumviewbutton').show()
   root.viewed_topic = topic_name
   repaint_nodes()
 
-initialize = (treeData, max_depth) ->
+initialize = (treeData, max_depth, is_module) ->
+  if not is_module?
+    is_module = false
   # Create a svg canvas
+  $('#curriculum').html('')
   canvas_width = max_depth * 250
-  canvas_height = 80
+  canvas_height = 100
   vis = d3.select('#curriculum').append('svg:svg').attr('width', (canvas_width + 300)).attr('height', (canvas_height)).append('svg:g').attr('transform', 'translate(10, 0)')
   # shift everything to the right
   #.attr("transform", "scale(1, -1)")
@@ -105,7 +112,7 @@ initialize = (treeData, max_depth) ->
   ])
   diagonal = d3.svg.diagonal().projection((d) ->
     [
-      canvas_width - d.y
+      if is_module then d.y else (canvas_width - d.y)
       d.x
     ]
   )
@@ -118,7 +125,6 @@ initialize = (treeData, max_depth) ->
   #console.log links
   link = vis.selectAll('pathlink').data(links).enter().append('svg:path').attr('class', 'link').attr('d', diagonal).style('stroke', (d) ->
     #null
-    /*
     source_name = d.source.name
     target_name = d.target.name
     console.log source_name + ',' + target_name
@@ -130,7 +136,6 @@ initialize = (treeData, max_depth) ->
     if source_depends?
       if source_depends.indexOf(target_name) != -1
         return colors(2)
-    */
     #colors(2)
     #null
     'black'
@@ -138,7 +143,7 @@ initialize = (treeData, max_depth) ->
     0.2
   )
   node = vis.selectAll('g.node').data(nodes).enter().append('svg:g').attr('transform', (d) ->
-    'translate(' + (canvas_width - d.y) + ',' + d.x + ')'
+    'translate(' + (if is_module then d.y else (canvas_width - d.y)) + ',' + d.x + ')'
   )
   # Add the dot at every node
   node.append('svg:circle').attr('r', 3.5).attr('class', 'topicnode').attr('data-topicname', (d) -> d.name).style('cursor', 'pointer').on('click', (d) ->
@@ -157,25 +162,10 @@ initialize = (treeData, max_depth) ->
     set_topic d.name
   )
   #repaint_nodes()
-  next_topic()
 
-$(document).ready ->
-  root.params = params = getUrlParameters()
-  #topic = 'Mergesort'
-  topic = params.topic
+export show_curriculum_view = (topic) ->
   if not topic?
-    $('#curriculum').text 'need to provide topic'
-    return
-  output = []
-  graph_file = params.graph_file ? 'graph.yaml'
-  yamltxt <- $.get graph_file
-  root.rawdata = data = preprocess_data jsyaml.safeLoad(yamltxt)
-  counts <- get_bing_counts data
-  for topic_name,count of counts
-    root.topic_to_bing_count[topic_name] = count
-  if not data[topic]?
-    $('#curriculum').text 'topic does not exist: ' + topic
-    return
+    topic = root.viewed_topic
   root.all_parent_names = list_parent_names_recursive topic
   parents_and_depends = list_parents_and_depends_recursive topic
   if parents_and_depends.length == 0
@@ -200,25 +190,97 @@ $(document).ready ->
         children: []
       }
       name_to_treedata[name] = parent_node.children[*-1]
-      #insert_child_topic name, relation, depth, parent
-  #JSON object with the data
-  /*
-  treeData = 
-    'name': 'A654'
-    'children': [
-      { 'name': 'A1' }
-      { 'name': 'A2' }
-      { 'name': 'A2B' }
-      {
-        'name': 'A3'
-        'children': [ {
-          'name': 'A31'
-          'children': [
-            { 'name': 'A311' }
-            { 'name': 'A312' }
-          ]
-        } ]
-      }
-    ]
-  */
   initialize treeData, max_depth
+  set_topic topic
+  next_topic()
+  new_url = location.href
+  if new_url.indexOf('?') != -1
+    new_url = new_url.slice(0, new_url.indexOf('?'))
+  new_url = new_url + '?' + $.param({view: 'curriculum', topic: topic})
+  if new_url != history.state
+    history.pushState new_url, null, new_url
+
+makeModuleTreeData = (topic) ->
+  treeData = {
+    name: topic
+    children: []
+  }
+  name_to_treedata = {}
+  name_to_treedata[topic] = treeData
+  agenda = []
+  if root.rawdata[topic] and root.rawdata[topic].children?
+    for child in root.rawdata[topic].children
+      agenda.push [child, topic]
+  while agenda.length > 0
+    [curtopic, parent] = agenda.shift() # shift() gets first element (breadth-first), pop() gets last element (depth-first)
+    if name_to_treedata[curtopic]?
+      continue
+    parent_tree = name_to_treedata[parent]
+    parent_tree.children.push {
+      name: curtopic
+      children: []
+    }
+    name_to_treedata[curtopic] = parent_tree.children[*-1]
+    if root.rawdata[curtopic].children?
+      for child in root.rawdata[curtopic].children
+        agenda.push [child, curtopic]
+  return treeData
+
+computeMaxDepth = (treeData) ->
+  if treeData.children.length == 0
+    return 0
+  return 1 + maximum([computeMaxDepth(x) for x in treeData.children])
+
+export show_module_view = (topic) ->
+  if not topic?
+    topic = root.viewed_topic
+  export treeData = makeModuleTreeData(topic)
+  max_depth = computeMaxDepth treeData
+  initialize treeData, max_depth, true
+  set_topic topic
+  next_topic()
+  new_url = location.href
+  if new_url.indexOf('?') != -1
+    new_url = new_url.slice(0, new_url.indexOf('?'))
+  new_url = new_url + '?' + $.param({view: 'module', topic: topic})
+  if new_url != history.state
+    history.pushState new_url, null, new_url
+
+window.addEventListener 'popstate', (e) ->
+  #console.log location.pathname
+  load_page()
+
+load_page = ->
+  root.params = params = getUrlParameters()
+  #topic = 'Mergesort'
+  topic = params.topic
+  view = params.view
+  if not view?
+    view = 'curriculum'
+  if not topic?
+    $('#curriculum').text 'need to provide topic'
+    return
+  if not root.rawdata[topic]?
+    $('#curriculum').text 'topic does not exist: ' + topic
+    return
+  if view == 'module'
+    show_module_view topic
+  else
+    show_curriculum_view topic
+
+$(document).ready ->
+  root.params = params = getUrlParameters()
+  #topic = 'Mergesort'
+  topic = params.topic
+  if not topic?
+    $('#curriculum').text 'need to provide topic'
+    return
+  output = []
+  graph_file = params.graph_file ? 'graph.yaml'
+  yamltxt <- $.get graph_file
+  root.rawdata = data = preprocess_data jsyaml.safeLoad(yamltxt)
+  counts <- get_bing_counts data
+  for topic_name,count of counts
+    root.topic_to_bing_count[topic_name] = count
+  load_page()
+

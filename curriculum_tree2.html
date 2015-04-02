@@ -21,6 +21,10 @@
   <body>
     <div id="curriculum"></div>
     <h1 style="position: absolute; top: 80px; left: 10px" id="topicdisplay"></h1>
-    <button style="position: absolute; top: 150px; left: 10px; display: none" class="btn btn-primary" id="finishedbutton" onclick="topicfinished()">Finished Learning</button>
+    <div style="position: absolute; top: 150px; left: 10px">
+      <button style="display: none" class="btn btn-primary" id="finishedbutton" onclick="topicfinished()">Finished Learning</button>
+      <button style="display: none" class="btn btn-default" id="curriculumviewbutton" onclick="show_curriculum_view()">Learn Prerequisites</button>
+      <button style="display: none" class="btn btn-default" id="moduleviewbutton" onclick="show_module_view()">Learn Module</button>
+    </div>
   </body>
 </html>
