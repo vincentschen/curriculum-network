@@ -1,3 +1,31 @@
+list_children_names_recursive = (data, name) ->
+  output = []
+  output_set = {}
+  output.push name
+  output_set[name] = true
+  if data[name]? and data[name].children?
+    for child in data[name].children
+      if not output_set[child]?
+        for rec_child in list_children_names_recursive(data, child)
+          if not output_set[child]?
+            output.push rec_child
+            output_set[rec_child] = true
+  return output
+
+export expand_depends_on_module = (data) ->
+  network = {[x,({} <<< y)] for x,y of data}
+  for topic_name,topic_info of network
+    {depends_on_module} = topic_info
+    if depends_on_module?
+      for dependent_module in depends_on_module
+        if not topic_info.depends?
+          topic_info.depends = []
+        #topic_info.depends.push dependent_module
+        for child in list_children_names_recursive(data, dependent_module)
+          if data[child].is_module_only != true
+            topic_info.depends.push child
+  return network
+
 export add_children_for_parents = (data) ->
   network = {[x,({} <<< y)] for x,y of data}
   for topic_name,topic_info of network
@@ -39,6 +67,7 @@ export preprocessing_options = {
   convert_children_to_parents
   add_children_for_parents
   add_parents_for_children
+  expand_depends_on_module
 }
 
 export rename_edge_type = (orig_name, new_name, data) ->

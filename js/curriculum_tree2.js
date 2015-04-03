@@ -183,7 +183,11 @@
     $('#finishedbutton').text('Finished Learning ' + topic_name);
     $('#finishedbutton').show();
     $('#moduleviewbutton').text('View Module for ' + topic_name);
-    $('#moduleviewbutton').show();
+    if (root.rawdata[topic_name].children != null) {
+      $('#moduleviewbutton').show();
+    } else {
+      $('#moduleviewbutton').hide();
+    }
     $('#curriculumviewbutton').text('View Prerequisites for ' + topic_name);
     $('#curriculumviewbutton').show();
     root.viewed_topic = topic_name;
@@ -210,22 +214,21 @@
     nodes = tree.nodes(treeData);
     links = tree.links(nodes);
     link = vis.selectAll('pathlink').data(links).enter().append('svg:path').attr('class', 'link').attr('d', diagonal).style('stroke', function(d){
-      var source_name, target_name, target_children, source_depends;
-      source_name = d.source.name;
-      target_name = d.target.name;
-      console.log(source_name + ',' + target_name);
-      target_children = root.rawdata[target_name].children;
-      if (target_children != null) {
-        if (target_children.indexOf(source_name) !== -1) {
-          return colors(1);
-        }
-      }
-      source_depends = root.rawdata[source_name].depends;
-      if (source_depends != null) {
-        if (source_depends.indexOf(target_name) !== -1) {
-          return colors(0);
-        }
-      }
+      /*
+      source_name = d.source.name
+      target_name = d.target.name
+      console.log source_name + ',' + target_name
+      target_children = root.rawdata[target_name].children
+      if target_children?
+        if target_children.indexOf(source_name) != -1
+          return colors(1)
+      source_depends = root.rawdata[source_name].depends
+      if source_depends?
+        if source_depends.indexOf(target_name) != -1
+          return colors(0)
+      #colors(2)
+      #null
+      */
       return 'black';
     }).style('stroke-opacity', function(d){
       return 0.2;
@@ -255,7 +258,6 @@
     if (topic == null) {
       topic = root.viewed_topic;
     }
-    root.all_parent_names = list_parent_names_recursive(topic);
     parents_and_depends = list_parents_and_depends_recursive(topic);
     if (parents_and_depends.length === 0) {
       root.max_depth = max_depth = 0;
@@ -273,7 +275,7 @@
     name_to_treedata[topic] = treeData;
     for (i$ = 0, len$ = (ref$ = (fn$())).length; i$ < len$; ++i$) {
       cur_depth = ref$[i$];
-      for (j$ = 0, len1$ = (ref1$ = parents_and_depends.filter(fn1$).sort(parent_dep_sorting_func)).length; j$ < len1$; ++j$) {
+      for (j$ = 0, len1$ = (ref1$ = parents_and_depends.filter(fn1$)).length; j$ < len1$; ++j$) {
         ref2$ = ref1$[j$], name = ref2$.name, relation = ref2$.relation, depth = ref2$.depth, parent = ref2$.parent;
         if (name_to_treedata[name] != null) {
           continue;
@@ -410,6 +412,7 @@
   };
   $(document).ready(function(){
     var params, topic, output, graph_file, ref$;
+    console.log('document ready');
     root.params = params = getUrlParameters();
     topic = params.topic;
     if (topic == null) {
@@ -420,7 +423,9 @@
     graph_file = (ref$ = params.graph_file) != null ? ref$ : 'graph.yaml';
     return $.get(graph_file, function(yamltxt){
       var data;
+      console.log('preprocess');
       root.rawdata = data = preprocess_data(jsyaml.safeLoad(yamltxt));
+      console.log('rawdata fininshed');
       return get_bing_counts(data, function(counts){
         var topic_name, count;
         for (topic_name in counts) {

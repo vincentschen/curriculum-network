@@ -2,9 +2,11 @@ graph_metadata:
   relation_types:
     - depends
     - children
+    - depends_on_module
     #- parents
   preprocessing_steps:
-    - add_parents_for_children
+    - expand_depends_on_module
+    #- add_parents_for_children
 Sorting:
   link: "https://en.wikipedia.org/wiki/Sorting_algorithm"
   depends:
@@ -20,6 +22,8 @@ Mergesort implementation:
   tags:
     - mergesort
     - implementation
+  depends:
+    - Mergesort
 Heapsort:
   summary: Heapsort is a sorting algorithm that works by creating a min heap and repeatedly extracting the minimum value from it
   link: "https://en.wikipedia.org/wiki/Heapsort"
@@ -40,8 +44,8 @@ Heap interface:
   tags:
     - heap
     - interface
-  depends:
-    - Classes
+  depends_on_module:
+    - Basic Object-Oriented Programming
   link: "https://docs.python.org/2/library/heapq.html"
 Binary heap complexity analysis:
   tags:
@@ -68,18 +72,21 @@ Hash table interface:
   tags:
     - hash table
     - interface
-  depends:
-    - Classes
+  depends_on_module:
+    - Basic Object-Oriented Programming
   link: "https://docs.python.org/2/tutorial/datastructures.html#dictionaries"
 Methods:
   link: "http://en.wikipedia.org/wiki/Method_(computer_programming)"
 Fields:
   link: "http://en.wikipedia.org/wiki/Field_(computer_science)"
-Classes:
-  summary: An interface allows you to use existing code in the form of a class without having implemented it yourself
+Basic Object-Oriented Programming:
+  is_module_only: true
   children:
+    - Classes
     - Methods
     - Fields
+Classes:
+  summary: An interface allows you to use existing code in the form of a class without having implemented it yourself
   link: "http://en.wikipedia.org/wiki/Class_(computer_programming)"
 Complexity analysis:
   link: "http://en.wikipedia.org/wiki/Big_O_notation"
@@ -130,6 +137,7 @@ Heaps:
   depends:
     - Fibonacci heap complexity analysis
     - Hash table complexity analysis
+    - "Dijkstra's algorithm"
 "Dijkstra's algorithm":
   link: "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Algorithm"
   tags:
@@ -149,8 +157,8 @@ Hash tables:
 Graphs:
   link: "http://en.wikipedia.org/wiki/Graph_(mathematics)#Graph"
 Graph interface:
-  depends:
-    - Classes
+  depends_on_module:
+    - Basic Object-Oriented Programming
   link: "http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph"
 "Dijkstra's algorithm implementation":
   link: "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Pseudocode"
@@ -162,6 +170,7 @@ Graph interface:
     - Graph interface
     - Heap interface
     - Hash table interface
+    - "Dijkstra's algorithm"
 Fibonacci heap:
   children:
     - Fibonacci heap complexity analysis
