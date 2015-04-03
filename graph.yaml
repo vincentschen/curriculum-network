@@ -24,6 +24,7 @@ Mergesort implementation:
     - implementation
   depends:
     - Mergesort
+  quizlink: exercises/mergesort.html
 Heapsort:
   summary: Heapsort is a sorting algorithm that works by creating a min heap and repeatedly extracting the minimum value from it
   link: "https://en.wikipedia.org/wiki/Heapsort"
