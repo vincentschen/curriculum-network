@@ -1,19 +1,19 @@
-Search Algorithms: 
-    suggests: 
-      - Sequential Search
-      - Binary Search 
+# Search Algorithms: 
+#     suggests: 
+#       - Sequential Search
+#       - Binary Search 
 Binary Search:
   children: 
     - Recursion
-  suggests:
-    - Sequential Search
+  # suggests:
+  #   - Sequential Search
     #in this case, suggst means it would help you appreciate BST 
 Binary Search Trees:
   children:
     - Binary Trees
     - Binary Search
-  suggests: 
-    - Graphs
+  # suggests: 
+  #   - Graphs
 Binary Trees:
   children:
     - Binary Search Trees
@@ -23,8 +23,8 @@ Tree Balancing:
   children: 
     - Trees 
     - Binary Search Trees
-  suggests: 
-    - Red-black Tree 
+  # suggests: 
+  #   - Red-black Tree 
 AVL Trees: 
   children: 
     - Tree Balancing

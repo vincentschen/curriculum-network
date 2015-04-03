@@ -17,6 +17,7 @@ Shortest Path Algorithms:
 "Dijkstra's":
   children:
     - Priority Queues
+    - Heaps 
     - Graphs
 A*:
   children: 
