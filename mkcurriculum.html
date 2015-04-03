@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="css/d3_tip.css"/>
+<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="css/mkcurriculum.css"/>
+
+<body>
+<script src="bower_components/d3/d3.js"></script>
+<script src="bower_components/d3-tip/index.js"></script>
+<script src="bower_components/js-yaml/dist/js-yaml.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/prelude-browser-min/index.js"></script>
+<script src="js/highlight_network.js"></script>
+<script src="js/render_links.js"></script>
+<script src="js/network_queries.js"></script>
+<script src="js/clientcommon.js"></script>
+<script src="js/graph_preprocessing.js"></script>
+<script src="js/mkcurriculum.js"></script>
+<div id="curriculum"></div>
+<div id="lessondisplay">
+<div style="position: absolute; height: 40px; width: 100%">
+Lesson for <span id="topicname"></span>. <a id="makefocustopic" href="#">Make this the focus topic</a> <a id="viewnetwork" href="#" target="_blank">View curriculum network</a>
+</div>
+<div id="lessonframewrapper">
+<ul class="nav nav-tabs" style="height: 100%">
+<li role="presentation" id="showwikipediabutton" class="active showlessonbutton" onclick="showwikipedia()"><a href="#">Explanation</a></li>
+<li role="presentation" id="showquizzesbutton" class="showlessonbutton" onclick="showquizzes()"><a href="#">Quizzes</a></li>
+<div id="lessoninnerwrapper">
+<iframe id="lessonframe" src="about:blank" style="display: none"></iframe>
+<div id="lessondiv"></div>
+</div>
+</ul>
+</div>
+</div>
+</body>
+</html>

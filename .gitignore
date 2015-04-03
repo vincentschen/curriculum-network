@@ -1,1 +1,6 @@
+.DS_Store
 node_modules
+.bing_keys.yaml
+.getsecret.yaml
+mongodata
+.vagrant

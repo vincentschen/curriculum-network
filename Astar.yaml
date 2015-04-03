@@ -1,5 +1,14 @@
+graph_metadata:
+  relation_types:
+    - depends # depends on an external thing - essentially going "sideways"
+    - parents # depends on a parent - going upwards in the skill tree
+    #- children
+    #- suggests
+  preprocessing_steps:
+    - convert_children_to_parents
+
 #A* has the same dependencies as Dijkstra's, but cannot be preceded by Dijkstra's
-#Should the nodes reflect that? 
+#Should the nodes reflect that?
 
 Graphs:
   children:
@@ -17,18 +26,17 @@ Shortest Path Algorithms:
 "Dijkstra's":
   children:
     - Priority Queues
-    - Heaps 
     - Graphs
 A*:
-  children: 
+  children:
     - "Dijkstra's"
     - Heuristics
-Binary Search Trees: 
-  children: 
+Binary Search Trees:
+  children:
     - Arrays
-Greedy Algorithms: 
-  children: 
+Greedy Algorithms:
+  children:
     - Heuristics
-  # suggests: 
+  # suggests:
   #   - "Dijkstra's"
   #   - A*

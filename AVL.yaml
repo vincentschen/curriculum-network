@@ -1,30 +1,38 @@
-Search Algorithms: 
-    suggests: 
+graph_metadata:
+  relation_types:
+    - depends # depends on an external thing - essentially going "sideways"
+    - parents # depends on a parent - going upwards in the skill tree
+    #- children
+    #- suggests
+  preprocessing_steps:
+    - convert_children_to_parents
+Search Algorithms:
+    suggests:
       - Sequential Search
-      - Binary Search 
+      - Binary Search
 Binary Search:
-  children: 
+  children:
     - Recursion
   suggests:
     - Sequential Search
-    #in this case, suggst means it would help you appreciate BST 
+    #in this case, suggst means it would help you appreciate BST
 Binary Search Trees:
   children:
     - Binary Trees
     - Binary Search
-  suggests: 
+  suggests:
     - Graphs
 Binary Trees:
   children:
     - Binary Search Trees
     - Binary Heaps
     - Trees
-Tree Balancing: 
-  children: 
-    - Trees 
+Tree Balancing:
+  children:
+    - Trees
     - Binary Search Trees
-  suggests: 
-    - Red-black Tree 
-AVL Trees: 
-  children: 
+  suggests:
+    - Red-black Tree
+AVL Trees:
+  children:
     - Tree Balancing

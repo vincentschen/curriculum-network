@@ -1,0 +1,56 @@
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+#showwikipediabutton {
+  cursor: pointer;
+}
+
+#showquizzesbutton {
+  cursor: pointer;
+}
+
+#lessondisplay {
+  position: fixed;
+  top: 0px;
+  left: 25%;
+  width: 75%;
+  height: 100%;
+}
+
+#lessonframe {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  border: 0px;
+}
+
+.lessontype {
+  height: 40px;
+}
+
+#lessoninnerwrapper {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  height: calc(100% - 50px);
+  margin: 0px;
+  border: 0px;
+}
+
+#lessondiv {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  border: 0px;
+}
+
+#lessonframewrapper {
+  position: absolute;
+  top: 180px;
+  height: calc(100% - 180px);
+  width: 100%;
+  /*z-index: -30;*/
+}

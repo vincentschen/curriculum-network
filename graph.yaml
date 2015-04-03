@@ -1,30 +1,168 @@
-# Search Algorithms: 
-#     suggests: 
-#       - Sequential Search
-#       - Binary Search 
-Binary Search:
-  children: 
+graph_metadata:
+  relation_types:
+    - depends
+    - children
+    #- parents
+  preprocessing_steps:
+    - add_parents_for_children
+Sorting:
+  link: "https://en.wikipedia.org/wiki/Sorting_algorithm"
+  depends:
+    - Array
+Mergesort:
+  link: "https://en.wikipedia.org/wiki/Merge_sort"
+  depends:
+    - Sorting
     - Recursion
-  # suggests:
-  #   - Sequential Search
-    #in this case, suggst means it would help you appreciate BST 
-Binary Search Trees:
   children:
-    - Binary Trees
-    - Binary Search
-  # suggests: 
-  #   - Graphs
-Binary Trees:
+    - Mergesort implementation
+Mergesort implementation:
+  tags:
+    - mergesort
+    - implementation
+Heapsort:
+  summary: Heapsort is a sorting algorithm that works by creating a min heap and repeatedly extracting the minimum value from it
+  link: "https://en.wikipedia.org/wiki/Heapsort"
+  depends:
+    - Sorting
+    - Min heap
   children:
-    - Binary Search Trees
-    - Binary Heaps
-    - Trees
-Tree Balancing: 
-  children: 
-    - Trees 
-    - Binary Search Trees
-  # suggests: 
-  #   - Red-black Tree 
-AVL Trees: 
-  children: 
-    - Tree Balancing
+    - Heapsort implementation
+Heapsort implementation:
+  tags:
+    - heapsort
+    - implementation
+  summary: "To implement heapsort, you need to implement a min heap with the heapify and extract-min operations, then use it to"
+  link: "https://en.wikipedia.org/wiki/Heapsort#Pseudocode"
+  depends:
+    - Heap interface
+Heap interface:
+  tags:
+    - heap
+    - interface
+  depends:
+    - Classes
+  link: "https://docs.python.org/2/library/heapq.html"
+Binary heap complexity analysis:
+  tags:
+    - binary heap
+    - complexity analysis
+Fibonacci heap complexity analysis:
+  tags:
+    - fibonacci heap
+    - complexity analysis
+  depends:
+    - Complexity analysis
+Fibonacci heap implementation:
+  tags:
+    - fibonacci heap
+    - complexity analysis
+Hash table complexity analysis:
+  link: "http://en.wikipedia.org/wiki/Hash_table#Performance_analysis"
+  tags:
+    - hash table
+    - complexity analysis
+  depends:
+    - Complexity analysis
+Hash table interface:
+  tags:
+    - hash table
+    - interface
+  depends:
+    - Classes
+  link: "https://docs.python.org/2/tutorial/datastructures.html#dictionaries"
+Methods:
+  link: "http://en.wikipedia.org/wiki/Method_(computer_programming)"
+Fields:
+  link: "http://en.wikipedia.org/wiki/Field_(computer_science)"
+Classes:
+  summary: An interface allows you to use existing code in the form of a class without having implemented it yourself
+  children:
+    - Methods
+    - Fields
+  link: "http://en.wikipedia.org/wiki/Class_(computer_programming)"
+Complexity analysis:
+  link: "http://en.wikipedia.org/wiki/Big_O_notation"
+  summary: Complexity analysis is the process of proving the running time complexity of an algorithm
+Insert implementation (binary heap):
+  tags:
+    - insert
+    - implementation
+    - binary heap
+  link: "https://en.wikipedia.org/wiki/Binary_heap#Insert"
+Heapify implementation (binary heap):
+  tags:
+    - heapify
+    - implementation
+    - binary heap
+  link: "https://en.wikipedia.org/wiki/Binary_heap#Building_a_heap"
+Extract-min implementation (binary heap):
+  tags:
+    - extract-min
+    - implementation
+    - binary heap
+  link: "https://en.wikipedia.org/wiki/Binary_heap#Delete"
+Min heap:
+  children:
+    - Extract-min implementation (binary heap)
+Max heap: {}
+Binary heap:
+  children:
+    - Binary heap complexity analysis
+    - Insert implementation (binary heap)
+    - Heapify implementation (binary heap)
+    - Extract-min implementation (binary heap)
+Heaps:
+  link: "http://en.wikipedia.org/wiki/Heap_(data_structure)"
+  children:
+    - Heap interface
+    - Min heap
+    - Max heap
+    - Binary heap
+    - Fibonacci heap
+"Dijkstra's algorithm complexity analysis":
+  link: "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Running_time"
+  quiz: "What is the running time of Dijkstra's algorithm, as implemented using a fibonacci heap?<br>Express your result in Big-O notation, where E denotes the number of edges, and V denotes the number of vertices.<br><input></input><br>(Answer: O(E + VlogV))"
+  quizlink: /quizzes/dijkstra.html
+  tags:
+    - "dijkstra's algorithm"
+    - complexity analysis
+  depends:
+    - Fibonacci heap complexity analysis
+    - Hash table complexity analysis
+"Dijkstra's algorithm":
+  link: "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Algorithm"
+  tags:
+    - "dijkstra's algorithm"
+  depends:
+    - Heaps
+    - Hash tables
+    - Graphs
+  children:
+    - "Dijkstra's algorithm complexity analysis"
+    - "Dijkstra's algorithm implementation"
+Hash tables:
+  link: "http://en.wikipedia.org/wiki/Hash_table"
+  children:
+    - Hash table complexity analysis
+    - Hash table interface
+Graphs:
+  link: "http://en.wikipedia.org/wiki/Graph_(mathematics)#Graph"
+Graph interface:
+  depends:
+    - Classes
+  link: "http://networkx.github.io/documentation/networkx-1.9.1/reference/classes.graph.html#networkx.Graph"
+"Dijkstra's algorithm implementation":
+  link: "http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Pseudocode"
+  quizlink: "/exercises/dijkstra_implementation.html"
+  tags:
+    - "dijkstra's algorithm"
+    - implementation
+  depends:
+    - Graph interface
+    - Heap interface
+    - Hash table interface
+Fibonacci heap:
+  children:
+    - Fibonacci heap complexity analysis
+    - Fibonacci heap implementation

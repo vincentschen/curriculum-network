@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="css/d3_tip.css"/>
 <link rel="stylesheet" type="text/css" href="css/main.css"/>
@@ -7,13 +8,15 @@
 <div style="position: fixed; left: 0px; top: 0px; font-size: 14px">
   <span>Focus topic:</span> <span id="focustopic"></span><br>
   <span>Parents:</span> <span id="parentslist"></span><br>
-  <a href="/">View the full network</a>
+  <a href="#" onclick="changetopic('')">View the full network</a>
 </div>
-<div style="position: fixed; left: 0px; top: 100px; font-size: 14px">
+<div id="edgetypes" style="position: fixed; left: 0px; top: 100px; font-size: 14px">
   <div>Edge types:</div>
+  <!--
   <div><div style="background-color: #0000ff; width: 10px; height: 10px; border-radius: 10px; float: left; margin-right: 5px"></div> Children</div>
   <div><div style="background-color: #00ff00; width: 10px; height: 10px; border-radius: 10px; float: left; margin-right: 5px"></div> Depends</div>
   <div><div style="background-color: #ff00ff; width: 10px; height: 10px; border-radius: 10px; float: left; margin-right: 5px"></div> Suggests</div>
+  -->
 </div>
 <script src="bower_components/d3/d3.js"></script>
 <script src="bower_components/d3-tip/index.js"></script>
@@ -23,6 +26,8 @@
 <script src="js/highlight_network.js"></script>
 <script src="js/render_links.js"></script>
 <script src="js/network_queries.js"></script>
+<script src="js/clientcommon.js"></script>
+<script src="js/graph_preprocessing.js"></script>
 <script src="js/index.js"></script>
 </body>
 </html>

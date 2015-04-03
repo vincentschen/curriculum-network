@@ -1,29 +1,38 @@
+graph_metadata:
+  relation_types:
+    - depends # depends on an external thing - essentially going "sideways"
+    - parents # depends on a parent - going upwards in the skill tree
+    #- children
+    #- suggests
+  preprocessing_steps:
+    - convert_children_to_parents
+
 Sorting Algorithms:
   children:
     - Quicksort
-Quicksort: 
-  depends: 
-    - Sorting 
+Quicksort:
+  depends:
+    - Sorting
     - Divide and Conquer
-    #depends more on Divide and Conquer than something like backtracking 
+    #depends more on Divide and Conquer than something like backtracking
     - Big O
-  # suggests: 
-  #   - Selection Sort 
-  #   - Insertion Sort 
-  #   - Merge Sort 
-Sorting: 
-  children: 
-    - Sorting Algorithms 
-    - Arrays 
-Divide and Conquer: 
-  children: 
+  # suggests:
+  #   - Selection Sort
+  #   - Insertion Sort
+  #   - Merge Sort
+Sorting:
+  children:
+    - Sorting Algorithms
+    - Arrays
+Divide and Conquer:
+  children:
     - Recursion
-Sorting Algorithms: 
-  children: 
-    - Selection Sort 
-    - Insertion Sort 
-    - Merge Sort 
+Sorting Algorithms:
+  children:
+    - Selection Sort
+    - Insertion Sort
+    - Merge Sort
     - Quicksort
-Big O: 
-  children: 
+Big O:
+  children:
     - Algorithms
