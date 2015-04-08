@@ -41,6 +41,7 @@ Heapsort implementation:
   link: "https://en.wikipedia.org/wiki/Heapsort#Pseudocode"
   depends:
     - Heap interface
+    - Heapsort
 Heap interface:
   tags:
     - heap
@@ -52,16 +53,21 @@ Binary heap complexity analysis:
   tags:
     - binary heap
     - complexity analysis
+  depends:
+    - Binary heap
 Fibonacci heap complexity analysis:
   tags:
     - fibonacci heap
     - complexity analysis
   depends:
     - Complexity analysis
+    - Fibonacci heap
 Fibonacci heap implementation:
   tags:
     - fibonacci heap
     - complexity analysis
+  depends:
+    - Fibonacci heap
 Hash table complexity analysis:
   link: "http://en.wikipedia.org/wiki/Hash_table#Performance_analysis"
   tags:
@@ -69,6 +75,7 @@ Hash table complexity analysis:
     - complexity analysis
   depends:
     - Complexity analysis
+    - Hash tables
 Hash table interface:
   tags:
     - hash table
@@ -97,29 +104,41 @@ Insert implementation (binary heap):
     - insert
     - implementation
     - binary heap
+  depends:
+    - Binary heap
   link: "https://en.wikipedia.org/wiki/Binary_heap#Insert"
 Heapify implementation (binary heap):
   tags:
     - heapify
     - implementation
     - binary heap
+  depends:
+    - Binary heap
   link: "https://en.wikipedia.org/wiki/Binary_heap#Building_a_heap"
 Extract-min implementation (binary heap):
   tags:
     - extract-min
     - implementation
     - binary heap
+  depends:
+    - Binary heap
   link: "https://en.wikipedia.org/wiki/Binary_heap#Delete"
 Min heap:
   children:
     - Extract-min implementation (binary heap)
-Max heap: {}
+  depends:
+    - Heaps
+Max heap:
+  depends:
+    - Heaps
 Binary heap:
   children:
     - Binary heap complexity analysis
     - Insert implementation (binary heap)
     - Heapify implementation (binary heap)
     - Extract-min implementation (binary heap)
+  depends:
+    - Heaps
 Heaps:
   link: "http://en.wikipedia.org/wiki/Heap_(data_structure)"
   children:
@@ -176,3 +195,5 @@ Fibonacci heap:
   children:
     - Fibonacci heap complexity analysis
     - Fibonacci heap implementation
+  depends:
+    - Heaps
