@@ -9,6 +9,17 @@ Sorting:
   link: "https://en.wikipedia.org/wiki/Sorting_algorithm"
   depends:
     - Array
+# QuickSort: 
+#   link: "https://en.wikipedia.org/wiki/Quicksort"
+#   depends: 
+#     - Sorting 
+#     - Recursion 
+#   children: 
+#     - Quicksort implementation
+# QuickSort implementation: 
+#   tags: 
+#     - quicksort 
+#     - implementation
 Mergesort:
   link: "https://en.wikipedia.org/wiki/Merge_sort"
   depends:
