@@ -6,18 +6,8 @@
 <meta name="description" content="Bootstrap Basic Carousel - Bootstrap Carousel - Collection by sevenXdemo - More Information: www.sevenX.de/blog" />
 <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-aewsome.min.css"/>
- 
- 
-<style>
-body { padding-top: 50px; }
-#myCarousel .nav a small {
-  display:block;
-}
-#myCarousel .nav {
-  background:#eee;
-}
-</style>
- 
+<link rel="stylesheet" type="text/css" href="qsort.css"/>
+
 </head>
  
 <body>
@@ -75,28 +65,7 @@ body { padding-top: 50px; }
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script>
-  $('#myCarousel').carousel({
-    interval:   4000
-  });
-  
-  var clickEvent = false;
-  $('#myCarousel').on('click', '.nav a', function() {
-      clickEvent = true;
-      $('.nav li').removeClass('active');
-      $(this).parent().addClass('active');    
-  }).on('slid.bs.carousel', function(e) {
-    if(!clickEvent) {
-      var count = $('.nav').children().length -1;
-      var current = $('.nav li.active');
-      current.removeClass('active').next().addClass('active');
-      var id = parseInt(current.data('slide-to'));
-      if(count == id) {
-        $('.nav li').first().addClass('active');  
-      }
-    }
-    clickEvent = false;
-  });
-</script>
+<script src="qsort.js"></script>
+
 </body>
 </html>
