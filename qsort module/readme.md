@@ -14,3 +14,6 @@
 ## Notes
 https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/overview-of-quicksort
 - References in mergesort in curriculum. Not applicable in our model?
+
+## Contact 
+- Please reach out if we think we should refactor this to be incorporated!
