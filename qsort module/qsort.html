@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<title>Understanding Quicksort (with interactive demo) ★ me.dt.in.th</title>
+
+<meta name="author" content="Thai Pangsakulyanont">
+<meta property="og:title" content="Understanding Quicksort (with interactive demo) ★ me.dt.in.th">
+<meta property="og:site_name" content="me.dt.in.th">
+<meta property="fb:admins" content="1658509977">
+
+<!-- Enable responsive viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Le styles -->
+<!-- <link rel="stylesheet" href="style.css">
+ --><link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="main.css">
+<style> 
+body { padding-top: 50px; }
+#myCarousel .nav a small {
+  display:block;
+}
+#myCarousel .nav {
+  background:#eee;
+}
+
+
+</style>
+<!-- Le fav and touch icons -->
+<!-- atom & rss feed -->
+
+
+  <style>@import "//code.jquery.com/ui/1.10.3/themes/ui-darkness/jquery-ui.css";
+.slider { margin: 0 10% 15px; }
+.example { text-align: center; }
+.example .number { background: #252423; border: 2px solid #454443; margin: 1px; display: inline-block;
+width: 40px; height: 40px; line-height: 40px; text-align: center; font-size: 18px;}
+.example .pivot.number:not(.offstack) { background: #353; color: #cfc; border-color: #595; }
+.example .before-pivot.number:not(.offstack) { background: #533; color: #fcc; border-color: #955; }
+.example .after-pivot.number:not(.offstack) { background: #335; color: #ccf; border-color: #559; }
+.example .addendum { height: 120px; padding: 1px; }
+.example .offstack.number { opacity: 0.1; }
+.example .stack-frame { line-height: 12px; }
+.example .stack-bound { height: 10px; display: inline-block; border: 2px solid #e9e857; border-top-width: 0; vertical-align: top; margin-bottom: 2px; }
+.example .inactive.stack-frame .stack-bound { border-color: #8b8685; }
+.example .sorted.number { background: #c9c8c7; color: #090807; border-color: #000; }
+.example .closed.number { background: #151413; color: #151413; border-color: #000; }
+.example .just-closed.number { background: #151413; color: #151413; border-color: #555453; }
+.example .partitioning.number { border-color: #858483; }
+.instructions { text-align: center; color: #8b8685; }
+</style>
+
+
+</head>
+
+<body>
+
+
+<div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+      
+        <div class="item active">
+          <img src="dark.png">
+           <div class="carousel-caption">
+
+            <h3>Quicksort Overview</h3>
+              <div class="row">
+              <img class="col-lg-4" src = "quicksort_anim.gif"></img>
+              <div class="col-lg-8">
+              <p>Quicksort is a good example of the divide and conquer strategy for solving problems. In quicksort, we divide the array of items to be sorted into two partitions and then call the quicksort procedure recursively to sort the two partitions, ie we divide the problem into two smaller ones and conquer by solving the smaller ones. Thus the conquer part of the quicksort routine looks like this:</p>
+
+              <p>For the strategy to be effective, the partition phase must ensure that all the items in one part (the lower part) and less than all those in the other (upper) part.</p>
+
+              <p>To do this, we choose a pivot element and arrange that all the items in the lower part are less than the pivot and all those in the upper part greater than it. In the most general case, we don't know anything about the items to be sorted, so that any choice of the pivot element will do - the first element is a convenient one. </p>
+              </div>
+              </div>
+          </div>
+        </div><!-- End Item -->
+ 
+         <div class="item">
+          <img src="lighter.png">
+           <div class="carousel-caption">
+            <h3>Partitioning</h3>
+
+            <ul>
+              <li>First, assume that the pivot is the leftmost element.</li>
+              <li>Flip all the other cards down.</li>
+              <li>Then, open each card from left to right.</li>
+              <li>If you find a card that is less than the pivot:</li>
+                <ul>
+                  <li>Swap that card with the card that was first opened (the leftmost open card), and close that leftmost card.</li>
+                  <li>Also take note of the last closed card.</li>
+                <ul>Otherwise, continue opening the next card.</ul>
+              <li>Swap the last closed card with the pivot (if any).</li>
+              <li>Open all cards… You will see that the array is already partitioned!</li>
+            </ul>
+
+            </br>
+
+            <div id = "ex3"></div>
+          
+          </div>
+        </div><!-- End Item -->
+        
+        <div class="item">
+          <img src="dark.png">
+           <div class="carousel-caption">
+            <h3>Picking the Pivot</h3>
+            <p> For simplicity, we picked the leftmost element as the pivot, but this isn’t always good. Let’s consider this case where the array is reverse-sorted:</p>
+            <div id ="ex4"></div>
+            <ul>
+            <p>One approach that some people use is: just pick a random pivot! … “but the partitioning algorithm assumes that the pivot is at the leftmost element!” Easy, just swap the pivot we picked with the leftmost element, then the leftmost element becomes the pivot. </p>
+            <div id ="ex5"></div>
+          </div>
+        </div><!-- End Item -->
+        
+        <div class="item">
+          <img src="lighter.png">
+           <div class="carousel-caption">
+            <h3>Algorithmic Analysis</h3>
+            <h4>Quicksort is usually fast</h4>
+
+              <p>Although Quicksort has worst-case O(n2) behaviour, it is usually fast: assuming random pivot selection, there's a very large chance we pick some number that separates the input into two similarly sized subsets, which is exactly what we want to have.</p>
+
+              <p>In particular, even if we pick a pivot that creates a 10%-90% split every 10 splits (which is a meh split), and a 1 element - n−1 element split otherwise (which is the worst split you can get), our running time is still O(nlogn) (note that this would blow up the constants to a point that Merge sort is probably faster though).</p>
+
+              <h4>Quicksort is usually faster than most sorts</h4>
+              <p>Quicksort is usually faster than sorts that are slower than O(nlogn) (say, Insertion sort with its O(n2) running time), simply because for large n their running times explode.</p>
+
+              <p>A good reason why Quicksort is so fast in practice compared to most other O(nlogn) algorithms such as Heapsort, is because it is relatively cache-efficient. Its running time is actually O(nBlog(nB)), where B is the block size. Heapsort, on the other hand, doesn't have any such speedup: it's not at all accessing memory cache-efficiently.</p>
+
+              <p>The reason for this cache efficiency is that it linearly scans the input and linearly partitions the input. This means we can make the most of every cache load we do as we read every number we load into the cache before swapping that cache for another. In particular, the algorithm is cache-oblivious, which gives good cache performance for every cache level, which is another win.</p>
+
+              <p>Cache efficiency could be further improved to O(nBlogMB(nB)), where M is the size of our main memory, if we use k-way Quicksort. Note that Mergesort also has the same cache-efficiency as Quicksort, and its k-way version in fact has better performance (through lower constant factors) if memory is a severe constrain. This gives rise to the next point: we'll need to compare Quicksort to Mergesort on other factors.</p>
+
+
+
+          </div>
+        </div><!-- End Item -->
+                
+      </div><!-- End Carousel Inner -->
+ 
+ 
+    <ul class="nav nav-pills nav-justified">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"><a href="#">Quicksort Overview<small>Divide and Conquer!</small></a></li>
+          <li data-target="#myCarousel" data-slide-to="1"><a href="#">Partitioning<small>Keep Track of Pointers</small></a></li>
+          <li data-target="#myCarousel" data-slide-to="2"><a href="#">Pivoting<small>Sort Around Pivot</small></a></li>
+          <li data-target="#myCarousel" data-slide-to="3"><a href="#">Algorithmic Analysis<small>Why? How? When?</small></a></li>
+        </ul>
+ 
+ 
+    </div><!-- End Carousel -->
+
+<script src="jquery.js"></script>
+<script src="jquery-ui.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="qsort.js"></script>
+
+<script>$(function() {
+
+  $('#nojs').hide()
+
+  function render(id, frames) {
+    var el = $('#' + id)
+      , data = $('<div></div>').appendTo(el)
+    el.addClass('example')
+    function display(index) {
+      var html = ''
+        , frame = frames[index]
+      for (var i = 0; i < frame.array.length; i ++) {
+        var classes = ['number']
+        if (frame.sorted && frame.sorted[i]) classes.push('sorted')
+        if (frame.classes && frame.classes[i] != null) {
+          classes.push(frame.classes[i])
+        } else if (frame.active) {
+          var active = frame.active
+          if (active.pivot != null) {
+            var pivot = active.pivot
+            if (i == pivot) classes.push('pivot')
+            else if (active.partitioned) {
+              if (i < pivot) classes.push('before-pivot')
+              if (i > pivot) classes.push('after-pivot')
+            } else {
+              if (frame.opened) {
+                if (i < frame.opened[0] || i >= frame.opened[1]) {
+                  classes.push('closed')
+                } else {
+                  classes.push('after-pivot')
+                }
+              }
+            }
+          }
+        }
+        if (frame.stack && frame.stack.length > 0) {
+          var top = frame.stack[frame.stack.length - 1]
+          if (i < top[0] || i >= top[1]) classes.push('offstack')
+        }
+        html += '<span class="' + classes.join(' ') + '">' + frame.array[i] + '</span>'
+      }
+      function size(z) {
+        return 46 * z + 'px'
+      }
+      var addendum = false
+      if (frame.stack || frame.description) addendum = true
+      if (addendum) html += '<div class="addendum">'
+      if (frame.stack) {
+        html += '<div class="stacks">'
+        for (var j = frame.stack.length - 1; j >= 0; j --) {
+          var sf = frame.stack[j]
+            , style = 'width: ' + size(sf[1] - sf[0]) + '; margin-left: ' + size(sf[0]) + '; margin-right: ' + size(frame.array.length - sf[1])
+          html += '<div class="stack-frame' + (j < frame.stack.length - 1 ? ' inactive' : '') + '"><div class="stack-bound" style="' + style + '"></div></div>'
+        }
+        html += '</div>'
+      }
+      if (frame.description) {
+        html += '<p class="description">' + '<b> ( ' + (index + 1) + ' / ' + frames.length + ' ) </b><br>' + frame.description + '</p>'
+      }
+      if (addendum) html += '</div>'
+      data.html(html)
+    }
+    display(0)
+    var frameManager = {
+          frame: 0
+        , next: function() {
+            this.go(this.frame + 1)
+          }
+        , go: function(frame) {
+            this.frame = frame
+            display(this.frame)
+          }
+        }
+    if (frames.length > 1) {
+      $('<div class="slider"></div>').prependTo(el).slider({ min: 0, max: frames.length - 1 }).on('slide', function(event, ui) {
+        frameManager.go(ui.value)
+      })
+    }
+  }
+
+  var array = [ 3, 1, 4, 1, 5, 9, 2, 6, 5, 3 ]
+
+  render('ex1', [ { array: array.slice() } ])
+
+  ;(function() {
+    var a = array.slice()
+      , all = {}
+    a.sort(function(x, y) { return x - y; })
+    for (var i = 0; i < a.length; i ++) all[i] = true
+    render('ex2', [ { array: a.slice(), sorted: all } ])
+  })()
+
+  function doQuickSort(array, id, randomPivot, showPartition) {
+    var a = array.slice()
+      , o = []
+      , stack = []
+      , sorted = []
+      , partitioning
+    function show(description, active) {
+      var all = {}
+        , classes = {}
+      if (partitioning != null) classes[partitioning] = 'partitioning'
+      for (var i = 0; i < sorted.length; i ++) all[sorted[i]] = true
+      o.push({ array: a.slice(), description: description, active: active, stack: stack.slice(), sorted: all, classes: classes })
+    }
+    show('This is the array to sort')
+    function swap(x, y) {
+      var c = a[x]
+      a[x] = a[y]
+      a[y] = c
+    }
+    function partition(lower, upper, pivot) {
+      var left = lower
+        , right = lower
+      function report() {
+        if (showPartition) {
+          partitioning = right - 1
+          show('[Partitioning steps...]', { pivot: pivot })
+          partitioning = null
+        }
+      }
+      while (right < upper) {
+        right++
+        if (a[right - 1] < a[pivot]) {
+          swap(right - 1, left)
+          left++
+        }
+        report()
+      }
+      return left
+    }
+    function quicksort(lower, upper, cb) {
+      if (lower >= upper) return
+      stack.push([lower, upper])
+      var noun = stack.length > 1 ? 'sub-array' : 'array'
+      if (cb) cb()
+      if (lower + 1 == upper) {
+        sorted.push(lower)
+        show('Since there is only one element in this ' + noun + ',<br>we consider that only element "sorted."')
+        stack.pop()
+        return
+      }
+      if (randomPivot) {
+        var rand = (function() {
+          // we will cheat and just pick the median
+          var b = a.slice(lower, upper)
+          b.sort(function(x, y) { return x - y; })
+          var d = b[Math.floor(b.length / 2)]
+          for (var k = lower; k < upper; k ++) if (a[k] == d) return k
+        })()
+        var pivot = a[rand]
+        show('Pick a pivot. The pivot (' + pivot + ') is highlighted in green.', { pivot: rand })
+        swap(rand, lower)
+        show('The pivot is swapped with the leftmost element.', { pivot: lower })
+      } else {
+        var pivot = a[lower]
+        show('Pick a pivot. The pivot (' + pivot + ') is highlighted in green.', { pivot: lower })
+      }
+      var right = partition(lower + 1, upper, lower)
+      swap(lower, right - 1)
+      if (showPartition && lower != right - 1) show('[Partitioning steps...]', { pivot: right - 1 })
+
+      var descs = []
+      descs.push(lower == right - 1 ? 'There are no more elements less than the pivot.' :
+        'All elements less than the pivot are in the left part.')
+      descs.push(right - 1 == upper - 1 ? 'There are no more elements greater than or equal to than the pivot.' :
+        'All elements greater than or equal to the pivot are in the right part.')
+      
+      show('Partition the ' + noun + '. ' + descs.join('<br>'), { pivot: right - 1, partitioned: true })
+      sorted.push(right - 1)
+      show('The pivot is now considered "sorted".')
+      quicksort(lower, right - 1, function() { show('We now do quicksort on the left sub-array.') })
+      quicksort(right, upper, function() { show('We now do quicksort on the right sub-array') })
+      show('Coming back, we see that this ' + noun + ' is sorted.' + (stack.length == 1 ? '<br>Done.' : ''))
+      stack.pop()
+    }
+    quicksort(0, a.length)
+    render(id, o)
+  }
+
+  doQuickSort(array, 'ex3')
+  var down = [15,14,13,12,11,10,9,8,7,6,5,4,3,2,1]
+  doQuickSort(down, 'ex5', false, true)
+  doQuickSort(down, 'ex6', true, true)
+
+  ;(function() {
+    var a = array.slice()
+      , o = []
+      , pivot
+      , opened
+      , beforePivot
+      , normalCard
+      , justClosed
+    function show(description) {
+      var classes = {}
+      if (justClosed != null) classes[justClosed] = 'just-closed'
+      if (beforePivot != null) classes[beforePivot] = 'before-pivot'
+      if (normalCard != null) classes[normalCard] = 'number'
+      o.push({ array: a.slice(), description: description, active: { pivot: pivot }, opened: opened ? opened.slice() : null, classes: classes })
+    }
+    show('This is the array to partition.')
+
+    pivot = 0
+    show('Assume that the pivot is the leftmost element (' + a[0] + ').')
+
+    opened = [1, 1]
+    show('Flip all the other cards down.')
+
+    function swap(x, y) {
+      var c = a[x]
+      a[x] = a[y]
+      a[y] = c
+    }
+
+    function partition(lower, upper) {
+      var left = lower + 1
+        , right = lower + 1
+      pivot = lower
+      while (right < upper) {
+        right++
+        opened = [left, right]
+        normalCard = right - 1
+        show('Open the next card...')
+        normalCard = null
+        if (a[right - 1] < a[pivot]) {
+          var old = a[right - 1], neu = a[left]
+            , selfSwap = right - 1 == left
+          beforePivot = right - 1
+          show('...but ' + old + ' is less than the pivot (' + a[pivot] + ').')
+          swap(right - 1, left)
+          beforePivot = left
+          show('So we swap it with the first opened card (' + (selfSwap ? 'itself' : neu) + ').')
+          left++
+          opened = [left, right]
+          justClosed = beforePivot
+          beforePivot = null
+          show('Then we close that card.')
+        } else {
+          show('...' + a[right - 1] + ' is greater than or equals to the pivot (' + a[pivot] + ').<br>Everything is good.')
+        }
+      }
+      swap(pivot, left - 1)
+      pivot = left - 1
+      justClosed = 0
+      if (pivot == 0) justClosed = null
+      show('Now that we\'ve opened all cards, <br>swap the last closed card with the pivot.')
+      var description = 'Re-open the closed card, you\'ll see that the array is partitioned!'
+      o.push({ array: a.slice(), description: description, active: { pivot: pivot, partitioned: true } })
+    }
+
+    partition(0, a.length)
+
+    render('ex4', o)
+  })()
+
+})
+</script>
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
+
