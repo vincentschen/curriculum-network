@@ -1,0 +1,127 @@
+graph_metadata:
+  relation_types:
+    - depends
+    - children
+
+Introduction (Section 1):
+  children:
+    - What is Machine Learning
+    - Unsupervised Learning
+    - Supervised Learning
+What is Machine Learning:
+  # originally 'Welcome'
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/RKFpn/welcome'
+Unsupervised Learning:
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/olRZo/unsupervised-learning'
+Supervised Learning:
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/1VkCb/supervised-learning'
+  children:
+    - Classification
+    - Regression
+Classification:
+  # part of Supervised Learning video
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/1VkCb/supervised-learning'
+Regression:
+  # part of Supervised Learning video
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/1VkCb/supervised-learning'
+
+Introduction Q1:
+  question_text: 'A computer program is said to learn from experience E with respect to some task T and some performance measure P if its performance on T, as measured by P, improves with experience E. Suppose we feed a learning algorithm a lot of historical weather data, and have it learn to predict weather. In this setting, what is T?'
+  answer_options:
+    - The probability of it correctly predicting a future date's weather.
+    - The process of the algorithm examining a large amount of historical weather data.
+    - The weather prediction task.
+    - None of these.
+  depends:
+    - What is Machine Learning
+Introduction Q2:
+  question_text: 'Suppose you are working on weather prediction, and you would like to predict whether or not it will be raining at 5pm tomorrow. You want to use a learning algorithm for this. Would you treat this as a classification or a regression problem?'
+  answer_options:
+    - Classification
+    - Regression
+  depends:
+    - Classification
+    - Regression
+Introduction Q3:
+  question_text: 'Suppose you are working on stock market prediction. You would like to predict whether or not a certain company will win a patent infringement lawsuit (by training on data of companies that had to defend against similar lawsuits). Would you treat this as a classification or a regression problem?'
+  answer_options:
+    - Regression
+    - Classification
+  depends:
+    - Classification
+    - Regression
+Introduction Q4:
+  question_text: 'Some of the problems below are best addressed using a supervised learning algorithm, and the others with an unsupervised learning algorithm. Which of the following would you apply supervised learning to? (Select all that apply.) In each case, assume some appropriate dataset is available for your algorithm to learn from.'
+  answer_options:
+    - 'Take a collection of 1000 essays written on the US Economy, and find a way to automatically group these essays into a small number of groups of essays that are somehow "similar" or "related".'
+    - "Examine the statistics of two football teams, and predicting which team will win tomorrow's match (given historical data of teams' wins/losses to learn from)."
+    - 'Examine a large collection of emails that are known to be spam email, to discover if there are sub-types of spam mail.'
+    - 'Given genetic (DNA) data from a person, predict the odds of him/her developing diabetes over the next 10 years.'
+  depends:
+    - Unsupervised Learning
+    - Supervised Learning
+Introduction Q5:
+  question_text: 'Which of these is a reasonable definition of machine learning?'
+  answer_options:
+    - Machine learning is the science of programming computers.
+    - Machine learning means from labeled data.
+    - Machine learning is the field of study that gives computers the ability to learn without being explicitly programmed.
+    - Machine learning is the field of allowing robots to act intelligently.
+  depends:
+    - What is Machine Learning
+
+Linear Regression with One Variable (Section 2):
+  children:
+    - Model Representation
+    - Cost Function
+    - Cost Function Intuition 1
+    - Cost Function Intuition 2
+    - Gradient Descent
+    - Gradient Descent Intuition
+    - Gradient Descent for Linear Regression
+Model Representation:
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/db3jS/model-representation'
+  children:
+    - Training Data Representation
+    - Univariate Linear Regression
+Training Data Representation:
+  # part of Model Representation
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/db3jS/model-representation'
+Univariate Linear Regression:
+  # part of Model Representation
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/db3jS/model-representation'
+Cost Function:
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/rkTp3/cost-function'
+Cost Function Intuition 1:
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/N09c6/cost-function-intuition-i'
+Cost Function Intuition 2:
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/nwpe2/cost-function-intuition-ii'
+Gradient Descent:
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/8SpIM/gradient-descent'
+Gradient Descent Intuition:
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/GFFPB/gradient-descent-intuition'
+Gradient Descent for Linear Regression:
+  video_url: 'https://www.coursera.org/learn/machine-learning/lecture/kCvQc/gradient-descent-for-linear-regression'
+
+Linear Regression with One Variable Q1:
+  question_img: questions/2-1.png
+  question_text: 'Consider the problem of predicting how well a student does in her second year of college/university, given how well they did in their first year. Specifically, let x be equal to the number of "A" grades (including A-. A and A+ grades) that a student receives in their first year of college (freshmen year). We would like to predict the value of y, which we define as the number of "A" grades they get in their second year (sophomore year). Refer to the following training set of a small sample of different students performances (note that this training set will also be referenced in other questions in this quiz). Here each row is one training example. Recall that in linear regression, our hypothesis is hθ(x)=θ0+θ1x, and we use m to denote the number of training examples. (FIGURE). For the training set given above, what is the value of m? In the box below, please enter your answer (which should be a number between 0 and 10)'
+  # free response question
+  depends:
+    - Training Data Representation
+Linear Regression with One Variable Q2:
+  question_img: questions/2-2.png
+  question_text: 'Many substances that can burn (such as gasoline and alcohol) have a chemical structure based on carbon atoms; for this reason they are called hydrocarbons. A chemist wants to understand how the number of carbon atoms in a molecule affects how much energy is released when that molecule combusts (meaning that it is burned). The chemists obtains the dataset below. In the column on the right, “kJ/mol” is the unit measuring the amount of energy released. (FIGURE). You would like to use linear regression (hθ(x)=θ0+θ1x) to estimate the amount of energy released (y) as a function of the number of carbon atoms (x). Which of the following do you think will be the values you obtain for θ0 and θ1? You should be able to select the right answer without actually implementing linear regression.'
+  answer_options:
+    - 'θ0=−1780.0,θ1=530.9'
+    - 'θ0=−569.6,θ1=530.9'
+    - 'θ0=−1780.0,θ1=−530.9'
+    - 'θ0=−569.6,θ1=−530.9'
+  depends:
+    - Univariate Linear Regression
+Linear Regression with One Variable Q3:
+  question_img: questions/2-3.png
+  question_text: 'Suppose we set θ0=−1,θ1=2. What is hθ(6)?'
+  # free response question
+  depends:
+    - Univariate Linear Regression
