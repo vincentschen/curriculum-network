@@ -230,12 +230,22 @@ function opencurriculum(target) {
 }
 
 function opencurriculumtree(target) {
-  var targetlink = '/curriculum_tree2.html?' + $.param({topic: target, view: 'curriculum'})
+  var param_list = {topic: target, view: 'curriculum'}
+  var curparams = getUrlParameters()
+  if (curparams.graph_file != null) {
+    param_list.graph_file = curparams.graph_file
+  }
+  var targetlink = '/curriculum_tree2.html?' + $.param(param_list)
   openlink(targetlink)
 }
 
 function openmoduletree(target) {
   //var targetlink = '/module_tree.html?' + $.param({topic: target})
-  var targetlink = '/curriculum_tree2.html?' + $.param({topic: target, view: 'module'})
+  var param_list = {topic: target, view: 'module'}
+  var curparams = getUrlParameters()
+  if (curparams.graph_file != null) {
+    param_list.graph_file = curparams.graph_file
+  }
+  var targetlink = '/curriculum_tree2.html?' + $.param(param_list)
   openlink(targetlink)
 }

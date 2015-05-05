@@ -7,78 +7,75 @@ graph_metadata:
   #preprocessing_steps:
     #- expand_depends_on_module
     #- add_parents_for_children
+
+# based on the meteor manual at http://manual.meteor.com/
 Meteor:
   children:
-    - What is Meteor
-    - Getting Started
-    - Deployment
-    - Templates
-What is Meteor:
-  link: md/meteor/what_is_meteor
-Getting Started:
+    - Deps
+    - Blaze
+Deps:
   children:
-    - Install Meteor
-    - Creating a Simple App
-    - Adding a Package
-    - File Structure of a Meteor App
-    - Miscellaneous
-Install Meteor:
-  link: md/meteor/install_meteor
+    - Deps Overview
+    - Transparent Reactive Programming
+    - A Simple Example
+    - Building a User Interface with Transparent Reactive Programming
+    - How Deps Works
+    - Monitoring Reactive Values
+    - Fine-Grained Reactivity
+    - Creating Reactive Values
+    - The Flush Cycle
+Monitoring Reactive Values:
   children:
-    - Nitrous.io
-Nitrous.io:
-  link: md/meteor/nitrous_io
-Creating a Simple App:
-  link: md/meteor/creating_a_simple_app
-Adding a Package:
-  link: md/meteor/adding_a_package
+    - Autoruns Can Be Nested Inside Autoruns
+    - The Automatic Cleanup Convention
+    - When Autoruns Throw Exceptions
+    - Accessing the Current Computation Inside an Autorun
+    - Detecting the First Run
+    - Ignoring Changes to Certain Reactive Values
+Fine-Grained Reactivity:
   children:
-    - Types of Packages
-Types of Packages:
-  link: md/meteor/types_of_packages
-File Structure of a Meteor App:
-  link: md/meteor/file_structure_of_a_meteor_app
+    - Collection.find() versus Collection.cursor.fetch()
+    - Collection.cursor.count()
+    - Guidelines for Fine-Grained and Course-Grained Reactivity
+Creating Reactive Values:
   children:
-    - Meteor is not MVC
-    - Public directory
-Meteor is not MVC:
-  link: md/meteor/meteor_is_not_mvc
-Public directory:
-  link: md/meteor/public_directory
-Miscellaneous:
+    - Creating a Reactive Value Using the ReactiveDict Library
+    - Some Examples of Cusotm Reactive Values Using ReactiveDict
+    - Creating a Reactive Value Using Deps.Dependency
+    - The Deps.Computation Object
+    - Creating a Reactive Value the Hard Way
+    - The Many-to-Many Relationship Between Computations and Dependencies
+    - Taking a Wait and See Approach
+The Flush Cycle:
   children:
-    - Style Conventions
-    - CSS
-    - Coffeescript
-Style Conventions:
-  link: md/meteor/style_conventions
-CSS:
-  link: md/meteor/css
-Coffeescript:
-  link: md/meteor/coffeescript
-Deployment:
+    - The Reason for the Flush Cycle
+    - Hooking into the Flush Cycle
+    - How the Flush Cycle Works
+    - Avoiding Change Loops
+
+Blaze:
   children:
-    - Deploy on Meteor.com
-    - Deploy on Modulus
-    - Deploy using Meteor Up
-Deploy on Meteor.com:
-  link: md/meteor/deploy_on_meteor_com
-Deploy on Modulus:
-  link: md/meteor/deploy_on_modulus
-Deploy using Meteor Up:
-  link: md/meteor/deploy_using_meteor_up
+    - Blaze Overview
+    - What is Reactive Templating
+    - What is Blaze
+    - How Templates Use Blaze
+    - Blaze Views
+    - Blaze jQuery and Reactive Attributes
+What is Reactive Templating:
   children:
-    - Initializing Meteor Up
-    - Meteor Up Configuration
-    - Setting up and Deploying with mup
-    - Displaying Logs with mup
-Initializing Meteor Up:
-  link: md/meteor/initializing_meteor_up
-Meteor Up Configuration:
-  link: md/meteor/meteor_up_configuration
-Setting up and Deploying with mup:
-  link: md/meteor/setting_up_and_deploying_with_mup
-Displaying Logs with mup:
-  link: md/meteor/displaying_logs_with_mup
-Templates:
-  link: md/meteor/templates
+    - Server-Side Templates
+    - jQuery and Server-Side Templates
+    - Client-Side Templates
+    - Reactive Templating
+How Templates Use Blaze:
+  children:
+    - Compile Time: From Spacebars to JavaScript
+    - Run Time: From JavaScript to HTML
+Blaze Views:
+  children:
+    - Lifecycle of a View
+    - Views Represent Templates
+    - Views Represent Builtins
+Blaze jQuery and Reactive Attributes:
+  children:
+    - How Blaze Handles Attributes
