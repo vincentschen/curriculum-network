@@ -1,0 +1,97 @@
+graph_metadata:
+  relation_types:
+    - depends
+    - children
+    #- depends_on_module
+    #- parents
+  #preprocessing_steps:
+    #- expand_depends_on_module
+    #- add_parents_for_children
+
+# based on discover meteror at https://book.discovermeteor.com/
+Meteor:
+  children:
+    - What is Meteor
+    - Getting Started
+    - Deployment
+    - Templates
+What is Meteor:
+  link: md/meteor/what_is_meteor
+Getting Started:
+  children:
+    - Install Meteor
+    - Creating a Simple App
+    - Adding a Package
+    - File Structure of a Meteor App
+    - Miscellaneous
+Install Meteor:
+  link: md/meteor/install_meteor
+  children:
+    - Nitrous.io
+Nitrous.io:
+  link: md/meteor/nitrous_io
+Creating a Simple App:
+  link: md/meteor/creating_a_simple_app
+Adding a Package:
+  link: md/meteor/adding_a_package
+  children:
+    - Types of Packages
+Types of Packages:
+  link: md/meteor/types_of_packages
+File Structure of a Meteor App:
+  link: md/meteor/file_structure_of_a_meteor_app
+  children:
+    - Meteor is not MVC
+    - Public directory
+    - Finding Files
+Meteor is not MVC:
+  link: md/meteor/meteor_is_not_mvc
+Public directory:
+  link: md/meteor/public_directory
+Finding Files:
+  # actually from the templates chapter
+  link: md/meteor/finding_files
+Miscellaneous:
+  children:
+    - Style Conventions
+    - CSS
+    - Coffeescript
+Style Conventions:
+  link: md/meteor/style_conventions
+CSS:
+  link: md/meteor/css
+Coffeescript:
+  link: md/meteor/coffeescript
+Deployment:
+  children:
+    - Deploy on Meteor.com
+    - Deploy on Modulus
+    - Deploy using Meteor Up
+Deploy on Meteor.com:
+  link: md/meteor/deploy_on_meteor_com
+Deploy on Modulus:
+  link: md/meteor/deploy_on_modulus
+Deploy using Meteor Up:
+  link: md/meteor/deploy_using_meteor_up
+  children:
+    - Initializing Meteor Up
+    - Meteor Up Configuration
+    - Setting up and Deploying with mup
+    - Displaying Logs with mup
+Initializing Meteor Up:
+  link: md/meteor/initializing_meteor_up
+Meteor Up Configuration:
+  link: md/meteor/meteor_up_configuration
+Setting up and Deploying with mup:
+  link: md/meteor/setting_up_and_deploying_with_mup
+Displaying Logs with mup:
+  link: md/meteor/displaying_logs_with_mup
+Templates:
+  link: md/meteor/templates
+  children:
+    - Spacebars
+    - Post List Template
+Post List Template:
+  link: md/meteor/post_list_template
+Spacebars:
+  link: md/meteor/spacebars
