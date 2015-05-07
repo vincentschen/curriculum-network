@@ -69,8 +69,8 @@ What is Reactive Templating:
     - Reactive Templating
 How Templates Use Blaze:
   children:
-    - Compile Time: From Spacebars to JavaScript
-    - Run Time: From JavaScript to HTML
+    - Compile Time - From Spacebars to JavaScript
+    - Run Time - From JavaScript to HTML
 Blaze Views:
   children:
     - Lifecycle of a View

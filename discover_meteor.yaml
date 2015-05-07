@@ -15,6 +15,16 @@ Meteor:
     - Getting Started
     - Deployment
     - Templates
+    - Using Git and Github
+    - Collections
+    - Publications and Subscriptions
+    - Routing
+    - The Meteor Session
+    - Adding Users
+    - Reactivity
+    - Creating Posts
+    - Latency Compensation
+    - Editing Posts
 What is Meteor:
   link: md/meteor/what_is_meteor
 Getting Started:
@@ -91,7 +101,81 @@ Templates:
   children:
     - Spacebars
     - Post List Template
+    - Template Helpers
 Post List Template:
   link: md/meteor/post_list_template
 Spacebars:
   link: md/meteor/spacebars
+Collections:
+  children:
+    - Storing Data
+    - Client and Server Collections
+    - Populating the Database
+    - Dynamic Data
+    - Connecting Collections: Publications and Subscriptions
+Client and Server Collections:
+  children:
+    - Server-Side Collections
+    - Client-Side Collections
+    - Client-Server Communication
+Publications and Subscriptions:
+  children:
+    - Publishing
+    - Subscribing
+    - Finding
+Publishing:
+  children:
+    - Autopublish
+    - Publishing Full Collections
+    - Publishing Partial Collections
+    - Publishing Partial Properties
+Routing:
+  children:
+    - Iron Router
+    - Router Vocabulary
+    - Mapping URLs to Templates
+    - Named Routes
+    - Waiting on Data
+    - Routing to a Specific Post
+    - Using a Dynamic Named Route Helper
+    - Post Not Found
+Iron Router:
+  children:
+    - Adding the Iron Router Package
+The Meteor Session:
+  children:
+    - Changing the Session
+    - Introducing Autorun
+    - Hot Code Reload
+Adding Users:
+  children:
+    - Accounts - users made simple
+    - Creating Our First User
+    - A Mystery Publication
+Reactivity:
+  children:
+    - A Declarative Approach
+    - Dependency Tracking in Meteor - Computations
+    - Setting Up a Computation
+Creating Posts:
+  children:
+    - Building The New Post Page
+    - Adding a Link to the Header
+    - Creating Posts
+    - Adding Some Security
+    - Allowing Post Inserts
+    - Securing Access to the New Post Form
+    - Hiding the Link
+    - Meteor Method - Better Abstraction and Security
+    - Preventing Duplicates
+    - Sorting Posts
+Latency Compensation:
+  children:
+    - Observing Latency Compensation
+    - Client Collection Methods
+    - Methods Calling Methods
+Editing Posts:
+  children:
+    - The Post Edit Template
+    - Setting Up Permissions
+    - Limiting Edits
