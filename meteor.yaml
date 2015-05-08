@@ -37,6 +37,12 @@ Fine-Grained Reactivity:
     - Collection.find() versus Collection.cursor.fetch()
     - Collection.cursor.count()
     - Guidelines for Fine-Grained and Course-Grained Reactivity
+Collection find fetch count Question:
+  link: /qmd/meteor-questions/collection-find-fetch-count
+  type: question
+  depends:
+    - Collection.find() versus Collection.cursor.fetch()
+    - Collection.cursor.count()
 Creating Reactive Values:
   children:
     - Creating a Reactive Value Using the ReactiveDict Library
@@ -58,9 +64,17 @@ Blaze:
     - Blaze Overview
     - What is Reactive Templating
     - What is Blaze
+    - Spacebars
     - How Templates Use Blaze
     - Blaze Views
     - Blaze jQuery and Reactive Attributes
+Spacebars:
+  link: 'https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md'
+Spacebars If Question:
+  link: 'qmd/meteor-questions/spacebars-if'
+  type: question
+  depends:
+    - Spacebars
 What is Reactive Templating:
   children:
     - Server-Side Templates

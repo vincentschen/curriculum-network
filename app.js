@@ -31,6 +31,26 @@
       }
     });
   };
+  app.get(/^\/qmd\/(.+)/, function(req, res){
+    var name;
+    name = req.params[0];
+    if (name.indexOf('..') !== -1) {
+      res.send('cannot have .. in path');
+      return;
+    }
+    return page_html(name + '.md', function(data){
+      var ndata;
+      if (data == null) {
+        return res.send('article does not exist: ' + name);
+      } else {
+        ndata = [];
+        ndata.push('<link rel="stylesheet" type="text/css" href="/css/questions.css"/>');
+        ndata.push('<script src="/bower_components/jquery/dist/jquery.min.js"></script>');
+        ndata.push(data);
+        return res.send(ndata.join('\n'));
+      }
+    });
+  });
   app.get(/^\/md\/(.+)/, function(req, res){
     var name;
     name = req.params[0];

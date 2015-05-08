@@ -27,6 +27,21 @@ page_html = (name, callback) ->
     else
       callback marked(mdata)
 
+app.get /^\/qmd\/(.+)/, (req, res) ->
+  name = req.params[0]
+  if name.indexOf('..') != -1
+    res.send 'cannot have .. in path'
+    return
+  page_html name + '.md', (data) ->
+    if not data?
+      res.send 'article does not exist: ' + name
+    else
+      ndata = []
+      ndata.push '<link rel="stylesheet" type="text/css" href="/css/questions.css"/>'
+      ndata.push '<script src="/bower_components/jquery/dist/jquery.min.js"></script>'
+      ndata.push data
+      res.send ndata.join('\n')
+
 app.get /^\/md\/(.+)/, (req, res) ->
   name = req.params[0]
   if name.indexOf('..') != -1
