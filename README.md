@@ -1,5 +1,8 @@
 # curriculum visualization
 
+## Web development
+New model with web development modules on this branch. 
+
 ## Demo
 
 A live demo of this code is at http://csnet.herokuapp.com
