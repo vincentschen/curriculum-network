@@ -11,6 +11,8 @@ Sorting:
   link: "https://en.wikipedia.org/wiki/Sorting_algorithm"
   depends:
     - Array
+Array:
+  link: "http://en.wikipedia.org/wiki/Array_data_type"
 Mergesort:
   link: "https://en.wikipedia.org/wiki/Merge_sort"
   depends:
@@ -124,6 +126,7 @@ Extract-min implementation (binary heap):
     - Binary heap
   link: "https://en.wikipedia.org/wiki/Binary_heap#Delete"
 Min heap:
+  link: http://en.wikipedia.org/wiki/Heap_(data_structure)
   children:
     - Extract-min implementation (binary heap)
   depends:
