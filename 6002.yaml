@@ -41,12 +41,14 @@ Midterm Problem 6:
     - Resistor
     - Volt
     - Ohm
+    - Ohm's law
+    - Kirchoff's voltage law
 
 Midterm Problem 18:
   link: 6002-questions/midterm18.png
 
 Thevenin equivalent circuit:
-  summary: "Any black box containing resistances only and voltage and current sources can be replaced to a Thévenin equivalent circuit consisting of an equivalent voltage source in series connection with an equivalent resistance."
+  summarylink: md/6002/thevenin_equivalent
   link: http://en.wikipedia.org/wiki/Th%C3%A9venin%27s_theorem
   depends:
     - Equivalent circuit
