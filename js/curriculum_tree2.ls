@@ -22,6 +22,39 @@ export showquizzes = ->
   $('#lessondiv').show()
   $('#lessondiv').text("Sorry, we don't yet have quizzes for #{name}")
 
+export showsummary = ->
+  $('.showlessonbutton').removeClass 'active'
+  $('#showsummarybutton').addClass 'active'
+  name = root.viewed_topic
+  $('#topicname').text name
+  $('#makefocustopic').attr 'href', '/mkcurriculum.html?' + $.param({topic: name})
+  $('#viewnetwork').attr 'href', '/?' + $.param({topic: name})
+  if root.rawdata[name]?
+    {summary, summarylink, link} = root.rawdata[name]
+    if summary?
+      $('#lessonframe').hide()
+      $('#lessondiv').show()
+      $('#lessondiv').text summary
+      return
+    if summarylink?
+      $('#lessondiv').hide()
+      $('#lessonframe').show()
+      $('#lessonframe').attr('src', summarylink)
+      return
+    if link?
+      $('#lessondiv').hide()
+      $('#lessonframe').show()
+      $('#lessonframe').attr('src', link)
+      return
+    #if lesson?
+    #  $('#lessonframe').hide()
+    #  $('#lessondiv').show()
+    #  $('#lessondiv').text lesson
+    #  return
+  $('#lessonframe').hide()
+  $('#lessondiv').show()
+  $('#lessondiv').text("Sorry, we don't yet have a lesson for #{name}")
+
 export showwikipedia = ->
   $('.showlessonbutton').removeClass 'active'
   $('#showwikipediabutton').addClass 'active'
@@ -36,11 +69,11 @@ export showwikipedia = ->
       $('#lessonframe').show()
       $('#lessonframe').attr('src', link)
       return
-    if lesson?
-      $('#lessonframe').hide()
-      $('#lessondiv').show()
-      $('#lessondiv').text lesson
-      return
+    #if lesson?
+    #  $('#lessonframe').hide()
+    #  $('#lessondiv').show()
+    #  $('#lessondiv').text lesson
+    #  return
   $('#lessonframe').hide()
   $('#lessondiv').show()
   $('#lessondiv').text("Sorry, we don't yet have a lesson for #{name}")
@@ -48,7 +81,7 @@ export showwikipedia = ->
 export nodehovered = (name) ->
   if name?
     root.viewed_topic = name
-  showwikipedia()
+  showsummary()
 
 parent_dep_sorting_func = (a, b) ->
   return -parent_dep_sorting_func_simple(a, b)
@@ -144,7 +177,8 @@ export set_topic = (topic_name) ->
   $('#curriculumviewbutton').show()
   root.viewed_topic = topic_name
   repaint_nodes()
-  showwikipedia()
+  #showwikipedia()
+  showsummary()
 
 initialize = (treeData, max_depth, is_module) ->
   if not is_module?
@@ -249,7 +283,7 @@ export show_curriculum_view = (topic) ->
   new_url = location.href
   if new_url.indexOf('?') != -1
     new_url = new_url.slice(0, new_url.indexOf('?'))
-  new_url = new_url + '?' + $.param({view: 'curriculum', topic: topic})
+  new_url = new_url + '?' + $.param({view: 'curriculum', topic: topic, graph_file: root.params.graph_file})
   if new_url != history.state
     history.pushState new_url, null, new_url
 
