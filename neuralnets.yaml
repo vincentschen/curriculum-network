@@ -1,0 +1,352 @@
+graph_metadata:
+  relation_types:
+    - depends
+    - children
+    #- depends_on_module
+    #- parents
+  #preprocessing_steps:
+    #- expand_depends_on_module
+    #- add_parents_for_children
+
+Neural networks:
+  # Types of neural network architectures
+  # https://class.coursera.org/neuralnets-2012-001/lecture/9
+  children:
+    - Types of neural network architectures
+Types of neural network architectures:
+  children:
+    - Feed-forward neural networks
+    - Recurrent neural networks
+    - Symmetrically connected networks
+Feed-forward neural networks:
+  children:
+    - Perceptron
+    - Convolutional neural networks
+Symmetrically connected networks:
+  children:
+    - Hopfield networks
+Models of neurons:
+  # Some simple models of neurons
+  # https://class.coursera.org/neuralnets-2012-001/lecture/8
+  children:
+    - Linear neurons
+    - Logistic neurons
+    - Binary threshold neurons
+    - Rectified linear neurons # aka Linear threshold neurons
+    - Sigmoid neurons
+    - Stochastic binary neurons
+Types of machine learning:
+  # Three types of learning
+  # https://class.coursera.org/neuralnets-2012-001/lecture/5
+  children:
+    - Supervised learning
+    - Unsupervised learning
+    - Reinforcement learning
+Supervised learning:
+  # https://class.coursera.org/neuralnets-2012-001/lecture/5
+  children:
+    - Regression
+    - Classification
+Perceptron:
+  # Perceptrons: The first generation of neural networks
+  # https://class.coursera.org/neuralnets-2012-001/lecture/10
+  children:
+    - History of Perceptrons
+    - Binary threshold neurons
+    - Perceptron convergence procedure
+    - A geometrical view of perceptrons
+    - Learning procedure for perceptrons
+    - Limitations of perceptrons
+Learning procedure for perceptrons:
+  children:
+    - Proof of convergence
+Limitations of perceptrons:
+  children:
+    - What binary threshold neurons cannot do
+    - A geometric view of what binary threshold neurons cannot do
+Linear neurons:
+  children:
+    - Learning algorithm for linear neurons
+    - Error surface for a linear neuron
+Learning algorithm for linear neurons:
+  children:
+    - Delta rule for learning weights
+Logistic neurons:
+  children:
+    - Learning the weights of a logistic output neuron
+The backpropagation algorithm:
+  children:
+    - The idea behind backpropagation
+    - Sketch of the backpropagation algorithm on a single case
+    - Backpropagating dE/dy
+    - Using the derivatives computed by backpropagation
+Using the derivatives computed by backpropagation:
+  children:
+    - Converging error derivatives into a learning procedure
+    - Optimization issues in using the weight derivatives
+    - "Overfitting: The downside of using powerful models"
+"Overfitting: The downside of using powerful models":
+  children:
+    - A simple example of overfitting
+    - Ways to reduce overfitting
+Ways to reduce overfitting:
+  children:
+    - Weight-decay
+    - Weight-sharing
+    - Early stopping
+    - Model averaging
+    - Bayesian fitting of neural nets
+    - Dropout
+    - Generative pre-training
+Learning to predict the next word:
+  children:
+    - A simple example of relational information
+    - A relational learning task
+    - The structure of the neural net
+    - What the network learns
+    - Another way to see how it works
+    - A large-scale example
+A brief diversion into cognitive science:
+  children:
+    - Theories on the meaning of concepts
+    - Localist and distributed representations of concepts
+Theories on the meaning of concepts:
+  children:
+    - The feature theory
+    - The structuralist theory
+The softmax output function:
+  children:
+    - Problems with squared error
+    - "Cross-entropy: the right cost function to use with softmax"
+Neuro-probabilistic language models:
+  children:
+    - A basic problem in speech recognition
+    - Trigram model
+    - "Bengio's neural net for predicting the next word"
+    - "A problem with having 100,000 output words"
+    - Ways to deal with the large number of possible outputs
+Trigram model:
+  children:
+    - Information that the trigram model fails to use
+Ways to deal with the large number of possible outputs:
+  children:
+    - A serial architecture
+    - Learning to predict the next word by predicting a path through a tree
+    - A simpler way to learn feature vectors for words
+A serial architecture:
+  children:
+    - Learning in the serial architecture
+Learning to predict the next word by predicting a path through a tree:
+  children:
+    - A picture of the learning
+    - A convenient decomposition
+A simpler way to learn feature vectors for words:
+  children:
+    - Displaying the learned feature vectors in a 2-D map # t-sne
+Object recognition:
+  # https://class.coursera.org/neuralnets-2012-001/lecture/69
+  # Why object recognition si difficult
+  children:
+    - Why object recognition is difficult
+Why object recognition is difficult:
+  children:
+    - Segmentation
+    - Lighting
+    - Deformation
+    - Affordances
+    - Viewpoint
+Viewpoint:
+  children:
+    - Ways to achieve viewpoint invariance
+Ways to achieve viewpoint invariance:
+  # https://class.coursera.org/neuralnets-2012-001/lecture/71
+  # Achieving viewpoint invariance
+  children:
+    - Redundant invariant features
+    - Put a box around the object and use normalized pixels
+    - Convolutional neural nets # Use replicated features with pooling
+    - Use a hierarchy of parts that have explicit poses relative to the camera
+Put a box around the object and use normalized pixels:
+  children:
+    - The judicious normalization approach
+    - The brute-force normalization approach
+Convolutional neural networks:
+  children:
+    - Convolutional neural networks for hand-written digit recognition
+Convolutional neural networks for hand-written digit recognition:
+  children:
+    - The replicated feature approach
+Mini-batch gradient descent:
+  children:
+    - The error surface for a linear neuron
+    - Convergence speed of full batch learning when the error surface is a quadratic bowl
+    - How the learning goes wrong
+    - Stochastic gradient descent
+    - Two types of learning algorithm
+    - A basic mini-batch gradient descent algorithm
+    - A bag of tricks for mini-batch gradient descent
+A bag of tricks for mini-batch gradient descent:
+  children:
+    - Initializing the weights
+    - Shifting the inputs
+    - Scaling the inputs
+    - Decorrelate the input components
+    - Common problems that occur in multilayer networks
+    - Be careful about turning down the learning rate
+    - Four ways to speed up mini-batch learning
+Four ways to speed up mini-batch learning:
+  children:
+    - The momenum method
+    - A seperate adaptive learning rate for each connection
+    - "rmsprop: Divide the gradient by a running average of its recent magnitude"
+    - Make use of curvature information
+The momentum method:
+  children:
+    - The intuition behind the momentum method
+    - The equations of the momentum method
+    - The behavior of the momentum method
+    - Nesterov method
+Nesterov method:
+  children:
+    - A picture of the Nesterov method
+A seperate adaptive learning rate for each connection:
+  children:
+    - The intuition behind seperate adaptive learning rates
+    - One way to determine the individual learning rates
+    - Tricks for making adaptive learning rates work better
+"rmsprop: Divide the gradient by a running average of its recent magnitude":
+  children:
+    - "rprop: Using only the sign of the gradient"
+    - "rmsprop: A mini-batch version of rprop"
+    - Further developments of rmsprop
+    - Summary of learning methods for neural networks
+"rprop: Using only the sign of the gradient":
+  children:
+    - Why rprop does not work with mini-batches
+Modeling sequences:
+  # https://class.coursera.org/neuralnets-2012-001/lecture/77
+  children:
+    - Getting targets when modeling sequences
+    - Memoryless models for sequences
+    - Beyond memoryless models
+Memoryless models for sequences:
+  children:
+    - Autoregressive models
+    - Feed-forward neural networks
+Beyond memoryless models:
+  children:
+    - Linear dynamical systems
+    - Hidden markov models
+    - Recurrent neural networks
+Linear dynamical systems:
+  children:
+    - Kalman filtering
+Hidden markov models:
+  children:
+    - A fundamental limitation of HMMs
+Stochastic generative models:
+  children:
+    - Linear dynamical systems
+    - Hidden markov models
+Deterministic generative models:
+  children:
+    - Recurrent neural networks
+Recurrent neural networks:
+  children:
+    - Training RNNs with backpropagation
+    - A toy example of training a RNN
+    - Why it is difficult to train a RNN
+Training RNNs with backpropagation:
+  # https://class.coursera.org/neuralnets-2012-001/lecture/81
+  children:
+    - The equivalence between feedforward nets and recurrent nets
+    - Backpropagation with weight constraints
+    - Backpropagation through time
+    - Specifying the initial activity state of all hidden and output units # An irritating extra issue
+    - Providing input to recurrent networks
+    - Teaching signals for recurrent networks
+The equivalence between feedforward nets and recurrent nets:
+  depends:
+    - Feed-forward neural networks
+Backpropagation with weight constraints:
+  depends:
+    - The backpropagation algorithm
+A toy example of training a RNN:
+  children:
+    - The binary addition task
+    - A recurrent net for binary addition
+The binary addition task:
+  children:
+    - The algorithm for binary addition
+A recurrent net for binary addition:
+  children:
+    - The connectivity of the network
+    - What the network learns
+Why it is difficult to train a RNN:
+  children:
+    - The backward pass is linear
+    - The problem of exploding or vanishing gradients
+    - Four effective ways to learn a RNN
+The problem of exploding or vanishing gradients:
+  children:
+    - Why the back-propagated gradient blows up
+Four effective ways to learn a RNN:
+  children:
+    - Long short term memory
+    - Hessian free optimization
+    - Echo state networks
+    - Good initialization with momentum
+Long short term memory:
+  # https://class.coursera.org/neuralnets-2012-001/lecture/95
+  children:
+    - Implementing a memory cell in a neural network
+    - Backpropagation through a memory cell
+    - Reading cursive handwriting
+Reading cursive handwriting:
+  children:
+    - A demonstration of online handwriting recognition by a RNN with long short term memory
+Hessian free optimization:
+  # https://class.coursera.org/neuralnets-2012-001/lecture/87
+  children:
+    - How much can we reduce the error by moving in a given direction?
+    - "Newton's method"
+    - Curvature matrices
+    - Conjugate gradient
+Curvature matrices:
+  children:
+    - How to avoid inverting a huge matrix
+Conjugate gradient:
+  children:
+    - A picture of conjugate gradient
+    - What does conjugate gradient achieve?
+Modeling character strings with multiplicative connections:
+  # https://class.coursera.org/neuralnets-2012-001/lecture/89
+  children:
+    - "Modeling text: Advantages of working with characters"
+    - An obvious recurrent neural net
+    - A sub-tree in the tree of all character strings
+    - Multiplicative connections
+Multiplicative connections:
+  children:
+    - Using factors to implement multiplicative interactions
+    - Using factors to implement a set of basis matrices
+    - Using 3-way factors to allow a character to create a whole transition matrix
+Learning to predict the next character using Hessian Free optimization: {}
+# https://class.coursera.org/neuralnets-2012-001/lecture/91
+Hopfield nets:
+  # https://class.coursera.org/neuralnets-2012-001/lecture/121
+  children:
+    - The energy function
+    - Setting to an energy minimum
+Setting to an energy minimum:
+  children:
+    - A deeper energy minimum
+    - Why do the decisions need to be sequential?
+    #- 
+
+
+# questions
+Quiz 7 Question 3:
+  depends:
+    - Recurrent neural networks
+    - Logistic neurons
