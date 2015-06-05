@@ -71,6 +71,10 @@ tip = d3.tip()
         output.append($('<a>').css('color', 'yellow').text(info.link).attr('href', '#').attr('onclick', 'openlink("' + info.link + '")'))
         output.append('<br>')
       }
+      if (info.video != null) {
+        output.append($('<a>').css('color', 'yellow').text(info.video).attr('href', '#').attr('onclick', 'openvideo("' + info.video + '","' + info.vstart + '")'))
+        output.append('<br>')
+      }
       if (name != focus_topic) {
         output.append($('<a>').css('color', 'yellow').text('View graph for topic').attr('href', '#').attr('onclick', 'changetopic("' + name + '")'))
       }
@@ -206,6 +210,11 @@ function tick() {
 function openlink(target) {
   circle_clicked_time = Date.now()
   window.open(target)
+}
+
+function openvideo(video, start) {
+  var targetlink = '/videoviewer.html?' + $.param({video: video, start: start})
+  openlink(targetlink)
 }
 
 function gotolink(target) {
