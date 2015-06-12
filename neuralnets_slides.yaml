@@ -573,7 +573,8 @@ Why learning can be slow:
   vend: '5:02'
 
 Week 2 Question 8:
-  image: '/neuralnets/week2_question8.png'
+  #image: '/neuralnets/week2_question8.png'
   #frame: '/neuralnets/week2_question8.html'
+  html: '/neuralnets/week2_question8.html'
   depends:
     - What binary threshold neurons cannot do

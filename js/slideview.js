@@ -239,7 +239,7 @@
     return output;
   };
   makeSection = function(topic_name, topic_info){
-    var output, topic_name_sanitized, video, vstart, vend, image, frame, parents, children, depends, i$, len$, parent, child, dependency;
+    var output, topic_name_sanitized, video, vstart, vend, image, frame, html, parents, children, depends, html_container, i$, len$, parent, child, dependency;
     output = $('<div>').css({
       'margin-bottom': '50px'
     });
@@ -247,11 +247,17 @@
     output.append($('<div>').css({
       'font-size': '24px'
     }).text(topic_name).attr('id', topic_name_sanitized));
-    video = topic_info.video, vstart = topic_info.vstart, vend = topic_info.vend, image = topic_info.image, frame = topic_info.frame, parents = topic_info.parents, children = topic_info.children, depends = topic_info.depends;
+    video = topic_info.video, vstart = topic_info.vstart, vend = topic_info.vend, image = topic_info.image, frame = topic_info.frame, html = topic_info.html, parents = topic_info.parents, children = topic_info.children, depends = topic_info.depends;
     if (video != null && vstart != null && vend != null) {
       output.append(makeVideoPreview(video, vstart, vend));
     } else if (frame != null) {
       output.append(makeFrameSection(frame));
+    } else if (html != null) {
+      html_container = $('<div>');
+      output.append(html_container);
+      $.get(html, function(data){
+        return html_container.html(data);
+      });
     } else if (image != null) {
       output.append(makeImageSection(image));
     }

@@ -150,11 +150,16 @@ make-section = (topic_name, topic_info) ->
   output = $('<div>').css({'margin-bottom': '50px'})
   topic_name_sanitized = sanitize-name topic_name
   output.append $('<div>').css({'font-size': '24px'}).text(topic_name).attr('id', topic_name_sanitized)
-  {video, vstart, vend, image, frame, parents, children, depends} = topic_info
+  {video, vstart, vend, image, frame, html, parents, children, depends} = topic_info
   if video? and vstart? and vend?
     output.append make-video-preview(video, vstart, vend)
   else if frame?
     output.append make-frame-section(frame)
+  else if html?
+    html_container = $('<div>')
+    output.append html_container
+    $.get html, (data) ->
+      html_container.html data
   else if image?
     output.append make-image-section(image)
   if parents?
