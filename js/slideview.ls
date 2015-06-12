@@ -1,5 +1,13 @@
 root = exports ? this
 
+srt-to-seconds = (timestamp) ->
+  timestamp.split(',').join('.')
+  [hours,minutes,seconds] = timestamp.split(':')
+  hours = parseFloat hours
+  minutes = parseFloat minutes
+  seconds = parseFloat seconds
+  return hours * 3600 + minutes * 60 + seconds
+
 to-seconds = (timestamp) ->
   if typeof(timestamp) == typeof(0)
     return timestamp
@@ -17,8 +25,62 @@ get-snapshot-url = (video, snapshot_time, width, height) ->
     height = 540
   return '/thumbnail?' + $.param({video, time: snapshot_time, width, height})
 
+get-video-tag = ->
+  vtag = $('video')
+  if vtag.length == 0
+    vtag = $('<video controls="controls">')
+    vtag.css {width: '960px', height: '540px'}
+    vtag.css {position: 'absolute', top: '0px', left: '0px'}
+    #vtag.hide()
+    vtag.on 'timeupdate', ->
+      curtime = this.currentTime
+      subtitle_section = $('.activeslide').find('.subtitle')
+      activesub = subtitle_section.find '.activesub'
+      if activesub.length > 0 and (activesub.data('start') <= curtime <= activesub.data('end'))
+        return
+      activesub.removeClass 'activesub'
+      for x in subtitle_section.find('.subline')
+        subtitle_span = $(x)
+        if subtitle_span.data('start') <= curtime <= subtitle_span.data('end')
+          subtitle_span.addClass 'activesub'
+    $('body').append vtag
+  return vtag
+
+clean-active-slide = ->
+  activeslide = $('.activeslide')
+  activeslide.find('.activesub').removeClass('activesub')
+  activeslide.removeClass('activeslide')
+
+
 make-video-preview = (video, vstart, vend) ->
   output = make-video-snapshot(video, vstart, vend, 960, 540)
+  output.css 'cursor', 'pointer'
+  subtitle_section = $('<div>').addClass('subtitle').css({'margin-bottom': '10px'})
+  output.append subtitle_section
+  $.get ('/subtitles/' + video + '.srt'), (raw_srt) ->
+    subtitle_section.css {'max-height': '80px', 'overflow': 'scroll'}
+    #subtitle_section.text data
+    subtitle_data = parser.fromSrt raw_srt
+    for subtitle_line in subtitle_data
+      srtStart = srt-to-seconds subtitle_line.startTime
+      srtEnd = srt-to-seconds subtitle_line.endTime
+      if not (srtStart + 2.5 > to-seconds(vstart))
+        continue
+      if not (srtEnd - 2.5 < to-seconds(vend))
+        continue
+      subtitle_section.append $('<span>').text(subtitle_line.text).data({start: srtStart, end: srtEnd}).addClass('subline')
+      subtitle_section.append ' '
+  output.click ->
+    vtag = get-video-tag()
+    vtag.attr 'src', '/videos/' + video + '.mp4#t=' + to-seconds(vstart) + ',' + to-seconds(vend)
+    vidpreview = output.find('.vidpreview')
+    vtag.offset(vidpreview.offset())
+    #console.log vidpreview.offset()
+    clean-active-slide()
+    output.addClass 'activeslide'
+    vtag.show()
+    vtag[0].currentTime = 0
+    vtag[0].play()
   return output
 
 make-video-snapshot = (video, vstart, vend, width, height, border_radius, border_style) ->
@@ -31,7 +93,7 @@ make-video-snapshot = (video, vstart, vend, width, height, border_radius, border
   snapshot_time = vend - 3
   snapshot_url = get-snapshot-url(video, snapshot_time, width, height)
   output = $('<div>').css({position: 'relative'})
-  output.append $('<img>').attr('src', snapshot_url).css({width: width + 'px', height: height + 'px', 'border-radius': border_radius, 'border': border_style})
+  output.append $('<img>').addClass('vidpreview').attr('src', snapshot_url).css({width: width + 'px', height: height + 'px', 'border-radius': border_radius, 'border': border_style})
   return output
 
 make-empty-preview = (width, height, border_radius, border_style) ->

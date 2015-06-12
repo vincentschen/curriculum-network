@@ -13,7 +13,7 @@ Why do we need machine learning?:
     - What is machine learning?
     - The machine learning approach
     - Some examples of tasks best solved by learning
-    - A fake child
+    #- A fake child
   video: 1-1
   vstart: '0:00'
   vend: '0:21'
