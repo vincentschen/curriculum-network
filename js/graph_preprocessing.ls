@@ -46,7 +46,7 @@ export add_parents_for_children = (data) ->
     if children?
       for child in children
         if not network[child]?
-          network[parent] = {}
+          network[child] = {}
         if not network[child].parents?
           network[child].parents = []
         network[child].parents.push topic_name

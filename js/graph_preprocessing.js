@@ -92,7 +92,7 @@
         for (i$ = 0, len$ = children.length; i$ < len$; ++i$) {
           child = children[i$];
           if (network[child] == null) {
-            network[parent] = {};
+            network[child] = {};
           }
           if (network[child].parents == null) {
             network[child].parents = [];

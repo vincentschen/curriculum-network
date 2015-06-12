@@ -132,6 +132,8 @@ Linear neurons:
   video: 1-3
   vstart: '1:36'
   vend: '2:28'
+  children:
+    - Linear neurons (detailed)
 
 Binary threshold neurons:
   video: 1-3
@@ -335,6 +337,12 @@ Binary threshold neurons (decision units):
   children:
     - How to learn biases using the same rule as we use for learning weights
 
+Learning procedure for perceptrons:
+  children:
+    - How to learn biases using the same rule as we use for learning weights
+    - The perceptron convergence procedure
+    - Why the learning works
+
 How to learn biases using the same rule as we use for learning weights:
   video: 2-2
   vstart: '5:40'
@@ -344,9 +352,11 @@ The perceptron convergence procedure:
   video: 2-2
   vstart: '6:15'
   vend: '8:16'
+  children:
+    - Informal sketch of proof of convergence
 
 A geometrical view of perceptrons:
-  video: 2-2
+  video: 2-3
   vstart: '0:00'
   vend: '0:31'
   children:
@@ -354,12 +364,12 @@ A geometrical view of perceptrons:
     - Weight-space
 
 A warning about high-dimensional spaces:
-  video: 2-2
+  video: 2-3
   vstart: '0:31'
   vend: '1:18'
 
 Weight-space:
-  video: 2-2
+  video: 2-3
   vstart: '1:18'
   vend: '2:08'
   children:
@@ -368,19 +378,194 @@ Weight-space:
     - The cone of feasible solutions
 
 An illustration of a weight space:
-  video: 2-2
+  video: 2-3
   vstart: '2:08'
   vend: '4:01'
 
 Another illustration of a weight space:
-  video: 2-2
+  video: 2-3
   vstart: '4:01'
   vend: '4:58'
 
 The cone of feasible solutions:
-  video: 2-2
+  video: 2-3
   vstart: '4:58'
   vend: '6:24'
+
+Why the learning works:
+  video: 2-4
+  vstart: '0:00'
+  vend: '0:32'
+  children:
+    - Why the learning procedure works (first attempt)
+    - Why the learning procedure works (second attempt)
+    - Informal sketch of proof of convergence
+
+Why the learning procedure works (first attempt):
+  video: 2-4
+  vstart: '0:32'
+  vend: '2:50'
+
+Why the learning procedure works (second attempt):
+  video: 2-4
+  vstart: '2:50'
+  vend: '3:47'
+
+Informal sketch of proof of convergence:
+  video: 2-4
+  vstart: '3:47'
+  vend: '5:09'
+
+Limitations of perceptrons:
+  video: 2-5
+  vstart: '0:00'
+  vend: '0:57'
+  children:
+    - The limitations of perceptrons
+    - What binary threshold neurons cannot do
+    - Why this result is devastating for Perceptrons
+    - Learning with hidden units
+
+The limitations of perceptrons:
+  video: 2-5
+  vstart: '0:57'
+  vend: '2:23'
+
+What binary threshold neurons cannot do:
+  video: 2-5
+  vstart: '2:23'
+  vend: '5:03'
+  children:
+    - A geometric view of what binary threshold neurons cannot do
+
+A geometric view of what binary theshold neurons cannot do:
+  video: 2-5
+  vstart: '5:03'
+  vend: '7:00'
+  children:
+    - Discriminating simple patterns under translation with wrap-around
+
+Discriminating simple patterns under translation with wrap-around:
+  video: 2-5
+  vstart: '7:00'
+  vend: '9:03'
+  children:
+    - Proof that a binary decision unit cannot discriminate patterns with the same number of on pixels
+
+Proof that a binary decision unit cannot discriminate patterns with the same number of on pixels:
+  video: 2-5
+  vstart: '9:03'
+  vend: '11:08'
+
+Why this result is devastating for Perceptrons:
+  video: 2-5
+  vstart: '11:08'
+  vend: '12:58'
+
+Learning with hidden units:
+  video: 2-5
+  vstart: '12:58'
+  vend: '14:34'
+
+Learning the weights of a linear neuron:
+  video: 3-1
+  vstart: '0:00'
+  vend: '0:22'
+  children:
+    - Why the perceptron learning procedure cannot be generalised to hidden layers
+    - Linear neurons (detailed)
+    - Iterative method for learning weights
+
+Why the perceptron learning procedure cannot be generalised to hidden layers:
+  video: 3-1
+  vstart: '0:22'
+  vend: '1:05'
+  depends:
+    - Learning procedure for perceptrons
+
+A different way to show that a learning procedure makes progress:
+  video: 3-1
+  vstart: '1:05'
+  vend: '1:55'
+  depends:
+    - Linear neurons (detailed)
+
+Linear neurons (detailed):
+  video: 3-1
+  vstart: '1:55'
+  vend: '2:44'
+
+Iterative method for learning weights:
+  children:
+    - "Why don't we solve it analytically"
+    - A toy example to illustrate the iterative method
+    - The delta rule
+    - Behavior of the iterative learning procedure
+    - The relationship between the online delta-rule and the learning rule for perceptrons
+
+A toy example to illustrate the iterative method:
+  video: 3-1
+  vstart: '2:44'
+  vend: '4:26'
+  children:
+    - Solving the equations iteratively
+    - The true weights used by the cashier
+    #- A model of the cashier with arbitrary initial weights
+    - The delta rule
+
+Solving the equations iteratively:
+  video: 3-1
+  vstart: '4:26'
+  vend: '5:11'
+
+The true weights used by the cashier:
+  video: 3-1
+  vstart: '5:11'
+  vend: '5:32'
+
+#A model of the cashier with arbitrary initial weights:
+The delta rule:
+  video: 3-1
+  vstart: '5:32'
+  vend: '7:15'
+  children:
+    - Deriving the delta rule
+
+Deriving the delta rule:
+  video: 3-1
+  vstart: '7:15'
+  vend: '9:37'
+
+Behavior of the iterative learning procedure:
+  video: 3-1
+  vstart: '9:37'
+  vend: '11:03'
+
+The relationship between the online delta-rule and the learning rule for perceptrons:
+  video: 3-1
+  vstart: '11:03'
+  vend: '11:54'
+
+The error surface for a linear neuron:
+  video: 3-1
+  vstart: '0:00'
+  vend: '0:12'
+  children:
+    - The error surface in extended weight space
+    - Why learning can be slow
+
+The error surface in extended weight space:
+  video: 3-1
+  vstart: '0:12'
+  vend: '3:44'
+  children:
+    - Online versus batch learning
+
+Why learning can be slow:
+  video: 3-1
+  vstart: '3:44'
+  vend: '5:02'
+
 
 #Types of neural network architectures:
 #  children:
@@ -426,20 +611,20 @@ The cone of feasible solutions:
     #- A geometrical view of perceptrons
     #- Learning procedure for perceptrons
     #- Limitations of perceptrons
-Learning procedure for perceptrons:
-  children:
-    - Proof of convergence
-Limitations of perceptrons:
-  children:
-    - What binary threshold neurons cannot do
-    - A geometric view of what binary threshold neurons cannot do
-Linear neurons:
-  children:
-    - Learning algorithm for linear neurons
-    - Error surface for a linear neuron
-Learning algorithm for linear neurons:
-  children:
-    - Delta rule for learning weights
+#Learning procedure for perceptrons:
+#  children:
+#    - Proof of convergence
+#Limitations of perceptrons:
+#  children:
+#    - What binary threshold neurons cannot do
+#    - A geometric view of what binary threshold neurons cannot do
+#Linear neurons:
+#  children:
+#    - Learning algorithm for linear neurons
+#    - Error surface for a linear neuron
+#Learning algorithm for linear neurons:
+#  children:
+#    - Delta rule for learning weights
 Logistic neurons:
   children:
     - Learning the weights of a logistic output neuron

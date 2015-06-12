@@ -66,13 +66,13 @@ tip = d3.tip()
       output.append(importance_stats)
       //output.append($('<div>').text('num bing results: ' + info['num bing results']))
     }
+    if (info.video != null) {
+      output.append($('<a>').css('color', 'yellow').text(info.video + ' (' + info.vstart + ' - ' + info.vend + ')').attr('href', '#').attr('onclick', 'openvideo("' + info.video + '","' + info.vstart + '")'))
+      output.append('<br>')
+    }
     if (tip.showtype == 'click') {
       if (info.link != null) {
         output.append($('<a>').css('color', 'yellow').text(info.link).attr('href', '#').attr('onclick', 'openlink("' + info.link + '")'))
-        output.append('<br>')
-      }
-      if (info.video != null) {
-        output.append($('<a>').css('color', 'yellow').text(info.video).attr('href', '#').attr('onclick', 'openvideo("' + info.video + '","' + info.vstart + '")'))
         output.append('<br>')
       }
       if (name != focus_topic) {

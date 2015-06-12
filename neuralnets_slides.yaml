@@ -1,0 +1,579 @@
+graph_metadata:
+  relation_types:
+    - depends
+    - children
+    #- depends_on_module
+    - parents
+  preprocessing_steps:
+    #- expand_depends_on_module
+    - add_parents_for_children
+
+Why do we need machine learning?:
+  children:
+    - What is machine learning?
+    - The machine learning approach
+    - Some examples of tasks best solved by learning
+    - A fake child
+  video: 1-1
+  vstart: '0:00'
+  vend: '0:21'
+What is machine learning?:
+  video: 1-1
+  vstart: '0:21'
+  vshot: '1:13'
+  vend: '1:18'
+The machine learning approach:
+  video: 1-1
+  vstart: '1:18'
+  vshot: '2:17'
+  vend: '2:21'
+Some examples of tasks best solved by learning:
+  video: 1-1
+  vstart: '2:22'
+  vshot: '3:21'
+  vend: '3:26'
+  children:
+    - Digit recognition with the MNIST dataset # A standard example of machine learning
+    - "Beyond MNIST: The ImageNet task"
+    - The speech recognition task
+Digit recognition with the MNIST dataset: # A standard example of machine learning
+  video: 1-1
+  vstart: '3:26'
+  vshot: '4:27'
+  vend: '4:29'
+  children:
+    - It is very hard to say what makes a 2
+It is very hard to say what makes a 2:
+  video: 1-1
+  vstart: '4:30'
+  vshot: '5:28'
+  vend: '5:34'
+"Beyond MNIST: The ImageNet task":
+  video: 1-1
+  vstart: '5:39'
+  vshot: '6:52'
+  vend: '6:55'
+  children:
+    - Some examples from an earlier version of ImageNet
+Some examples from an earlier version of ImageNet:
+  video: 1-1
+  vstart: '6:55'
+  vshot: '9:14'
+  vend: '9:18'
+The speech recognition task:
+  video: 1-1
+  vstart: '9:18'
+  vshot: '10:50'
+  vend: '10:54'
+  children:
+    - Phone recognition on the TIMIT benchmark
+Phone recognition on the TIMIT benchmark:
+  video: 1-1
+  vstart: '10:54'
+  vshot: '13:10'
+  vend: '13:14'
+
+
+What are neural networks?:
+  children:
+    - Reasons to study neural computation
+    - A typical cortical neuron
+    - Synapses
+    - How the brain works
+    - Modularity and the brain
+  video: 1-2
+  vstart: '0:00'
+  vend: '0:21'
+Reasons to study neural computation:
+  video: 1-2
+  vstart: '0:21'
+  vshot: '1:45'
+  vend: '1:47'
+A typical cortical neuron:
+  video: 1-2
+  vstart: '1:47'
+  vend: '2:52'
+Synapses:
+  video: 1-2
+  vstart: '2:52'
+  vend: '3:43'
+  children:
+    - How synapses adapt
+How synapses adapt:
+  video: 1-2
+  vstart: '3:43'
+  vend: '4:36'
+How the brain works:
+  video: 1-2
+  vstart: '4:36'
+  vend: '5:49'
+Modularity and the brain:
+  video: 1-2
+  vstart: '5:49'
+  vend: '8:30'
+
+Models of neurons:
+  children:
+    - Idealized neurons
+    - Linear neurons
+    - Binary threshold neurons
+    - Rectified linear neurons
+    - Sigmoid neurons
+    - Stochastic binary neurons
+  video: 1-3
+  vstart: '0:00'
+  vend: '0:25'
+
+Idealized neurons:
+  video: 1-3
+  vstart: '0:25'
+  vend: '1:36'
+
+Linear neurons:
+  video: 1-3
+  vstart: '1:36'
+  vend: '2:28'
+  children:
+    - Linear neurons (detailed)
+
+Binary threshold neurons:
+  video: 1-3
+  vstart: '2:28'
+  vend: '4:40'
+
+Rectified linear neurons: # Linear threshold neurons
+  video: 1-3
+  vstart: '4:40'
+  vend: '5:37'
+
+Sigmoid neurons:
+  video: 1-3
+  vstart: '5:37'
+  vend: '7:02'
+
+Stochastic binary neurons:
+  video: 1-3
+  vstart: '7:02'
+  vend: '8:23'
+
+A simple example of learning:
+  video: 1-4
+  vstart: '0:00'
+  vend: '0:19'
+  children:
+    - A simple way to recognize handwritten shapes
+
+A simple way to recognize handwritten shapes:
+  video: 1-4
+  vstart: '0:19'
+  vend: '1:18'
+  children:
+    - How to display the weights
+    - How to learn the weights
+
+How to display the weights:
+  video: 1-4
+  vstart: '1:18'
+  vend: '2:18'
+
+How to learn the weights:
+  video: 1-4
+  vstart: '2:18'
+  vend: '3:19'
+  children:
+    - The learned weights
+
+The learned weights:
+  video: 1-4
+  vstart: '3:19'
+  vend: '4:27'
+
+Why the simple learning algorithm is insufficient:
+  video: 1-4
+  vstart: '4:27'
+  vend: '5:13'
+  children:
+    - Failure on handwritten digits
+
+Failure on handwritten digits:
+  video: 1-4
+  vstart: '5:13'
+  vend: '5:38'
+
+Types of machine learning:
+  children:
+    - Supervised learning
+    - Unsupervised learning
+    - Reinforcement learning
+  video: 1-5
+  vstart: '0:00'
+  vend: '1:00' #'0:22'
+
+Supervised learning:
+  children:
+    - Two types of supervised learning
+    - How supervised learning typically works
+
+Two types of supervised learning:
+  children:
+    - Regression
+    - Classification
+
+Regression:
+  video: 1-5
+  vstart: '1:00'
+  vend: '1:22'
+
+Classification:
+  video: 1-5
+  vstart: '1:22'
+  vend: '1:41'
+
+How supervised learning typically works:
+  video: 1-5
+  vstart: '1:41'
+  vend: '2:54'
+
+Reinforcement learning:
+  video: 1-5
+  vstart: '2:54'
+  vend: '4:08'
+
+Unsupervised learning:
+  video: 1-5
+  vstart: '4:08'
+  vend: '5:35'
+  children:
+    - Other goals for unsupervised learning
+
+Other goals for unsupervised learning:
+  video: 1-5
+  vstart: '5:35'
+  vend: '7:37'
+
+Types of neural network architectures:
+  video: 2-1
+  vstart: '0:00'
+  vend: '1:03'
+  children:
+    - Feed-forward neural networks
+    - Recurrent neural networks
+    - Symmetrically connected networks
+
+Feed-forward neural networks:
+  video: 2-1
+  vstart: '1:03'
+  vend: '2:08'
+  children:
+    - Perceptrons
+    - Convolutional neural networks
+
+Recurrent neural networks:
+  video: 2-1
+  vstart: '2:08'
+  vend: '3:03'
+  children:
+    - Recurrent neural networks for modeling sequences
+
+Recurrent neural networks for modeling sequences:
+  video: 2-1
+  vstart: '3:03'
+  vend: '4:12'
+  children:
+    - An example of what recurrent neural nets can now do
+
+An example of what recurrent neural nets can now do:
+  video: 2-1
+  vstart: '4:12'
+  vend: '5:56'
+  children:
+    - Some text generated one character at a time by a recurrent neural network
+
+Some text generated one character at a time by a recurrent neural network:
+  video: 2-1
+  vstart: '5:56'
+  vend: '6:49'
+
+Symmetrically connected networks:
+  video: 2-1
+  vstart: '6:49'
+  vend: '7:28'
+  children:
+    - Hopfield networks
+
+Neural networks:
+  # Types of neural network architectures
+  # https://class.coursera.org/neuralnets-2012-001/lecture/9
+  children:
+    - Types of neural network architectures
+
+Perceptrons:
+  video: 2-2
+  vstart: '0:00'
+  vend: '0:19'
+  children:
+    - The perceptron architecture
+    - The history of perceptrons
+    - Binary threshold neurons (decision units)
+    - The perceptron convergence procedure
+    - A geometrical view of perceptrons
+    - Learning procedure for perceptrons
+    - Limitations of perceptrons
+
+The perceptron architecture:
+  video: 2-2
+  vstart: '0:19'
+  vend: '2:36'
+
+The history of perceptrons:
+  video: 2-2
+  vstart: '2:36'
+  vend: '5:15'
+
+# is redundant with the previous one. need to implement a 
+Binary threshold neurons (decision units):
+  video: 2-2
+  vstart: '5:15'
+  vend: '5:40'
+  children:
+    - How to learn biases using the same rule as we use for learning weights
+
+Learning procedure for perceptrons:
+  children:
+    - How to learn biases using the same rule as we use for learning weights
+    - The perceptron convergence procedure
+    - Why the learning works
+
+How to learn biases using the same rule as we use for learning weights:
+  video: 2-2
+  vstart: '5:40'
+  vend: '6:15'
+
+The perceptron convergence procedure:
+  video: 2-2
+  vstart: '6:15'
+  vend: '8:16'
+  children:
+    - Informal sketch of proof of convergence
+
+A geometrical view of perceptrons:
+  video: 2-3
+  vstart: '0:00'
+  vend: '0:31'
+  children:
+    - A warning about high-dimensional spaces
+    - Weight-space
+
+A warning about high-dimensional spaces:
+  video: 2-3
+  vstart: '0:31'
+  vend: '1:18'
+
+Weight-space:
+  video: 2-3
+  vstart: '1:18'
+  vend: '2:08'
+  children:
+    - An illustration of a weight space
+    - An illustration of a different weight space
+    - The cone of feasible solutions
+
+An illustration of a weight space:
+  video: 2-3
+  vstart: '2:08'
+  vend: '4:01'
+
+Another illustration of a weight space:
+  video: 2-3
+  vstart: '4:01'
+  vend: '4:58'
+
+The cone of feasible solutions:
+  video: 2-3
+  vstart: '4:58'
+  vend: '6:24'
+
+Why the learning works:
+  video: 2-4
+  vstart: '0:00'
+  vend: '0:32'
+  children:
+    - Why the learning procedure works (first attempt)
+    - Why the learning procedure works (second attempt)
+    - Informal sketch of proof of convergence
+
+Why the learning procedure works (first attempt):
+  video: 2-4
+  vstart: '0:32'
+  vend: '2:50'
+
+Why the learning procedure works (second attempt):
+  video: 2-4
+  vstart: '2:50'
+  vend: '3:47'
+
+Informal sketch of proof of convergence:
+  video: 2-4
+  vstart: '3:47'
+  vend: '5:09'
+
+Limitations of perceptrons:
+  video: 2-5
+  vstart: '0:00'
+  vend: '0:57'
+  children:
+    - The limitations of perceptrons
+    - What binary threshold neurons cannot do
+    - Why this result is devastating for Perceptrons
+    - Learning with hidden units
+
+The limitations of perceptrons:
+  video: 2-5
+  vstart: '0:57'
+  vend: '2:23'
+
+What binary threshold neurons cannot do:
+  video: 2-5
+  vstart: '2:23'
+  vend: '5:03'
+  children:
+    - A geometric view of what binary threshold neurons cannot do
+
+A geometric view of what binary threshold neurons cannot do:
+  video: 2-5
+  vstart: '5:03'
+  vend: '7:00'
+  children:
+    - Discriminating simple patterns under translation with wrap-around
+
+Discriminating simple patterns under translation with wrap-around:
+  video: 2-5
+  vstart: '7:00'
+  vend: '9:03'
+  children:
+    - Proof that a binary decision unit cannot discriminate patterns with the same number of on pixels
+
+Proof that a binary decision unit cannot discriminate patterns with the same number of on pixels:
+  video: 2-5
+  vstart: '9:03'
+  vend: '11:08'
+
+Why this result is devastating for Perceptrons:
+  video: 2-5
+  vstart: '11:08'
+  vend: '12:58'
+
+Learning with hidden units:
+  video: 2-5
+  vstart: '12:58'
+  vend: '14:34'
+
+Learning the weights of a linear neuron:
+  video: 3-1
+  vstart: '0:00'
+  vend: '0:22'
+  children:
+    - Why the perceptron learning procedure cannot be generalised to hidden layers
+    - Linear neurons (detailed)
+    - Iterative method for learning weights
+
+Why the perceptron learning procedure cannot be generalised to hidden layers:
+  video: 3-1
+  vstart: '0:22'
+  vend: '1:05'
+  depends:
+    - Learning procedure for perceptrons
+
+A different way to show that a learning procedure makes progress:
+  video: 3-1
+  vstart: '1:05'
+  vend: '1:55'
+  depends:
+    - Linear neurons (detailed)
+
+Linear neurons (detailed):
+  video: 3-1
+  vstart: '1:55'
+  vend: '2:44'
+
+Iterative method for learning weights:
+  children:
+    - "Why don't we solve it analytically"
+    - A toy example to illustrate the iterative method
+    - The delta rule
+    - Behavior of the iterative learning procedure
+    - The relationship between the online delta-rule and the learning rule for perceptrons
+
+"Why don't we solve it analytically":
+  video: 3-1
+  vstart: '2:44'
+  vend: '3:35'
+
+A toy example to illustrate the iterative method:
+  video: 3-1
+  vstart: '3:35'
+  vend: '4:26'
+  children:
+    - Solving the equations iteratively
+    - The true weights used by the cashier
+    #- A model of the cashier with arbitrary initial weights
+    - The delta rule
+
+Solving the equations iteratively:
+  video: 3-1
+  vstart: '4:26'
+  vend: '5:11'
+
+The true weights used by the cashier:
+  video: 3-1
+  vstart: '5:11'
+  vend: '5:32'
+
+#A model of the cashier with arbitrary initial weights:
+The delta rule:
+  video: 3-1
+  vstart: '5:32'
+  vend: '7:15'
+  children:
+    - Deriving the delta rule
+
+Deriving the delta rule:
+  video: 3-1
+  vstart: '7:15'
+  vend: '9:37'
+
+Behavior of the iterative learning procedure:
+  video: 3-1
+  vstart: '9:37'
+  vend: '11:03'
+
+The relationship between the online delta-rule and the learning rule for perceptrons:
+  video: 3-1
+  vstart: '11:03'
+  vend: '11:54'
+
+The error surface for a linear neuron:
+  video: 3-2
+  vstart: '0:00'
+  vend: '0:12'
+  children:
+    - The error surface in extended weight space
+    - Why learning can be slow
+
+The error surface in extended weight space:
+  video: 3-2
+  vstart: '0:12'
+  vend: '3:44'
+  children:
+    - Online versus batch learning
+
+Why learning can be slow:
+  video: 3-2
+  vstart: '3:44'
+  vend: '5:02'
+
+Week 2 Question 8:
+  image: '/neuralnets/week2_question8.png'
+  #frame: '/neuralnets/week2_question8.html'
+  depends:
+    - What binary threshold neurons cannot do

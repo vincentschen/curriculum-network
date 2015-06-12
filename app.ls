@@ -5,13 +5,51 @@ require! {
   async
   marked
   fs
+  path
 }
+
+{exec} = require('child_process')
 
 app = express()
 
 app.use serveStatic '.'
 app.set 'port', process.env.PORT ? 8080
 app.listen app.get('port'), '0.0.0.0'
+
+to-seconds = (timestamp) ->
+  if typeof(timestamp) == typeof(0)
+    return timestamp
+  if timestamp.indexOf(':') == -1
+    return parseFloat timestamp
+  [minutes,seconds] = timestamp.split(':')
+  minutes = parseFloat minutes
+  seconds = parseFloat seconds
+  return 60 * minutes + seconds
+
+makeSnapshot = (video, time, thumbnail_path, width, height, callback) ->
+  command = 'ffmpeg -ss ' + time + ' -i ./videos/' + video + '.mp4 -y -vframes 1 -s ' + width + 'x' + height + ' ' + thumbnail_path
+  exec command, ->
+    callback() if callback?
+
+app.get '/thumbnail', (req, res) ->
+  video = req.query.video
+  time = toSeconds(req.query.time)
+  width = parseInt(req.query.width)
+  if not width? or isNaN(width)
+    width = 960
+  height = parseInt(req.query.height)
+  if not height? or isNaN(height)
+    height = 540
+  if not video? or not time? or isNaN(time)
+    res.send 'need video and time parameters'
+  thumbnail_file = video + '_' + time + '_' + width + 'x' + height + '.png'
+  thumbnail_path = 'thumbnails/' + thumbnail_file
+  console.log thumbnail_path
+  if fs.existsSync(thumbnail_path)
+    res.sendFile path.join(__dirname, thumbnail_path)
+  else
+    makeSnapshot video, time, thumbnail_path, width, height, ->
+      res.sendFile path.join(__dirname, thumbnail_path)
 
 page_markdown = (name, callback) ->
   fs.exists name, (exists) ->
