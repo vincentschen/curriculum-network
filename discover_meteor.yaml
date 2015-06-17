@@ -1,0 +1,181 @@
+graph_metadata:
+  relation_types:
+    - depends
+    - children
+    #- depends_on_module
+    #- parents
+  #preprocessing_steps:
+    #- expand_depends_on_module
+    #- add_parents_for_children
+
+# based on discover meteror at https://book.discovermeteor.com/
+Meteor:
+  children:
+    - What is Meteor
+    - Getting Started
+    - Deployment
+    - Templates
+    - Using Git and Github
+    - Collections
+    - Publications and Subscriptions
+    - Routing
+    - The Meteor Session
+    - Adding Users
+    - Reactivity
+    - Creating Posts
+    - Latency Compensation
+    - Editing Posts
+What is Meteor:
+  link: md/meteor/what_is_meteor
+Getting Started:
+  children:
+    - Install Meteor
+    - Creating a Simple App
+    - Adding a Package
+    - File Structure of a Meteor App
+    - Miscellaneous
+Install Meteor:
+  link: md/meteor/install_meteor
+  children:
+    - Nitrous.io
+Nitrous.io:
+  link: md/meteor/nitrous_io
+Creating a Simple App:
+  link: md/meteor/creating_a_simple_app
+Adding a Package:
+  link: md/meteor/adding_a_package
+  children:
+    - Types of Packages
+Types of Packages:
+  link: md/meteor/types_of_packages
+File Structure of a Meteor App:
+  link: md/meteor/file_structure_of_a_meteor_app
+  children:
+    - Meteor is not MVC
+    - Public directory
+    - Finding Files
+Meteor is not MVC:
+  link: md/meteor/meteor_is_not_mvc
+Public directory:
+  link: md/meteor/public_directory
+Finding Files:
+  # actually from the templates chapter
+  link: md/meteor/finding_files
+Miscellaneous:
+  children:
+    - Style Conventions
+    - CSS
+    - Coffeescript
+Style Conventions:
+  link: md/meteor/style_conventions
+CSS:
+  link: md/meteor/css
+Coffeescript:
+  link: md/meteor/coffeescript
+Deployment:
+  children:
+    - Deploy on Meteor.com
+    - Deploy on Modulus
+    - Deploy using Meteor Up
+Deploy on Meteor.com:
+  link: md/meteor/deploy_on_meteor_com
+Deploy on Modulus:
+  link: md/meteor/deploy_on_modulus
+Deploy using Meteor Up:
+  link: md/meteor/deploy_using_meteor_up
+  children:
+    - Initializing Meteor Up
+    - Meteor Up Configuration
+    - Setting up and Deploying with mup
+    - Displaying Logs with mup
+Initializing Meteor Up:
+  link: md/meteor/initializing_meteor_up
+Meteor Up Configuration:
+  link: md/meteor/meteor_up_configuration
+Setting up and Deploying with mup:
+  link: md/meteor/setting_up_and_deploying_with_mup
+Displaying Logs with mup:
+  link: md/meteor/displaying_logs_with_mup
+Templates:
+  link: md/meteor/templates
+  children:
+    - Spacebars
+    - Post List Template
+    - Template Helpers
+Post List Template:
+  link: md/meteor/post_list_template
+Spacebars:
+  link: md/meteor/spacebars
+Collections:
+  children:
+    - Storing Data
+    - Client and Server Collections
+    - Populating the Database
+    - Dynamic Data
+    - Connecting Collections: Publications and Subscriptions
+Client and Server Collections:
+  children:
+    - Server-Side Collections
+    - Client-Side Collections
+    - Client-Server Communication
+Publications and Subscriptions:
+  children:
+    - Publishing
+    - Subscribing
+    - Finding
+Publishing:
+  children:
+    - Autopublish
+    - Publishing Full Collections
+    - Publishing Partial Collections
+    - Publishing Partial Properties
+Routing:
+  children:
+    - Iron Router
+    - Router Vocabulary
+    - Mapping URLs to Templates
+    - Named Routes
+    - Waiting on Data
+    - Routing to a Specific Post
+    - Using a Dynamic Named Route Helper
+    - Post Not Found
+Iron Router:
+  children:
+    - Adding the Iron Router Package
+The Meteor Session:
+  children:
+    - Changing the Session
+    - Introducing Autorun
+    - Hot Code Reload
+Adding Users:
+  children:
+    - Accounts - users made simple
+    - Creating Our First User
+    - A Mystery Publication
+Reactivity:
+  children:
+    - A Declarative Approach
+    - Dependency Tracking in Meteor - Computations
+    - Setting Up a Computation
+Creating Posts:
+  children:
+    - Building The New Post Page
+    - Adding a Link to the Header
+    - Creating Posts
+    - Adding Some Security
+    - Allowing Post Inserts
+    - Securing Access to the New Post Form
+    - Hiding the Link
+    - Meteor Method - Better Abstraction and Security
+    - Preventing Duplicates
+    - Sorting Posts
+Latency Compensation:
+  children:
+    - Observing Latency Compensation
+    - Client Collection Methods
+    - Methods Calling Methods
+Editing Posts:
+  children:
+    - The Post Edit Template
+    - Setting Up Permissions
+    - Limiting Edits

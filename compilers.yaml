@@ -1,0 +1,205 @@
+graph_metadata:
+  relation_types:
+    - depends
+    - children
+    #- depends_on_module
+    #- parents
+  #preprocessing_steps:
+    #- expand_depends_on_module
+    #- add_parents_for_children
+Structure of a Compiler:
+  children:
+    - Lexical Analysis
+    - Syntax Analysis
+    - Semantic Analysis
+    - Intermediate Code Generation
+    - Code Optimization
+    - Code Generation
+    - Symbol-Table Management
+    - The Grouping of Phases into Passes
+    - Compiler-Construction Tools
+The Evolution of Programming Languages:
+  children:
+    - The Move to Higher-level Languages
+    - Impacts on Compilers
+    # - Exercises for Section 1.3
+The Science of Building a Compiler:
+  children:
+    - Modeling in Compiler Design and Implementation
+    - The Science of Code Optimization
+Applications of Compiler Technology:
+  children:
+    - Implementation of High-Level Programming Languages
+    - Optimizations for Computer Architectures
+    - Design of New Computer Architectures
+    - Program Translations
+    - Software Productivity Tools
+Programming Language Basics:
+  children:
+    - The Static/Dynamic Distinction
+    - Environments and States
+    - Static Scope and Block Structure
+    - Explicit Access Control
+    - Dynamic Scope
+    - Parameter Passing Mechanisms
+    - Aliasing
+    # - Exercises for Section 1.6
+# Summary of Chapter 1: {}
+# References for Chapter 1: {}
+# 2. A Simple Syntax-Directed Translator
+Syntax Definition:
+  children:
+    - Definition of Grammars
+    - Derivations
+    - Parse Trees
+    - Ambiguity
+    - Associativity of Operators
+    - Precedence of Operators
+    # - Exercises for Section 2.2
+
+Ambiguity:
+  depends:
+    - Definition of Grammars
+
+Derivations:
+  depends:
+    - Definition of Grammars
+
+Ambiguity:
+  depends:
+    - Definition of Grammars
+
+Associativity of Operators:
+  depends:
+    - Definition of Grammars
+
+Precedence of Operators:
+  depends:
+    - Definition of Grammars
+
+Exercise 2-2-1:
+  question_img: 'questions/compilers/2-2-1.png'
+  depends:
+    - Definition of Grammars
+    - Derivations
+    - Parse Trees
+
+Exercise 2-2-2:
+  question_img: 'questions/compilers/2-2-2.png'
+  depends:
+    - Definition of Grammars
+
+Exercise 2-2-3:
+  question_img: 'questions/compilers/2-2-3.png'
+  depends:
+    - Definition of Grammars
+    - Ambiguity
+
+Exercise 2-2-4:
+  question_img: 'questions/compilers/2-2-4.png'
+  depends:
+    - Definition of Grammars
+    - Ambiguity
+
+
+Syntax-Directed Translation:
+  children:
+    - Postfix Notation
+    - Synthesized Attributes
+    - Simple Syntax-Directed Definitions
+    - Tree Traversals
+    - Translation Schemes
+    # - Exercises for Section 2.3
+Parsing:
+  children:
+    - Top-Down Parsing
+    - Predictive Parsing
+    - When to use e-Productions
+    - Designing a Predictive Parser
+    - Left Recursion
+    # - Exercises for Section 2.4
+A Translator for Simple Expressions:
+  children:
+    - Abstract and Concrete Syntax
+    - Adapting the Translation Scheme
+    - Procedures for the Nonterminals
+    - Simplifying the Translator
+    - The Complete Program
+Lexical Analysis:
+  children:
+    - Removal of White Space and Comments
+    - Reading Ahead
+    - Constants
+    - Recognizing Keywords and Identifiers
+    - A Lexical Analyzer
+    # - Exercises for Section 2.6
+Symbol Tables:
+  children:
+    - Symbol Table Per Scope
+    - The Use of Symbol Tables
+Intermediate Code Generation:
+  children:
+    - Two Kinds of Intermediate Representations
+    - Construction of Syntax Trees
+    - Static Checking
+    - Three-Address Code
+    # - Exercises for Section 2.8
+# 3. Lexical Analysis
+The Role of the Lexical Analyzer:
+  children:
+    - Lexical Analysis Versus Parsing
+    - "Tokens, Patterns, and Lexemes"
+    - Attributes for Tokens
+    - Lexical Errors
+    # - Exercises for Section 3.1
+Input Buffering:
+  children:
+    - Buffer Pairs
+    - Sentinels
+Specification of Tokens:
+  children:
+    - Strings and Languages
+    - Operations on Languages
+    - Regular Expressions
+    - Regular Definitions
+    - Extensions of Regular Expressions
+    # - Exercises for Section 3.3
+Recognition of Tokens:
+  children:
+    - Transition Diagrams
+    - Recognition of Reserved Words and Identifiers
+    - Completion of the Running Example
+    - Architecture of a Transition-Diagram-Based Lexical Analyzer
+    # - Exercises for Section 3.4
+The Lexical-Analyzer Generator Lex:
+  children:
+    - Use of Lex
+    - Structure of Lex Programs
+    - Conflict Resolution in Lex
+    - The Lookahead Operator
+    # - Exercises for Section 3.5
+Finite Automata:
+  children:
+    - Nondeterministic Finite Automata
+    - Transition Tables
+    - Acceptance of Input Strings by Automata
+    - Deterministic Finite Automata
+    # - Exercises for Section 3.6
+From Regular Expressions to Automata:
+  children:
+    - Conversion of an NFA to a DFA
+    - Simulation of an NFA
+    - Efficiency of NFA Simulation
+    - Construction of an NFA from a Regular Expression
+    - Efficiency of String-Processing Algorithms
+    # - Exercises for Section 3.7
+Desgin of a Lexical-Analyzer Generator:
+  children:
+    - The Structure of the Generated Analyzer
+    - Pattern Matching Based on NFAs
+    - DFAs for Lexical Analyzers
+    - Implementing the Lookahead Operator
+    # - Exercises for Section 3.8
+#Optimization of DFA-Based PAttern Matchers:
+#  children:
+#    - 

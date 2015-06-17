@@ -1,0 +1,95 @@
+graph_metadata:
+  relation_types:
+    - depends
+    - children
+    #- depends_on_module
+    #- parents
+  #preprocessing_steps:
+    #- expand_depends_on_module
+    #- add_parents_for_children
+
+# based on the meteor manual at http://manual.meteor.com/
+Meteor:
+  children:
+    - Deps
+    - Blaze
+Deps:
+  children:
+    - Deps Overview
+    - Transparent Reactive Programming
+    - A Simple Example
+    - Building a User Interface with Transparent Reactive Programming
+    - How Deps Works
+    - Monitoring Reactive Values
+    - Fine-Grained Reactivity
+    - Creating Reactive Values
+    - The Flush Cycle
+Monitoring Reactive Values:
+  children:
+    - Autoruns Can Be Nested Inside Autoruns
+    - The Automatic Cleanup Convention
+    - When Autoruns Throw Exceptions
+    - Accessing the Current Computation Inside an Autorun
+    - Detecting the First Run
+    - Ignoring Changes to Certain Reactive Values
+Fine-Grained Reactivity:
+  children:
+    - Collection.find() versus Collection.cursor.fetch()
+    - Collection.cursor.count()
+    - Guidelines for Fine-Grained and Course-Grained Reactivity
+Collection find fetch count Question:
+  link: /qmd/meteor-questions/collection-find-fetch-count
+  type: question
+  depends:
+    - Collection.find() versus Collection.cursor.fetch()
+    - Collection.cursor.count()
+Creating Reactive Values:
+  children:
+    - Creating a Reactive Value Using the ReactiveDict Library
+    - Some Examples of Cusotm Reactive Values Using ReactiveDict
+    - Creating a Reactive Value Using Deps.Dependency
+    - The Deps.Computation Object
+    - Creating a Reactive Value the Hard Way
+    - The Many-to-Many Relationship Between Computations and Dependencies
+    - Taking a Wait and See Approach
+The Flush Cycle:
+  children:
+    - The Reason for the Flush Cycle
+    - Hooking into the Flush Cycle
+    - How the Flush Cycle Works
+    - Avoiding Change Loops
+
+Blaze:
+  children:
+    - Blaze Overview
+    - What is Reactive Templating
+    - What is Blaze
+    - Spacebars
+    - How Templates Use Blaze
+    - Blaze Views
+    - Blaze jQuery and Reactive Attributes
+Spacebars:
+  link: 'https://github.com/meteor/meteor/blob/devel/packages/spacebars/README.md'
+Spacebars If Question:
+  link: 'qmd/meteor-questions/spacebars-if'
+  type: question
+  depends:
+    - Spacebars
+What is Reactive Templating:
+  children:
+    - Server-Side Templates
+    - jQuery and Server-Side Templates
+    - Client-Side Templates
+    - Reactive Templating
+How Templates Use Blaze:
+  children:
+    - Compile Time - From Spacebars to JavaScript
+    - Run Time - From JavaScript to HTML
+Blaze Views:
+  children:
+    - Lifecycle of a View
+    - Views Represent Templates
+    - Views Represent Builtins
+Blaze jQuery and Reactive Attributes:
+  children:
+    - How Blaze Handles Attributes

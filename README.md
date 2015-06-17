@@ -65,7 +65,7 @@ Install the npm modules it depends on:
 
 You can start the server by running (this will start a mongodb server locally, automatically compile changed ls files, and start the node server on port 8080):
 
-    .\runserver
+    .\runserver.bat
 
 You can then visit http://localhost:8080 to see the page in action
 

@@ -1,0 +1,14 @@
+{
+  "name": "subtitles.parser.min",
+  "_cacheHeaders": {
+    "ETag": "\"77e18ba2bf730ccde3e3eea350afccc7e6a74370\"",
+    "Content-Length": "1151",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "_release": "e-tag:77e18ba2b",
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/bazh/subtitles-parser/master/subtitles.parser.min.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/bazh/subtitles-parser/master/subtitles.parser.min.js",
+  "_direct": true
+}

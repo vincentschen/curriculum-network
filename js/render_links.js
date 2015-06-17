@@ -66,6 +66,10 @@ tip = d3.tip()
       output.append(importance_stats)
       //output.append($('<div>').text('num bing results: ' + info['num bing results']))
     }
+    if (info.video != null) {
+      output.append($('<a>').css('color', 'yellow').text(info.video + ' (' + info.vstart + ' - ' + info.vend + ')').attr('href', '#').attr('onclick', 'openvideo("' + info.video + '","' + info.vstart + '")'))
+      output.append('<br>')
+    }
     if (tip.showtype == 'click') {
       if (info.link != null) {
         output.append($('<a>').css('color', 'yellow').text(info.link).attr('href', '#').attr('onclick', 'openlink("' + info.link + '")'))
@@ -208,6 +212,11 @@ function openlink(target) {
   window.open(target)
 }
 
+function openvideo(video, start) {
+  var targetlink = '/videoviewer.html?' + $.param({video: video, start: start})
+  openlink(targetlink)
+}
+
 function gotolink(target) {
   window.location.href = target
 }
@@ -230,12 +239,22 @@ function opencurriculum(target) {
 }
 
 function opencurriculumtree(target) {
-  var targetlink = '/curriculum_tree2.html?' + $.param({topic: target, view: 'curriculum'})
+  var param_list = {topic: target, view: 'curriculum'}
+  var curparams = getUrlParameters()
+  if (curparams.graph_file != null) {
+    param_list.graph_file = curparams.graph_file
+  }
+  var targetlink = '/curriculum_tree2.html?' + $.param(param_list)
   openlink(targetlink)
 }
 
 function openmoduletree(target) {
   //var targetlink = '/module_tree.html?' + $.param({topic: target})
-  var targetlink = '/curriculum_tree2.html?' + $.param({topic: target, view: 'module'})
+  var param_list = {topic: target, view: 'module'}
+  var curparams = getUrlParameters()
+  if (curparams.graph_file != null) {
+    param_list.graph_file = curparams.graph_file
+  }
+  var targetlink = '/curriculum_tree2.html?' + $.param(param_list)
   openlink(targetlink)
 }

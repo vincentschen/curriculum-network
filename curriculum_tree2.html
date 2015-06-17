@@ -2,9 +2,9 @@
 <html>
   <head>
     <title>Curriculum Tree</title>
-    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
-    <link rel="stylesheet" type="text/css" href="css/curriculum_tree.css"/>
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/curriculum_tree.css"/>
     <script src="bower_components/d3/d3.js"></script>
     <script src="bower_components/d3-tip/index.js"></script>
     <script src="bower_components/js-yaml/dist/js-yaml.js"></script>
@@ -29,7 +29,8 @@
     </div>
     <div id="lessonframewrapper">
       <ul class="nav nav-tabs" style="height: 100%">
-      <li role="presentation" id="showwikipediabutton" class="active showlessonbutton" onclick="showwikipedia()"><a href="javascript:;">Explanation</a></li>
+      <li role="presentation" id="showsummarybutton" class="active showlessonbutton" onclick="showsummary()"><a href="javascript:;">Summary</a></li>
+      <li role="presentation" id="showwikipediabutton" class="active showlessonbutton" onclick="showwikipedia()"><a href="javascript:;">Wikipedia</a></li>
       <li role="presentation" id="showquizzesbutton" class="showlessonbutton" onclick="showquizzes()"><a>Quizzes</a href="javascript:;"></li>
       <div id="lessoninnerwrapper">
       <iframe id="lessonframe" src="about:blank" style="display: none"></iframe>

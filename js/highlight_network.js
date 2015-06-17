@@ -151,7 +151,7 @@
       console.log('do not have radius for: ' + name);
       return 5;
     }
-    return 10 * radius_percent;
+    return Math.max(5.0, 10 * radius_percent);
   };
   out$.getnode = getnode = function(name){
     var i$, ref$, len$, x, node;

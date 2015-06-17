@@ -1,0 +1,149 @@
+graph_metadata:
+  relation_types:
+    - depends
+    - children
+    #- parents
+  preprocessing_steps:
+    - add_parents_for_children
+HTML:
+  # link: "https://en.wikipedia.org/wiki/Sorting_algorithm"
+  depends:
+    - Image Formats 
+  children: 
+    - HTML5
+    - XHTML
+LESS: 
+  depends: 
+    - CSS
+SCSS: 
+  depends: 
+    - CSS
+CSS: 
+  depends: 
+    - HTML
+  children: 
+    - LESS
+    - SCSS
+JavaScript: 
+  depends: #in the context of web development purposes 
+    - HTML
+    - CSS 
+    - Document Object Model
+HTML5: 
+  depends: 
+    - HTML
+XHTML: 
+  depends: 
+    - HTML
+AngularJS: 
+  depends: 
+    - HTML 
+    - CSS 
+    - AJAX
+JQuery: 
+  depends: 
+    - HTML
+    - CSS 
+    - JavaScript
+    - Document Object Model
+JQueryUI: 
+  depends: 
+    - JQuery
+ASP.Net: 
+  depends: 
+    - "C#"
+    - .NET Framework
+    - Visual Basic 
+    - HTML 
+    - CSS
+    - JavaScript
+Backbone.js: 
+  depends: 
+    - HTML 
+    - CSS 
+    - JavaScript 
+    - Model-view-controller (MVC) 
+Twitter Bootstrap: 
+  depends: 
+    - HTML 
+    - CSS
+Adobe Flex: 
+  depends: 
+    - Adobe Flash Builder 
+    - HTML
+    - CSS
+    - JavaScript
+Google Web Toolkit (GWT): 
+  depends: 
+    - HTML
+    - CSS
+    - AJAX
+JavaServer Faces (JSF): 
+  depends: 
+    - Java
+    - HTML
+    - CSS
+    - AJAX
+Knockout.js: 
+  depends: 
+    - Hypertext Transfer Protocol (HTTP)
+    - Simple Mail Transfer Protocol (SMTP) 
+    - Transmission Control Protocol/ Internet Protocol (TCP/IP) 
+    - User Datagram Protocol (UDP) 
+    - Voice over Internet Protocol (VoIP)
+    - JavaScript
+Model-view-controller (MVC): 
+  depends: 
+    - ASP.Net 
+Ruby on Rails: 
+  depends: 
+    - Ruby 
+    - Databases 
+    - ASP.Net 
+    - PHP
+Databases: 
+  children: 
+    - MySQL 
+    - NoSQL 
+MySQL: 
+  depends: 
+    - Databases
+NoSQL: 
+  depends: 
+    - Databases
+SVG: 
+  depends: 
+    - HTML
+    - JavaScript
+    - XML
+Web Services: 
+  depends: 
+    - XML
+    - Hypertext Transfer Protocl (HTTP) 
+    - Transmission Control Protocol/ Internet Protocol (TCP/IP) 
+RESTful: 
+  depends: 
+    - Web Services
+    - HTML
+    - CSS
+    - AJAX
+React.js: 
+  depends: 
+    - JavaScript
+    - Model-view-controller (MVC)
+Meteor: 
+  depends: 
+    - Databases
+Firebase: 
+  depends: 
+    - Databases
+    - Model-view-controller (MVC)
+Parse: 
+  depends: 
+    - Databases 
+Socket.io: 
+  depends: 
+    - Node.js
+Node.js: 
+  depends: 
+    - JavaScript
